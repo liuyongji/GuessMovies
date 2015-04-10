@@ -70,23 +70,24 @@ public final class R {
         public static final int word_button_icon=0x7f020023;
     }
     public static final class id {
-        public static final int btn_bar_add_coins=0x7f0a000f;
-        public static final int btn_bar_back=0x7f0a000d;
-        public static final int btn_delete_word=0x7f0a0002;
-        public static final int btn_play_start=0x7f0a000a;
-        public static final int btn_tip_answer=0x7f0a0003;
-        public static final int frameLayout1=0x7f0a0001;
-        public static final int gridview=0x7f0a0008;
-        public static final int imageButton1=0x7f0a0004;
-        public static final int imageView1=0x7f0a0007;
-        public static final int imageView2=0x7f0a000b;
-        public static final int item_btn=0x7f0a000c;
-        public static final int layout_bar_coin=0x7f0a000e;
-        public static final int layout_pan=0x7f0a0009;
-        public static final int pass_view=0x7f0a0000;
-        public static final int text_current_stage=0x7f0a0005;
-        public static final int txt_bar_coins=0x7f0a0010;
-        public static final int word_select_container=0x7f0a0006;
+        public static final int btn_bar_add_coins=0x7f0a0010;
+        public static final int btn_bar_back=0x7f0a000e;
+        public static final int btn_delete_word=0x7f0a0003;
+        public static final int btn_play_start=0x7f0a000b;
+        public static final int btn_tip_answer=0x7f0a0004;
+        public static final int frameLayout1=0x7f0a0002;
+        public static final int gridview=0x7f0a0009;
+        public static final int imageButton1=0x7f0a0006;
+        public static final int imageView1=0x7f0a0008;
+        public static final int imageView2=0x7f0a000c;
+        public static final int item_btn=0x7f0a000d;
+        public static final int layout_bar_coin=0x7f0a000f;
+        public static final int layout_pan=0x7f0a000a;
+        public static final int pass_view=0x7f0a0001;
+        public static final int share_button_icon=0x7f0a0005;
+        public static final int text_current_stage=0x7f0a0000;
+        public static final int txt_bar_coins=0x7f0a0011;
+        public static final int word_select_container=0x7f0a0007;
     }
     public static final class integer {
         public static final int pay_delete_word=0x7f060001;
@@ -96,18 +97,20 @@ public final class R {
         public static final int activity_main=0x7f030000;
         public static final int answer_right=0x7f030001;
         public static final int float_buttons=0x7f030002;
-        public static final int name_select=0x7f030003;
-        public static final int pan_image_layout=0x7f030004;
-        public static final int pan_layout=0x7f030005;
-        public static final int self_ui_gridview_item=0x7f030006;
-        public static final int splash=0x7f030007;
-        public static final int top_bar=0x7f030008;
+        public static final int gethelp=0x7f030003;
+        public static final int name_select=0x7f030004;
+        public static final int pan_image_layout=0x7f030005;
+        public static final int pan_layout=0x7f030006;
+        public static final int self_ui_gridview_item=0x7f030007;
+        public static final int splash=0x7f030008;
+        public static final int top_bar=0x7f030009;
     }
     public static final class string {
         public static final int action_settings=0x7f080002;
+        public static final int answer_right=0x7f080004;
         public static final int app_name=0x7f080000;
         public static final int hello_world=0x7f080001;
-        public static final int mission_success=0x7f080003;
+        public static final int mission_compelete=0x7f080003;
     }
     public static final class style {
         /** 

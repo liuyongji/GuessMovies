@@ -1,7 +1,5 @@
 package com.imooc.guessmusic.ui;
 
-import java.io.File;
-import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,20 +7,21 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import org.apache.http.util.EncodingUtils;
-
+import net.youmi.android.AdManager;
+import net.youmi.android.offers.OffersManager;
+import net.youmi.android.offers.PointsChangeNotify;
+import net.youmi.android.offers.PointsManager;
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
-import android.view.animation.LinearInterpolator;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -34,19 +33,23 @@ import android.widget.LinearLayout.LayoutParams;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.imooc.guessmusic.R;
-import com.imooc.guessmusic.data.Const;
 import com.imooc.guessmusic.model.IWordButtonClickListener;
 import com.imooc.guessmusic.model.Movie;
-import com.imooc.guessmusic.model.Song;
 import com.imooc.guessmusic.model.WordButton;
 import com.imooc.guessmusic.myui.MyGridView;
-import com.imooc.guessmusic.util.BackgroundMusic;
 import com.imooc.guessmusic.util.MyLog;
+import com.imooc.guessmusic.util.SPUtils;
+import com.imooc.guessmusic.util.ToastUtil;
 import com.imooc.guessmusic.util.Util;
 
-public class MainActivity extends Activity implements IWordButtonClickListener {
+public class MainActivity extends Activity implements IWordButtonClickListener,
+		OnClickListener,PointsChangeNotify {
 
 	public final static String TAG = "MainActivity";
+	private final static String STAGEINDEX = "stageindex";
+	private final static String STAGEWORDS = "stagewords";
+	private final static String ISFIRST="isfirst";
+	private Context context;
 
 	/** 答案状态 —— 正确 */
 	public final static int STATUS_ANSWER_RIGHT = 1;
@@ -63,9 +66,6 @@ public class MainActivity extends Activity implements IWordButtonClickListener {
 	// 唱片控件
 	private ImageView mViewPan;
 
-	// 过关界面
-	private View mPassView;
-
 	// 文字框容器
 	private ArrayList<WordButton> mAllWords;
 
@@ -75,7 +75,8 @@ public class MainActivity extends Activity implements IWordButtonClickListener {
 
 	// 已选择文字框UI容器
 	private LinearLayout mViewWordsContainer;
-	private TextView mCurrentStage;
+	private TextView mCurrentStage,mCurrentPoints;
+	private ImageButton btnshare, btngettip,btnbarback,btnbaraddcoin;
 
 	// 当前的歌曲
 	// private Song mCurrentSong;
@@ -84,6 +85,7 @@ public class MainActivity extends Activity implements IWordButtonClickListener {
 	// 当前关的索引
 	private int mCurrentStageIndex = -1;
 	private List<Movie> movies;
+	private boolean mIsFirst;
 
 	// BackgroundMusic backgroundMusic;
 
@@ -92,7 +94,23 @@ public class MainActivity extends Activity implements IWordButtonClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		// backgroundMusic = new BackgroundMusic(this);
-
+		
+		mCurrentStageIndex = (Integer) SPUtils.get(this, STAGEINDEX, 0);
+		context = MainActivity.this;
+		initView();
+		initData();
+		// 初始化游戏数据
+		initCurrentStageData();
+		AdManager.getInstance(context).init("3336b684c26b7540", "70229ffe9c877dfe");
+		OffersManager.getInstance(context).onAppLaunch();
+		PointsManager.getInstance(context).registerNotify(this);
+		mIsFirst=(Boolean) SPUtils.get(this, ISFIRST, true);
+		if (mIsFirst) {
+			SPUtils.put(this, ISFIRST, false);
+			PointsManager.getInstance(context).awardPoints(100);
+		}
+	}
+	private void initView(){
 		mViewPan = (ImageView) findViewById(R.id.imageView1);
 		mMyGridView = (MyGridView) findViewById(R.id.gridview);
 
@@ -101,11 +119,18 @@ public class MainActivity extends Activity implements IWordButtonClickListener {
 
 		mViewWordsContainer = (LinearLayout) findViewById(R.id.word_select_container);
 
+		btnshare = (ImageButton) findViewById(R.id.share_button_icon);
+		btngettip = (ImageButton) findViewById(R.id.btn_tip_answer);
+		btnbarback=(ImageButton)findViewById(R.id.btn_bar_back);
+		btnbaraddcoin=(ImageButton)findViewById(R.id.btn_bar_add_coins);
+		btnbarback.setOnClickListener(this);
+		btnbaraddcoin.setOnClickListener(this);
+		btnshare.setOnClickListener(this);
+		btngettip.setOnClickListener(this);
 		mCurrentStage = (TextView) findViewById(R.id.text_current_stage);
-
-		initData();
-		// 初始化游戏数据
-		initCurrentStageData();
+		mCurrentPoints=(TextView)findViewById(R.id.txt_bar_coins);
+		int myPointBalance = PointsManager.getInstance(context).queryPoints();
+		mCurrentPoints.setText(myPointBalance+"");
 	}
 
 	@Override
@@ -142,8 +167,10 @@ public class MainActivity extends Activity implements IWordButtonClickListener {
 		// mPassView.setVisibility(View.VISIBLE);
 		// mViewPan.clearAnimation();
 		// backgroundMusic.pauseBackgroundMusic();
-
-		Toast.makeText(this, "恭喜您猜对了", Toast.LENGTH_SHORT).show();
+		SPUtils.put(MainActivity.this, STAGEINDEX, ++mCurrentStageIndex);
+		SPUtils.remove(MainActivity.this, STAGEWORDS);
+		ToastUtil.showLong(context,
+				getResources().getString(R.string.answer_right));
 		sparkTheWrodsSuccess();
 		new next().execute();
 	}
@@ -179,9 +206,7 @@ public class MainActivity extends Activity implements IWordButtonClickListener {
 
 		movies = gson.fromJson(result, new TypeToken<List<Movie>>() {
 		}.getType());
-
-		// mViewPan.setImageBitmap(Util.getImageFromAssetsFile(MainActivity.this,
-		// "images/));
+		
 
 	}
 
@@ -232,23 +257,6 @@ public class MainActivity extends Activity implements IWordButtonClickListener {
 		MyLog.d(TAG, button.mIsVisiable + "");
 	}
 
-	/**
-	 * 处理圆盘中间的播放按钮，就是开始播放音乐
-	 */
-	private void handlePlayButton() {
-		// if (mViewPanBar != null) {
-		// if (!mIsRunning) {
-		// mIsRunning = true;
-		// 开始拨杆进入动画
-		// mCurrentSong = loadStageSongInfo(mCurrentStageIndex);
-		// backgroundMusic.playBackgroundMusic(mCurrentSong.getSongFileName(),
-		// false);
-		// mViewPanBar.startAnimation(mBarInAnim);
-		// mBtnPlayStart.setVisibility(View.INVISIBLE);
-		// }
-		// }
-	}
-
 	@Override
 	public void onPause() {
 		mViewPan.clearAnimation();
@@ -256,40 +264,14 @@ public class MainActivity extends Activity implements IWordButtonClickListener {
 		super.onPause();
 	}
 
-	private Song loadStageSongInfo(int stageIndex) {
-		Song song = new Song();
-
-		String[] stage = null;
-		if (stageIndex + 1 > Const.SONG_INFO.length) {
-			Toast.makeText(this, "恭喜您，您已经通关", Toast.LENGTH_LONG).show();
-			mCurrentStageIndex = 0;
-			stageIndex = 0;
-			stage = Const.SONG_INFO[0];
-		} else {
-			stage = Const.SONG_INFO[stageIndex];
-		}
-		song.setSongFileName(stage[Const.INDEX_FILE_NAME]);
-		song.setSongName(stage[Const.INDEX_SONG_NAME]);
-		int num = stageIndex;
-		// mCurrentSong = song;
-		mCurrentStage.setText(++num + "");
-
-		if (mCurrentStageIndex > 0) {
-			new nextMusic().execute();
-		}
-
-		return song;
-	}
-
 	private Movie loadMovieInfo(int stageIndex) {
-		
+
 		if (stageIndex > movies.size()) {
-			Toast.makeText(this,
-					getResources().getString(R.string.mission_success),
-					Toast.LENGTH_LONG).show();
-			stageIndex=0;
+			ToastUtil.showLong(this,
+					getResources().getString(R.string.mission_compelete));
+			stageIndex = 0;
 		}
-		
+
 		Movie movie = movies.get(stageIndex);
 		// String[] stage = null;
 		mCurrentMovie = movie;
@@ -303,33 +285,9 @@ public class MainActivity extends Activity implements IWordButtonClickListener {
 		return movie;
 	}
 
-	class nextMusic extends AsyncTask<Void, Void, Void> {
-
-		@Override
-		protected Void doInBackground(Void... arg0) {
-			// TODO Auto-generated method stub
-			try {
-				Thread.sleep(500);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			return null;
-		}
-
-		@Override
-		protected void onPostExecute(Void result) {
-			// TODO Auto-generated method stub
-			super.onPostExecute(result);
-			handlePlayButton();
-		}
-
-	}
-
 	private void initCurrentStageData() {
-		// 读取当前关的歌曲信息
-		// mCurrentSong = loadStageSongInfo(++mCurrentStageIndex);
-		mCurrentMovie = loadMovieInfo(++mCurrentStageIndex);
+		// 读取当前关信息
+		mCurrentMovie = loadMovieInfo(mCurrentStageIndex);
 		// 初始化已选择框
 		mBtnSelectWords = initWordSelect();
 
@@ -339,7 +297,6 @@ public class MainActivity extends Activity implements IWordButtonClickListener {
 			mViewWordsContainer.addView(mBtnSelectWords.get(i).mViewButton,
 					params);
 		}
-
 		// 获得数据
 		mAllWords = initAllWord();
 		// // 更新数据- MyGridView
@@ -411,6 +368,11 @@ public class MainActivity extends Activity implements IWordButtonClickListener {
 
 		String[] words = new String[MyGridView.COUNTS_WORDS];
 
+		if (SPUtils.contains(MainActivity.this, STAGEWORDS)) {
+			words = (String[]) SPUtils.getsavewords(MainActivity.this,
+					STAGEWORDS);
+			return words;
+		}
 		for (int i = 0; i < mCurrentMovie.getNamelength(); i++) {
 			words[i] = mCurrentMovie.getNameCharacters()[i] + "";
 		}
@@ -431,6 +393,7 @@ public class MainActivity extends Activity implements IWordButtonClickListener {
 			words[index] = words[i];
 			words[i] = buf;
 		}
+		SPUtils.setsavewords(MainActivity.this, STAGEWORDS, words);
 
 		return words;
 	}
@@ -553,6 +516,13 @@ public class MainActivity extends Activity implements IWordButtonClickListener {
 		Timer timer = new Timer();
 		timer.schedule(task, 1, 150);
 	}
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		OffersManager.getInstance(context).onAppExit();
+		PointsManager.getInstance(context).unRegisterNotify(this);
+	}
 
 	// 定义一个变量，来标识是否退出
 	private static boolean isExit = false;
@@ -586,6 +556,35 @@ public class MainActivity extends Activity implements IWordButtonClickListener {
 			finish();
 			System.exit(0);
 		}
+	}
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		switch (v.getId()) {
+		case R.id.share_button_icon:
+			
+			break;
+		case R.id.btn_tip_answer:
+			boolean isSuccess = PointsManager.getInstance(context).spendPoints(20);
+			if (isSuccess) {
+				
+			}
+			break;
+		case R.id.btn_bar_back:
+			finish();
+			break;
+		case R.id.btn_bar_add_coins:
+			OffersManager.getInstance(context).showOffersWall();
+			break;			
+		default:
+			break;
+		}
+	}
+	@Override
+	public void onPointBalanceChange(int pointsBalance) {
+		// TODO Auto-generated method stub
+		mCurrentPoints.setText(pointsBalance+"");
 	}
 
 }

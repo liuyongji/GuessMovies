@@ -21,7 +21,34 @@
         <!-- 文字框 -->
         <include layout="@layout/name_select" />
     </LinearLayout>
-    
+    <!--title frame  -->
+    <RelativeLayout 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+         >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/game_level_title" />
+
+        <TextView
+            android:id="@+id/text_current_stage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="1"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </FrameLayout>
+     </RelativeLayout>
     <!-- 浮动按钮 -->
     <include layout="@layout/float_buttons" />
     
