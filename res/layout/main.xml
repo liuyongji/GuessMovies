@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bg1"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.0dip"
+        android:layout_weight="1.0" />
+
+    <TextView
+        android:id="@+id/main_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30.0dip"
+        android:background="@drawable/bg_level"
+        android:gravity="center"
+        android:text="1"
+        android:textColor="#ff000000"
+        android:textSize="20.0dip" />
+
+    <LinearLayout
+        android:id="@+id/ll_buttons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/main_btnstart"
+            android:layout_width="200.0dip"
+            android:layout_height="70.0dip"
+            android:text="开始" />
+
+        <Button
+            android:id="@+id/btn_answers"
+            android:layout_width="200.0dip"
+            android:layout_height="50.0dip"
+            android:layout_marginTop="10.0dip"
+            android:text="答案墙" />
+        <Button
+            android:id="@+id/btn_music"
+            android:layout_width="200.0dip"
+            android:layout_height="50.0dip"
+            android:layout_marginTop="10.0dip"
+            android:text="音效: 开" />
+
+        <Button
+            android:id="@+id/btn_get_coins"
+            android:layout_width="200.0dip"
+            android:layout_height="50.0dip"
+            android:layout_marginTop="10.0dip"
+            android:text="获取金币" />
+
+        <Button
+            android:id="@+id/btn_apps"
+            android:layout_width="200.0dip"
+            android:layout_height="50.0dip"
+            android:layout_marginTop="10.0dip"
+            android:text="更多游戏"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.0dip"
+        android:layout_weight="1.0" />
+
+    <TextView
+        android:id="@+id/tv_app_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        
+        android:layout_marginBottom="5.0dip"
+        android:text="版本: 2.2，关卡数：400" />
+
+    <LinearLayout
+        android:id="@+id/llButtons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10.0dip"
+        android:visibility="gone"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_topic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="答案墙" />
+
+        <Button
+            android:id="@+id/btn_sound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            
+            android:text="音效: 开" />
+
+    </LinearLayout>
+
+   
+
+</LinearLayout>

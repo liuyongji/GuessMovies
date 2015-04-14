@@ -8,7 +8,31 @@
         {
             "id":2,
             "name": "撒旦法", 
-            "url": "xjcy.png",
+            "url": "bg01.png",
             "namelength": 3
+        },
+        {
+            "id":3,
+            "name": "杀人回忆", 
+            "url": "bg02.png",
+            "namelength": 4
+        },
+        {
+            "id":4,
+            "name": "汉江怪物", 
+            "url": "bg03.png",
+            "namelength": 4
+        },
+         {
+            "id":5,
+            "name": "汉江怪物", 
+            "url": "bg04.png",
+            "namelength": 4
+        },
+        {
+            "id":6,
+            "name": "汉江怪物", 
+            "url": "bg05.png",
+            "namelength": 4
         }
     ]

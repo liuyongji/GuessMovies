@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.imooc.guessmusic"
+    package="com.lyj.guessmusic"
     android:versionCode="1"
     android:versionName="1.0" >
 
     <uses-sdk
         android:minSdkVersion="10"
         android:targetSdkVersion="19" />
-<!--3336b684c26b7540  70229ffe9c877dfe  -->
-
+    <!-- 3336b684c26b7540  70229ffe9c877dfe youmi -->
+    <!-- 552cdd49fd98c5c0e00001d0 youmeng -->
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -19,19 +19,34 @@
     <!-- 以下为可选权限 -->
     <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
+        android:name="com.lyj.guessmovies.app.MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
         <activity
-            android:name=".ui.MainActivity"
+            android:name="com.lyj.guessmovies.ui.MenuActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lyj.guessmovies.ui.MainActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.lyj.guessmovies.ui.PhotoDetailActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.lyj.guessmovies.ui.PhotoActivity"
+            android:label="@string/app_name" >
         </activity>
         <!-- youmi begin -->
         <activity
@@ -56,8 +71,32 @@
                 <data android:scheme="package" />
             </intent-filter>
         </receiver>
-        <!--youmi end  -->
+        <!-- youmi end -->
+        <!-- youmeng begin -->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="552cdd49fd98c5c0e00001d0" >
+        </meta-data>
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="Channel ID" />
+
+        <activity
+            android:name="com.umeng.socialize.view.ShareActivity"
+            android:configChanges="orientation|keyboard"
+            android:launchMode="singleTask"
+            android:noHistory="true"
+            android:theme="@style/Theme.UMDialog"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!-- youmeng end -->
     </application>
 
+    
 
 </manifest>
