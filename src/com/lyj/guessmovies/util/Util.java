@@ -57,6 +57,11 @@ public class Util {
 		}
 		return image;
 	}
+	public static Bitmap convertViewToBitmap(View view) {
+		view.buildDrawingCache();
+		Bitmap bitmap = view.getDrawingCache();
+		return bitmap;
+	}
 
 	/**
 	 * 生成随机汉字 http://www.cnblogs.com/skyivben/archive/2012/10/20/2732484.html

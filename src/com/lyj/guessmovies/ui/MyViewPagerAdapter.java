@@ -36,7 +36,7 @@ public class MyViewPagerAdapter extends PagerAdapter implements Const{
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return mCurrentStage+1;
+		return mCurrentStage;
 	}
 
 	@Override

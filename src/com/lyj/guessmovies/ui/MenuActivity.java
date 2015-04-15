@@ -7,6 +7,7 @@ import net.youmi.android.offers.OffersManager;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.lyj.guessmovies.R.id;
 import com.lyj.guessmovies.app.MyApplication;
 import com.lyj.guessmovies.data.Const;
 import com.lyj.guessmovies.model.Movie;
@@ -34,7 +35,7 @@ public class MenuActivity extends Activity implements OnClickListener, Const {
 	// 定义一个变量，来标识是否退出
 	private static boolean isExit = false;
 	private Button btnstart, btnaddcoin, btnanswers, btnfeeback, btnnews,
-			btnextras;
+			btnextras,btnranklist;
 	private MyApplication myApplication;
 	private TextView tvcurrentstage, tvcurrentversion;
 	private int mCurrentStageIndex;
@@ -55,6 +56,8 @@ public class MenuActivity extends Activity implements OnClickListener, Const {
 		btnfeeback = (Button) findViewById(R.id.btn_feeback);
 		btnnews = (Button) findViewById(R.id.btn_news);
 		btnextras = (Button) findViewById(R.id.btn_extras);
+		btnranklist=(Button)findViewById(R.id.btn_ranklist);
+		btnranklist.setOnClickListener(this);
 		btnnews.setOnClickListener(this);
 		btnextras.setOnClickListener(this);
 		btnfeeback.setOnClickListener(this);
@@ -127,6 +130,10 @@ public class MenuActivity extends Activity implements OnClickListener, Const {
 			break;
 		case R.id.btn_extras:
 			ToastUtil.showShort(MenuActivity.this, "敬请期待……");
+			break;
+		case R.id.btn_ranklist:
+			Intent intent3 =new Intent(MenuActivity.this, LoginActivity.class);
+			startActivity(intent3);
 			break;
 		default:
 			break;

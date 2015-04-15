@@ -67,7 +67,14 @@
             android:layout_width="200.0dip"
             android:layout_height="50.0dip"
             android:layout_marginTop="10.0dip"
-            android:text="番外篇" />
+            android:text="番外篇"
+            android:visibility="gone" />
+         <Button
+            android:id="@+id/btn_ranklist"
+            android:layout_width="200.0dip"
+            android:layout_height="50.0dip"
+            android:layout_marginTop="10.0dip"
+            android:text="排行榜" />
 
     </LinearLayout>
 

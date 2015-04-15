@@ -48,6 +48,10 @@
             android:name="com.lyj.guessmovies.ui.PhotoActivity"
             android:label="@string/app_name" >
         </activity>
+        <activity
+            android:name="com.lyj.guessmovies.ui.LoginActivity"
+            android:label="@string/app_name" >
+        </activity>
         <!-- youmi begin -->
         <activity
             android:name="net.youmi.android.AdBrowser"

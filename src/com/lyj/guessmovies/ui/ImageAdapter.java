@@ -40,7 +40,7 @@ public class ImageAdapter extends BaseAdapter implements Const{
 
 	@Override
 	public int getCount() {
-		return mCurrentIndex+1;
+		return mCurrentIndex;
 	}
 
 	@Override

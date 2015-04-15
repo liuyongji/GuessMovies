@@ -16,5 +16,14 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
+    
+    <style name="my_edittext_style" parent="@android:style/Widget.EditText">
+        <item name="android:background">@drawable/superid_my_edittext</item>
+    </style>
+    
+    <style name="normalText" parent="@android:style/TextAppearance">
+		<item name="android:textColor">#444</item>
+		<item name="android:textSize">14sp</item>
+	</style>
 
 </resources>

@@ -3,5 +3,11 @@
 
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
+    <color name="s_color_background_view">#F2F2F2</color>
+    <color name="s_demo_color_background_red">#FF4343</color>
+    <color name="s_color_border_hightlight">#484848</color>
+    <color name="s_color_font_hightlight">#FFFFFF</color>
+    <color name="s_color_background_cell">#FFFFFF</color>
+    <color name="s_color_font_contant">#626262</color>
 
 </resources>

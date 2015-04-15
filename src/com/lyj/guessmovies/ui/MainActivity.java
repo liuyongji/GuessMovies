@@ -12,6 +12,7 @@ import net.youmi.android.offers.PointsManager;
 import net.youmi.android.spot.SpotManager;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -36,6 +37,9 @@ import com.lyj.guessmovies.util.SPUtils;
 import com.lyj.guessmovies.util.ToastUtil;
 import com.lyj.guessmovies.util.Util;
 import com.umeng.analytics.MobclickAgent;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.bean.SocializeEntity;
+import com.umeng.socialize.controller.listener.SocializeListeners.SnsPostListener;
 
 public class MainActivity extends Activity implements IWordButtonClickListener,
 		OnClickListener, PointsChangeNotify, Const {
@@ -67,8 +71,8 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 	private MyGridView mMyGridView;
 
 	// 已选择文字框UI容器
-	private LinearLayout mViewWordsContainer,mPassView;
-	private TextView mCurrentStage, mCurrentPoints,mpasstitle,mpassname;
+	private LinearLayout mViewWordsContainer, mPassView;
+	private TextView mCurrentStage, mCurrentPoints, mpasstitle, mpassname;
 	private ImageButton btnshare, btngettip, btnbarback, btnbaraddcoin;
 	private Button btnnext;
 
@@ -111,12 +115,12 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 		mMyGridView.registOnWordButtonClick(this);
 
 		mViewWordsContainer = (LinearLayout) findViewById(R.id.word_select_container);
-		mPassView=(LinearLayout)findViewById(R.id.pass_view);
+		mPassView = (LinearLayout) findViewById(R.id.pass_view);
 		btnshare = (ImageButton) findViewById(R.id.share_button_icon);
 		btngettip = (ImageButton) findViewById(R.id.btn_tip_answer);
 		btnbarback = (ImageButton) findViewById(R.id.btn_bar_back);
 		btnbaraddcoin = (ImageButton) findViewById(R.id.btn_bar_add_coins);
-		btnnext=(Button)findViewById(R.id.passview_btnnext);
+		btnnext = (Button) findViewById(R.id.passview_btnnext);
 		btnnext.setOnClickListener(this);
 		btnbarback.setOnClickListener(this);
 		btnbaraddcoin.setOnClickListener(this);
@@ -124,8 +128,8 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 		btngettip.setOnClickListener(this);
 		mCurrentStage = (TextView) findViewById(R.id.text_current_stage);
 		mCurrentPoints = (TextView) findViewById(R.id.txt_bar_coins);
-		mpasstitle=(TextView)mPassView.findViewById(R.id.passview_title);
-		mpassname=(TextView)mPassView.findViewById(R.id.passview_name);
+		mpasstitle = (TextView) mPassView.findViewById(R.id.passview_title);
+		mpassname = (TextView) mPassView.findViewById(R.id.passview_name);
 		int myPointBalance = PointsManager.getInstance(context).queryPoints();
 		mCurrentPoints.setText(myPointBalance + "");
 	}
@@ -153,7 +157,7 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 			handlePassEvent();
 		} else if (checkResult == STATUS_ANSWER_WRONG) {
 			// 闪烁文字并提示用户
-			sparkTheWrods(Color.RED);
+			sparkTheWrods(Color.RED,false);
 		} else if (checkResult == STATUS_ANSWER_LACK) {
 			// 设置文字颜色为白色（Normal）
 			for (int i = 0; i < mBtnSelectWords.size(); i++) {
@@ -166,19 +170,21 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 	 * 处理过关界面及事件
 	 */
 	private void handlePassEvent() {
-		
-		sparkTheWrods(Color.GREEN);
-		mPassView.setVisibility(View.VISIBLE);
-		mpasstitle.setText(mCurrentStageIndex+"");
-		mpassname.setText(mCurrentMovie.getName());
+
+		sparkTheWrods(Color.GREEN,true);	
 		SPUtils.put(MainActivity.this, STAGEINDEX, ++mCurrentStageIndex);
 		SPUtils.remove(MainActivity.this, STAGEWORDS);
-//		ToastUtil.showShort(context,
-//				getResources().getString(R.string.answer_right));
+		// ToastUtil.showShort(context,
+		// getResources().getString(R.string.answer_right));
 		PointsManager.getInstance(context).awardPoints(5);
-		
+
 		// sparkTheWrodsSuccess();
-		
+
+	}
+	private void showPassView(){
+		mPassView.setVisibility(View.VISIBLE);
+		mpasstitle.setText(mCurrentStageIndex + "");
+		mpassname.setText(mCurrentMovie.getName());
 	}
 
 	class next extends AsyncTask<Void, Void, Void> {
@@ -186,12 +192,12 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 		@Override
 		protected Void doInBackground(Void... arg0) {
 			// TODO Auto-generated method stub
-//			try {
-//				Thread.sleep(600);
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
+			// try {
+			// Thread.sleep(600);
+			// } catch (InterruptedException e) {
+			// // TODO Auto-generated catch block
+			// e.printStackTrace();
+			// }
 			return null;
 		}
 
@@ -282,6 +288,7 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 	}
 
 	private void initCurrentStageData() {
+		mPassView.setVisibility(View.INVISIBLE);
 		// 读取当前关信息
 		mCurrentMovie = loadMovieInfo(mCurrentStageIndex);
 		// 初始化已选择框
@@ -424,8 +431,9 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 	/**
 	 * 文字闪烁
 	 */
-	private void sparkTheWrods(final int color) {
+	private void sparkTheWrods(final int color,final boolean pass) {
 		// 定时器相关
+		final Timer timer = new Timer();
 		TimerTask task = new TimerTask() {
 			boolean mChange = false;
 			int mSpardTimes = 0;
@@ -434,6 +442,10 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 				runOnUiThread(new Runnable() {
 					public void run() {
 						if (++mSpardTimes > SPASH_TIMES) {
+							if (pass) {
+								showPassView();	
+								timer.cancel();
+							}							
 							return;
 						}
 
@@ -442,13 +454,13 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 							mBtnSelectWords.get(i).mViewButton
 									.setTextColor(mChange ? color : Color.WHITE);
 						}
-						mChange = !mChange;						
+						mChange = !mChange;
 					}
 				});
 			}
 		};
 
-		Timer timer = new Timer();
+		
 		timer.schedule(task, 1, 150);
 	}
 
@@ -460,14 +472,19 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 		PointsManager.getInstance(context).unRegisterNotify(this);
 	}
 
-
 	@Override
 	public void onClick(View v) {
 
 		switch (v.getId()) {
 		case R.id.share_button_icon:
-			((MyApplication) getApplicationContext()).setShare((Activity)context,
-					"testtest", null);
+			Bitmap bitmap = Util
+					.convertViewToBitmap(findViewById(R.id.main_frame));
+			((MyApplication) getApplicationContext()).setShare(
+					(Activity) context, null, bitmap, mSnsPostListener);
+			if ((Boolean) SPUtils.get(context, STAGESHARE, false)) {
+				ToastUtil.showShort(context,
+						getResources().getString(R.string.first_share));
+			}
 			break;
 		case R.id.btn_tip_answer:
 			boolean isSuccess = PointsManager.getInstance(context).spendPoints(
@@ -483,7 +500,7 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 			OffersManager.getInstance(context).showOffersWall();
 			break;
 		case R.id.passview_btnnext:
-			mPassView.setVisibility(View.INVISIBLE);
+//			mPassView.setVisibility(View.INVISIBLE);
 			new next().execute();
 			break;
 		default:
@@ -523,7 +540,7 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 					handlePassEvent();
 				} else if (checkResult == STATUS_ANSWER_WRONG) {
 					// 闪烁文字并提示用户
-					sparkTheWrods(Color.RED);
+					sparkTheWrods(Color.RED,true);
 				} else if (checkResult == STATUS_ANSWER_LACK) {
 				}
 
@@ -541,5 +558,27 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 			}
 		}
 	}
+
+	private SnsPostListener mSnsPostListener = new SnsPostListener() {
+
+		@Override
+		public void onStart() {
+
+		}
+
+		@Override
+		public void onComplete(SHARE_MEDIA platform, int stCode,
+				SocializeEntity entity) {
+			if (stCode == 200) {
+				if ((Boolean) SPUtils.get(context, STAGESHARE, false)) {
+					PointsManager.getInstance(context).awardPoints(100);
+					SPUtils.put(context, STAGESHARE, true);
+				}
+
+			} else {
+				ToastUtil.showShort(getApplicationContext(), "分享失败");
+			}
+		}
+	};
 
 }
