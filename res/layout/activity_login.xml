@@ -13,6 +13,14 @@
         android:text="登陆"
         android:textColor="@color/s_color_font_hightlight"
         android:textSize="@dimen/s_size_font_bar" />
+    <TextView
+        android:id="@+id/tips"
+        android:layout_width="fill_parent"
+        android:layout_height="48.0dip"
+        android:layout_below="@id/bar_title"
+        android:gravity="left|center_vertical"
+        android:text="目前支持如下登陆方式："
+        android:textSize="@dimen/s_size_font_bar" />
 
     <RelativeLayout
         android:id="@+id/login_div"
@@ -21,7 +29,8 @@
         android:layout_below="@id/bar_title"
         android:layout_margin="15dip"
         android:background="@drawable/background_login_div_bg"
-        android:padding="15dip" >
+        android:padding="15dip"
+        android:visibility="gone" >
 
         <!-- 账号 -->
 
@@ -95,7 +104,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/login_div"
+        android:layout_below="@id/tips"
         android:layout_centerHorizontal="true" >
 
         <Button
