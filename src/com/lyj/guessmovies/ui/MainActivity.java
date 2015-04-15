@@ -12,13 +12,9 @@ import net.youmi.android.offers.PointsManager;
 import net.youmi.android.spot.SpotManager;
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -26,9 +22,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.LinearLayout.LayoutParams;
 
+import com.lyj.guessmovies.R;
 import com.lyj.guessmovies.app.MyApplication;
 import com.lyj.guessmovies.data.Const;
 import com.lyj.guessmovies.model.IWordButtonClickListener;
@@ -39,7 +35,6 @@ import com.lyj.guessmovies.util.MyLog;
 import com.lyj.guessmovies.util.SPUtils;
 import com.lyj.guessmovies.util.ToastUtil;
 import com.lyj.guessmovies.util.Util;
-import com.lyj.guessmusic.R;
 import com.umeng.analytics.MobclickAgent;
 
 public class MainActivity extends Activity implements IWordButtonClickListener,
@@ -72,12 +67,12 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 	private MyGridView mMyGridView;
 
 	// 已选择文字框UI容器
-	private LinearLayout mViewWordsContainer;
-	private TextView mCurrentStage, mCurrentPoints;
+	private LinearLayout mViewWordsContainer,mPassView;
+	private TextView mCurrentStage, mCurrentPoints,mpasstitle,mpassname;
 	private ImageButton btnshare, btngettip, btnbarback, btnbaraddcoin;
+	private Button btnnext;
 
 	// 当前的歌曲
-	// private Song mCurrentSong;
 	private Movie mCurrentMovie;
 
 	// 当前关的索引
@@ -116,17 +111,21 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 		mMyGridView.registOnWordButtonClick(this);
 
 		mViewWordsContainer = (LinearLayout) findViewById(R.id.word_select_container);
-
+		mPassView=(LinearLayout)findViewById(R.id.pass_view);
 		btnshare = (ImageButton) findViewById(R.id.share_button_icon);
 		btngettip = (ImageButton) findViewById(R.id.btn_tip_answer);
 		btnbarback = (ImageButton) findViewById(R.id.btn_bar_back);
 		btnbaraddcoin = (ImageButton) findViewById(R.id.btn_bar_add_coins);
+		btnnext=(Button)findViewById(R.id.passview_btnnext);
+		btnnext.setOnClickListener(this);
 		btnbarback.setOnClickListener(this);
 		btnbaraddcoin.setOnClickListener(this);
 		btnshare.setOnClickListener(this);
 		btngettip.setOnClickListener(this);
 		mCurrentStage = (TextView) findViewById(R.id.text_current_stage);
 		mCurrentPoints = (TextView) findViewById(R.id.txt_bar_coins);
+		mpasstitle=(TextView)mPassView.findViewById(R.id.passview_title);
+		mpassname=(TextView)mPassView.findViewById(R.id.passview_name);
 		int myPointBalance = PointsManager.getInstance(context).queryPoints();
 		mCurrentPoints.setText(myPointBalance + "");
 	}
@@ -167,17 +166,19 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 	 * 处理过关界面及事件
 	 */
 	private void handlePassEvent() {
-		// mPassView = (LinearLayout)this.findViewById(R.id.pass_view);
-		// mPassView.setVisibility(View.VISIBLE);
-		// mViewPan.clearAnimation();
-		// backgroundMusic.pauseBackgroundMusic();
+		
+		sparkTheWrods(Color.GREEN);
+		mPassView.setVisibility(View.VISIBLE);
+		mpasstitle.setText(mCurrentStageIndex+"");
+		mpassname.setText(mCurrentMovie.getName());
 		SPUtils.put(MainActivity.this, STAGEINDEX, ++mCurrentStageIndex);
 		SPUtils.remove(MainActivity.this, STAGEWORDS);
-		ToastUtil.showShort(context,
-				getResources().getString(R.string.answer_right));
-		sparkTheWrods(Color.GREEN);
+//		ToastUtil.showShort(context,
+//				getResources().getString(R.string.answer_right));
+		PointsManager.getInstance(context).awardPoints(5);
+		
 		// sparkTheWrodsSuccess();
-		new next().execute();
+		
 	}
 
 	class next extends AsyncTask<Void, Void, Void> {
@@ -185,12 +186,12 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 		@Override
 		protected Void doInBackground(Void... arg0) {
 			// TODO Auto-generated method stub
-			try {
-				Thread.sleep(600);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+//			try {
+//				Thread.sleep(600);
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 			return null;
 		}
 
@@ -441,7 +442,7 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 							mBtnSelectWords.get(i).mViewButton
 									.setTextColor(mChange ? color : Color.WHITE);
 						}
-						mChange = !mChange;
+						mChange = !mChange;						
 					}
 				});
 			}
@@ -459,39 +460,6 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 		PointsManager.getInstance(context).unRegisterNotify(this);
 	}
 
-	// 定义一个变量，来标识是否退出
-	private static boolean isExit = false;
-
-	Handler mHandler = new Handler() {
-
-		@Override
-		public void handleMessage(Message msg) {
-			super.handleMessage(msg);
-			isExit = false;
-		}
-	};
-
-	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		if (keyCode == KeyEvent.KEYCODE_BACK) {
-			exit();
-			return false;
-		}
-		return super.onKeyDown(keyCode, event);
-	}
-
-	private void exit() {
-		if (!isExit) {
-			isExit = true;
-			Toast.makeText(getApplicationContext(), "再按一次退出程序",
-					Toast.LENGTH_SHORT).show();
-			// 利用handler延迟发送更改状态信息
-			mHandler.sendEmptyMessageDelayed(0, 2000);
-		} else {
-			finish();
-			System.exit(0);
-		}
-	}
 
 	@Override
 	public void onClick(View v) {
@@ -513,6 +481,10 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 			break;
 		case R.id.btn_bar_add_coins:
 			OffersManager.getInstance(context).showOffersWall();
+			break;
+		case R.id.passview_btnnext:
+			mPassView.setVisibility(View.INVISIBLE);
+			new next().execute();
 			break;
 		default:
 			break;

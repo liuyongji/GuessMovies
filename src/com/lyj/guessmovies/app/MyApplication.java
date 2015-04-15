@@ -10,6 +10,8 @@ import com.umeng.socialize.media.QQShareContent;
 import com.umeng.socialize.media.QZoneShareContent;
 import com.umeng.socialize.media.UMImage;
 import com.umeng.socialize.sso.QZoneSsoHandler;
+import com.umeng.socialize.sso.SinaSsoHandler;
+import com.umeng.socialize.sso.TencentWBSsoHandler;
 import com.umeng.socialize.sso.UMQQSsoHandler;
 import com.umeng.socialize.weixin.controller.UMWXHandler;
 import com.umeng.socialize.weixin.media.CircleShareContent;
@@ -44,8 +46,8 @@ public class MyApplication extends Application{
 		mController.setShareMedia(new UMImage(context, shareImage));
 
 		
-//		mController.getConfig().setSsoHandler(new TencentWBSsoHandler());
-//		mController.getConfig().setSsoHandler(new SinaSsoHandler());
+		mController.getConfig().setSsoHandler(new TencentWBSsoHandler());
+		mController.getConfig().setSsoHandler(new SinaSsoHandler());
 		
 		UMWXHandler wxHandler = new UMWXHandler(context, "wxd0792b8632aa595b",
 				"93f25458b2909f967e6ba19d089f14d7");

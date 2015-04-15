@@ -2,9 +2,11 @@ package com.lyj.guessmovies.ui;
 
 import java.util.List;
 
+import com.lyj.guessmovies.R;
+import com.lyj.guessmovies.data.Const;
 import com.lyj.guessmovies.model.Movie;
+import com.lyj.guessmovies.util.SPUtils;
 import com.lyj.guessmovies.util.Util;
-import com.lyj.guessmusic.R;
 
 import android.app.Activity;
 import android.content.Context;
@@ -16,11 +18,13 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-public class ImageAdapter extends BaseAdapter {
+public class ImageAdapter extends BaseAdapter implements Const{
 	private Activity activity;
 	private static LayoutInflater inflater;
 	private List<Movie> list;
 	private int width;
+	
+	private int mCurrentIndex;
 
 	@SuppressWarnings({ "deprecation" })
 	public ImageAdapter(Activity a, final List<Movie> urls) {
@@ -31,11 +35,12 @@ public class ImageAdapter extends BaseAdapter {
 		WindowManager wm = (WindowManager) activity
 				.getSystemService(Context.WINDOW_SERVICE);
 		width = wm.getDefaultDisplay().getWidth();
+		mCurrentIndex=(Integer) SPUtils.get(a, STAGEINDEX, 0);
 	}
 
 	@Override
 	public int getCount() {
-		return list.size();
+		return mCurrentIndex+1;
 	}
 
 	@Override

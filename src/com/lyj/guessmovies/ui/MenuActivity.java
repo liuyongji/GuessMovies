@@ -12,62 +12,90 @@ import com.lyj.guessmovies.data.Const;
 import com.lyj.guessmovies.model.Movie;
 import com.lyj.guessmovies.util.AppUtil;
 import com.lyj.guessmovies.util.SPUtils;
+import com.lyj.guessmovies.util.ToastUtil;
 import com.lyj.guessmovies.util.Util;
-import com.lyj.guessmusic.R;
+import com.lyj.guessmovies.R;
 import com.umeng.analytics.MobclickAgent;
+import com.umeng.fb.FeedbackAgent;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class MenuActivity extends Activity implements OnClickListener,Const {
-	private Button btnstart, btnaddcoin,btnanswers;
+public class MenuActivity extends Activity implements OnClickListener, Const {
+	// 定义一个变量，来标识是否退出
+	private static boolean isExit = false;
+	private Button btnstart, btnaddcoin, btnanswers, btnfeeback, btnnews,
+			btnextras;
 	private MyApplication myApplication;
-	private TextView tvcurrentstage,tvcurrentversion;
+	private TextView tvcurrentstage, tvcurrentversion;
 	private int mCurrentStageIndex;
 	private List<Movie> movies;
+	private FeedbackAgent agent;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-		
-		btnstart=(Button)findViewById(R.id.main_btnstart);
-		btnaddcoin=(Button)findViewById(R.id.btn_get_coins);
-		btnanswers=(Button)findViewById(R.id.btn_answers);
-		tvcurrentstage=(TextView)findViewById(R.id.main_level);
-		tvcurrentversion=(TextView)findViewById(R.id.tv_app_info);
+
+		btnstart = (Button) findViewById(R.id.main_btnstart);
+		btnaddcoin = (Button) findViewById(R.id.btn_get_coins);
+		btnanswers = (Button) findViewById(R.id.btn_answers);
+		tvcurrentstage = (TextView) findViewById(R.id.main_level);
+		tvcurrentversion = (TextView) findViewById(R.id.tv_app_info);
+		btnfeeback = (Button) findViewById(R.id.btn_feeback);
+		btnnews = (Button) findViewById(R.id.btn_news);
+		btnextras = (Button) findViewById(R.id.btn_extras);
+		btnnews.setOnClickListener(this);
+		btnextras.setOnClickListener(this);
+		btnfeeback.setOnClickListener(this);
 		btnaddcoin.setOnClickListener(this);
 		btnanswers.setOnClickListener(this);
 		btnstart.setOnClickListener(this);
-		AdManager.getInstance(this).init("3336b684c26b7540",
-				"70229ffe9c877dfe");
+		AdManager.getInstance(this)
+				.init("e091bce73f6dc900", "f759de2e4964d60f");
 		OffersManager.getInstance(this).onAppLaunch();
-		myApplication=(MyApplication) this.getApplicationContext();
+		myApplication = (MyApplication) this.getApplicationContext();
 		initData();
 		mCurrentStageIndex = (Integer) SPUtils.get(this, STAGEINDEX, 0);
-		tvcurrentstage.setText(++mCurrentStageIndex+"");
-		tvcurrentversion.setText("版本: "+AppUtil.getVersionName(this)+"，关卡数："+movies.size());
-		
+		tvcurrentstage.setText(++mCurrentStageIndex + "");
+		tvcurrentversion.setText("版本: " + AppUtil.getVersionName(this)
+				+ "，关卡数：" + movies.size() + "   "
+				+ getResources().getString(R.string.author));
+		agent = new FeedbackAgent(MenuActivity.this);
+		agent.sync();
 	}
-	private void initData(){
+
+	private void initData() {
 		String result = Util.getFromAssets(this, "moviess.txt");
 		Gson gson = new Gson();
-		 movies = gson.fromJson(result, new TypeToken<List<Movie>>() {
+		movies = gson.fromJson(result, new TypeToken<List<Movie>>() {
 		}.getType());
 		myApplication.setMovies(movies);
 	}
+
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
+		update();
 		MobclickAgent.onResume(this);
 	}
+
+	private void update() {
+		mCurrentStageIndex = (Integer) SPUtils.get(this, STAGEINDEX, 0);
+		tvcurrentstage.setText(++mCurrentStageIndex + "");
+	}
+
 	@Override
 	protected void onPause() {
 		// TODO Auto-generated method stub
@@ -89,11 +117,52 @@ public class MenuActivity extends Activity implements OnClickListener,Const {
 		case R.id.btn_answers:
 			Intent intent2 = new Intent(MenuActivity.this, PhotoActivity.class);
 			startActivity(intent2);
-
+			break;
+		case R.id.btn_feeback:
+			// ToastUtil.showShort(MenuActivity.this, "敬请期待……");
+			agent.startFeedbackActivity();
+			break;
+		case R.id.btn_news:
+			ToastUtil.showShort(MenuActivity.this, "敬请期待……");
+			break;
+		case R.id.btn_extras:
+			ToastUtil.showShort(MenuActivity.this, "敬请期待……");
+			break;
 		default:
 			break;
 		}
 
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			exit();
+			return false;
+		}
+		return super.onKeyDown(keyCode, event);
+	}
+
+	Handler mHandler = new Handler() {
+
+		@Override
+		public void handleMessage(Message msg) {
+			super.handleMessage(msg);
+			isExit = false;
+		}
+	};
+
+	private void exit() {
+		if (!isExit) {
+			isExit = true;
+			Toast.makeText(getApplicationContext(), "再按一次退出程序",
+					Toast.LENGTH_SHORT).show();
+			// 利用handler延迟发送更改状态信息
+			mHandler.sendEmptyMessageDelayed(0, 2000);
+		} else {
+			finish();
+			System.exit(0);
+		}
 	}
 
 }

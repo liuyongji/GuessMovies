@@ -2,7 +2,7 @@ package com.lyj.guessmovies.ui;
 
 import com.lyj.guessmovies.app.MyApplication;
 import com.lyj.guessmovies.data.Const;
-import com.lyj.guessmusic.R;
+import com.lyj.guessmovies.R;
 import com.umeng.analytics.MobclickAgent;
 
 import android.app.Activity;

@@ -3,7 +3,7 @@ package com.lyj.guessmovies.ui;
 
 
 
-import com.lyj.guessmusic.R;
+import com.lyj.guessmovies.R;
 
 import android.app.Activity;
 import android.app.AlertDialog;

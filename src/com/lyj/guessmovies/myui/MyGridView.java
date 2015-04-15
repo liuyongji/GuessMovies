@@ -15,7 +15,7 @@ import android.widget.GridView;
 import com.lyj.guessmovies.model.IWordButtonClickListener;
 import com.lyj.guessmovies.model.WordButton;
 import com.lyj.guessmovies.util.Util;
-import com.lyj.guessmusic.R;
+import com.lyj.guessmovies.R;
 
 public class MyGridView extends GridView {
 	public final static int COUNTS_WORDS = 24;

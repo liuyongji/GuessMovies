@@ -5,6 +5,7 @@ public class Movie {
 	private String url;
 	private int id;
 	private int namelength;
+	private String brief;
 	public char[] getNameCharacters() {
 		return name.toCharArray();
 	}
@@ -31,6 +32,12 @@ public class Movie {
 	}
 	public void setNamelength(int namelength) {
 		this.namelength = namelength;
+	}
+	public String getBrief() {
+		return brief;
+	}
+	public void setBrief(String brief) {
+		this.brief = brief;
 	}
 
 }
