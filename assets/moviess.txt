@@ -1,39 +1,10 @@
  [
-        {
-            "id":1,
-            "name": "蒙太奇", 
-            "url": "mtq.jpg",
-            "namelength": 3
-        }, 
-        {
-            "id":2,
-            "name": "白夜行", 
-            "url": "baiyexing.jpg",
-            "namelength": 3,
+        {"name": "蒙太奇", "url": "mtq.jpg"}, 
+        {"name": "白夜行","url": "baiyexing.jpg",
             "brief":"《白夜行》改编自日本推理小说家东野圭吾的同名作品，由朴信宇导演执导，韩石圭、孙艺珍、高洙主演。"
         },
-        {
-            "id":3,
-            "name": "杀人回忆", 
-            "url": "srhy.jpg",
-            "namelength": 4
-        },
-        {
-            "id":4,
-            "name": "流感", 
-            "url": "liugan.jpg",
-            "namelength": 2
-        },
-         {
-            "id":5,
-            "name": "黄海", 
-            "url": "huanghai.jpg",
-            "namelength": 2
-        },
-        {
-            "id":6,
-            "name": "不可饶恕", 
-            "url": "bukeraoshu.jpg",
-            "namelength": 4
-        }
+        { "name": "杀人回忆",  "url": "srhy.jpg"}
+       
+		
+		
     ]

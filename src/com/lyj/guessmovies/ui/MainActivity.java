@@ -277,7 +277,7 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 		Movie movie = movies.get(stageIndex);
 		// String[] stage = null;
 		mCurrentMovie = movie;
-		mCurrentStage.setText(movie.getId() + "");
+		mCurrentStage.setText((mCurrentStageIndex +1)+"");
 		mViewPan.setImageBitmap(Util.getImageFromAssetsFile(MainActivity.this,
 				"images/" + movie.getUrl()));
 		// if(mCurrentStageIndex>0){
@@ -304,7 +304,7 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 		mAllWords = initAllWord();
 		// // 更新数据- MyGridView
 		mMyGridView.updateData(mAllWords);
-		if (mCurrentMovie.getId() % 5 == 0) {
+		if ((mCurrentStageIndex+1)% 5 == 0) {
 			SpotManager.getInstance(this).showSpotAds(this);
 		}
 	}

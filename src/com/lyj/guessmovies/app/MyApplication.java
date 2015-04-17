@@ -77,11 +77,11 @@ public class MyApplication extends Application {
 		mController.setShareMedia(circleMedia);
 		mController.registerListener(mSnsPostListener);
 
-		UMQQSsoHandler qqSsoHandler = new UMQQSsoHandler(context, "1101987894",
-				"McgaoeK2xHK8T0qm");
+		UMQQSsoHandler qqSsoHandler = new UMQQSsoHandler(context, "1104535806",
+				"TfVEwXEel7zQXA8B");
 		qqSsoHandler.addToSocialSDK();
 		QZoneSsoHandler qZoneSsoHandler = new QZoneSsoHandler(context,
-				"1101987894", "McgaoeK2xHK8T0qm");
+				"1104535806", "TfVEwXEel7zQXA8B");
 		qZoneSsoHandler.addToSocialSDK();
 
 		QQShareContent qqShareContent = new QQShareContent();

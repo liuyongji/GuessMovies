@@ -108,20 +108,20 @@
         android:layout_centerHorizontal="true" >
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/login_btnwx"
             android:layout_width="48.0dip"
             android:layout_height="48.0dip"
             android:layout_marginRight="36.0dip"
             android:background="@drawable/button_demowx" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/login_btnqq"
             android:layout_width="48.0dip"
             android:layout_height="48.0dip"
             android:background="@drawable/button_demoqq" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/login_btnwb"
             android:layout_width="48.0dip"
             android:layout_height="48.0dip"
             android:layout_marginLeft="36.0dip"

@@ -1,0 +1,83 @@
+ [
+        { "id":1, "name": "蒙太奇", "url": "mtq.jpg", "namelength": 5}, 
+        { "id":2,"name": "白夜行","url": "baiyexing.jpg","namelength": 3,
+            "brief":"《白夜行》改编自日本推理小说家东野圭吾的同名作品，由朴信宇导演执导，韩石圭、孙艺珍、高洙主演。"
+        },
+        { "id":3,"name": "杀人回忆",  "url": "srhy.jpg", "namelength": 4 },
+        { "id":4,"name": "流感",  "url": "liugan.jpg", "namelength": 2  },
+        { "id":5, "name": "黄海", "url": "huanghai.jpg", "namelength": 2},
+        {"id":6,"name": "不可饶恕","url": "bukeraoshu.jpg","namelength": 4},
+		{"id":6,"name": "阳光姐妹淘","url": "ygjmt3.jpg","namelength": 4},
+		{"id":6,"name": "色即是空","url": "sejishikong.jpg","namelength": 4},
+		{"id":6,"name": "比悲伤更悲伤的故事","url": "bbsgbsdgs.jpg","namelength": 4},
+		{"id":6,"name": "建筑学概论","url": "jzxgl.jpg","namelength": 4},
+		{"id":6,"name": "监视者们","url": "jianshizhemen.jpg","namelength": 4},
+		{"id":6,"name": "金福南杀人事件始末","url": "jfnsrsjsm.jpg","namelength": 4},
+		{"id":6,"name": "年轻的母亲","url": "nqdmq.jpg","namelength": 4},
+		{"id":6,"name": "金福南杀人事件始末","url": "jfnsrsjsm.jpg","namelength": 4},
+		{"id":6,"name": "雏菊","url": "chuju.jpg","namelength": 4},
+		{"id":6,"name": "那家伙的声音","url": "njhdsy.jpg","namelength": 4},
+		{"id":6,"name": "追击者","url": "zhuijizhe.jpg","namelength": 4},
+		{"id":6,"name": "帝王之妾","url": "diwangzhiqie.jpg","namelength": 4},
+		{"id":6,"name": "奇怪的她","url": "qiguaideta.jpg","namelength": 4},
+		{"id":6,"name": "铁线虫入侵","url": "txcrq.jpg","namelength": 4},
+		{"id":6,"name": "素媛","url": "suyuan.jpg","namelength": 4},
+		{"id":6,"name": "惊险游戏","url": "jxyx.jpg","namelength": 4},
+		{"id":6,"name": "狼少年","url": "langshaonian.jpg","namelength": 4},
+		{"id":6,"name": "梨泰院杀人事件","url": "litaiyuansharenshijian.jpg","namelength": 4},
+		{"id":6,"name": "走到尽头","url": "zoudaojintou.jpg","namelength": 4},
+		{"id":6,"name": "道熙啊","url": "daoxia.jpg","namelength": 4},
+		{"id":6,"name": "邻居","url": "linju.jpg","namelength": 4},
+		{"id":6,"name": "亲切的金子","url": "qinqiedjinzi.jpg","namelength": 4},
+		{"id":6,"name": "谁都有秘密","url": "suidouyoumimi.jpg","namelength": 4},
+		{"id":6,"name": "下女","url": "xianv.jpg","namelength": 4},
+		{"id":6,"name": "方子传","url": "fangzizhuan.jpg","namelength": 4},
+		{"id":6,"name": "恐怖直播","url": "kbzhibo.jpg","namelength": 4},
+		{"id":6,"name": "我要复仇","url": "woyaofuchou.jpg","namelength": 4},
+		{"id":6,"name": "七号房的礼物","url": "qihaofangdliwu.jpg","namelength": 4},
+		{"id":6,"name": "甜涩性爱","url": "tsxa.jpg","namelength": 4},
+		{"id":6,"name": "圣殇","url": "shengshang.jpg","namelength": 4},
+		{"id":6,"name": "新世界","url": "xinshijie.jpg","namelength": 4},
+		{"id":6,"name": "老男孩","url": "laonanhai.jpg","namelength": 4},
+		{"id":6,"name": "隐秘而伟大","url": "yinmierweida.jpg","namelength": 4},
+		{"id":6,"name": "人间中毒","url": "renjianzongdu.jpg","namelength": 4},
+		{"id":6,"name": "抓住那个家伙","url": "zzngjh.jpg","namelength": 4},
+		{"id":6,"name": "完美搭档","url": "wanmeidadan.jpg","namelength": 4},
+		{"id":6,"name": "委托人","url": "weituoren.jpg","namelength": 4},
+		{"id":6,"name": "七天","url": "qitian.jpg","namelength": 4},
+		{"id":6,"name": "熔炉","url": "ronglu.jpg","namelength": 4},
+		{"id":6,"name": "空房间","url": "kongfangjian.jpg","namelength": 4}，
+		{"id":6,"name": "爱的肢解","url": "aidezhijie.jpg","namelength": 4}，
+		{"id":6,"name": "高跟鞋","url": "gaogenxie.jpg","namelength": 4}，
+		{"id":6,"name": "夺宝联盟","url": "duobaolianmeng.jpg","namelength": 4}，
+		{"id":6,"name": "非常主播","url": "feichangzhubo.jpg","namelength": 4}，
+		{"id":6,"name": "汉江怪物","url": "hanjiangguiwu.jpg","namelength": 4}，
+		{"id":6,"name": "海雾","url": "haiwu2.jpg","namelength": 4}，
+		{"id":6,"name": "金氏漂流记","url": "jinshipiaoliuji.jpg","namelength": 4}，
+		{"id":6,"name": "盲症","url": "mangzheng.jpg","namelength": 4}，
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+    ]

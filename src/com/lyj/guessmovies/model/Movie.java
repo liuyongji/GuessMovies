@@ -3,8 +3,6 @@ package com.lyj.guessmovies.model;
 public class Movie {
 	private String name;
 	private String url;
-	private int id;
-	private int namelength;
 	private String brief;
 	public char[] getNameCharacters() {
 		return name.toCharArray();
@@ -21,17 +19,8 @@ public class Movie {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
 	public int getNamelength() {
-		return namelength;
-	}
-	public void setNamelength(int namelength) {
-		this.namelength = namelength;
+		return getNameCharacters().length;
 	}
 	public String getBrief() {
 		return brief;

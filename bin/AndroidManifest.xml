@@ -9,6 +9,7 @@
         android:targetSdkVersion="19" />
     <!-- 3336b684c26b7540  70229ffe9c877dfe youmi -->
     <!-- 552cdd49fd98c5c0e00001d0 youmeng -->
+    <!-- 3467522567 241800257416fed1801eee7bad34bd89 sina  -->
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
