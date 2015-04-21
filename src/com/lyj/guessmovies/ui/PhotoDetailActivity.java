@@ -1,5 +1,6 @@
 package com.lyj.guessmovies.ui;
 
+import com.lyj.guessmovies.adapter.MyViewPagerAdapter;
 import com.lyj.guessmovies.app.MyApplication;
 import com.lyj.guessmovies.data.Const;
 import com.lyj.guessmovies.R;

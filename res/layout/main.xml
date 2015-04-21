@@ -53,7 +53,8 @@
             android:layout_width="200.0dip"
             android:layout_height="50.0dip"
             android:layout_marginTop="10.0dip"
-            android:text="获取金币" />
+            android:text="获取金币"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/btn_news"
@@ -63,12 +64,12 @@
             android:text="韩影资讯"
             android:visibility="gone" />
          <Button
-            android:id="@+id/btn_extras"
+            android:id="@+id/btn_shop"
             android:layout_width="200.0dip"
             android:layout_height="50.0dip"
             android:layout_marginTop="10.0dip"
-            android:text="番外篇"
-            android:visibility="gone" />
+            android:text="商场"
+             />
          <Button
             android:id="@+id/btn_ranklist"
             android:layout_width="200.0dip"

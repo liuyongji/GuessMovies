@@ -5,6 +5,11 @@ import java.util.List;
 import net.youmi.android.AdManager;
 import net.youmi.android.offers.OffersManager;
 
+import cn.bmob.im.BmobChat;
+
+import com.bmob.im.demo.ui.BmobMainActivity;
+import com.bmob.pay.tool.BmobPay;
+import com.bmob.pay.tool.PayListener;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.lyj.guessmovies.R.id;
@@ -35,7 +40,7 @@ public class MenuActivity extends Activity implements OnClickListener, Const {
 	// 定义一个变量，来标识是否退出
 	private static boolean isExit = false;
 	private Button btnstart, btnaddcoin, btnanswers, btnfeeback, btnnews,
-			btnextras,btnranklist;
+			btnextras, btnranklist;
 	private MyApplication myApplication;
 	private TextView tvcurrentstage, tvcurrentversion;
 	private int mCurrentStageIndex;
@@ -47,7 +52,8 @@ public class MenuActivity extends Activity implements OnClickListener, Const {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-
+		BmobPay.init(this, "6ac560f8ca942178c35e093c220e40b9");
+		BmobChat.DEBUG_MODE = true;
 		btnstart = (Button) findViewById(R.id.main_btnstart);
 		btnaddcoin = (Button) findViewById(R.id.btn_get_coins);
 		btnanswers = (Button) findViewById(R.id.btn_answers);
@@ -55,8 +61,8 @@ public class MenuActivity extends Activity implements OnClickListener, Const {
 		tvcurrentversion = (TextView) findViewById(R.id.tv_app_info);
 		btnfeeback = (Button) findViewById(R.id.btn_feeback);
 		btnnews = (Button) findViewById(R.id.btn_news);
-		btnextras = (Button) findViewById(R.id.btn_extras);
-		btnranklist=(Button)findViewById(R.id.btn_ranklist);
+		btnextras = (Button) findViewById(R.id.btn_shop);
+		btnranklist = (Button) findViewById(R.id.btn_ranklist);
 		btnranklist.setOnClickListener(this);
 		btnnews.setOnClickListener(this);
 		btnextras.setOnClickListener(this);
@@ -115,7 +121,7 @@ public class MenuActivity extends Activity implements OnClickListener, Const {
 			startActivity(intent);
 			break;
 		case R.id.btn_get_coins:
-			OffersManager.getInstance(MenuActivity.this).showOffersWall();
+
 			break;
 		case R.id.btn_answers:
 			Intent intent2 = new Intent(MenuActivity.this, PhotoActivity.class);
@@ -126,13 +132,19 @@ public class MenuActivity extends Activity implements OnClickListener, Const {
 			agent.startFeedbackActivity();
 			break;
 		case R.id.btn_news:
+			// new BmobPay(MenuActivity.this).pay(0.02,"某商品",payListener);
 			ToastUtil.showShort(MenuActivity.this, "敬请期待……");
 			break;
-		case R.id.btn_extras:
-			ToastUtil.showShort(MenuActivity.this, "敬请期待……");
+		case R.id.btn_shop:
+			Intent intent4 = new Intent(MenuActivity.this,
+					ShopActivity.class);
+			startActivity(intent4);
+			// ToastUtil.showShort(MenuActivity.this, "敬请期待……");
 			break;
 		case R.id.btn_ranklist:
-			Intent intent3 =new Intent(MenuActivity.this, LoginActivity.class);
+			// new BmobPay(MenuActivity.this).pay(0.02,"某商品",payListener);
+			// new BmobPay(MenuActivity.this).payByWX(0.02,"某商品",payListener);
+			Intent intent3 = new Intent(MenuActivity.this, LoginActivity.class);
 			startActivity(intent3);
 			break;
 		default:

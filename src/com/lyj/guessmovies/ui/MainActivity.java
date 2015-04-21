@@ -12,6 +12,7 @@ import net.youmi.android.offers.PointsManager;
 import net.youmi.android.spot.SpotManager;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -39,7 +40,10 @@ import com.lyj.guessmovies.util.Util;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.bean.SocializeEntity;
+import com.umeng.socialize.controller.UMServiceFactory;
+import com.umeng.socialize.controller.UMSocialService;
 import com.umeng.socialize.controller.listener.SocializeListeners.SnsPostListener;
+import com.umeng.socialize.sso.UMSsoHandler;
 
 public class MainActivity extends Activity implements IWordButtonClickListener,
 		OnClickListener, PointsChangeNotify, Const {
@@ -72,9 +76,10 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 
 	// 已选择文字框UI容器
 	private LinearLayout mViewWordsContainer, mPassView;
-	private TextView mCurrentStage, mCurrentPoints, mpasstitle, mpassname;
+	private TextView mCurrentStage, mCurrentPoints, mpassname;
 	private ImageButton btnshare, btngettip, btnbarback, btnbaraddcoin;
 	private Button btnnext;
+	private ImageView ivcontent;
 
 	// 当前的歌曲
 	private Movie mCurrentMovie;
@@ -83,6 +88,7 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 	private int mCurrentStageIndex = -1;
 	private List<Movie> movies;
 	private boolean mIsFirst;
+	private UMSocialService mController;
 
 	// BackgroundMusic backgroundMusic;
 
@@ -90,8 +96,8 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		// backgroundMusic = new BackgroundMusic(this);
-
+		mController = UMServiceFactory
+				.getUMSocialService("com.lyj.guessmovies");
 		mCurrentStageIndex = (Integer) SPUtils.get(this, STAGEINDEX, 0);
 		context = MainActivity.this;
 		initView();
@@ -128,7 +134,7 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 		btngettip.setOnClickListener(this);
 		mCurrentStage = (TextView) findViewById(R.id.text_current_stage);
 		mCurrentPoints = (TextView) findViewById(R.id.txt_bar_coins);
-		mpasstitle = (TextView) mPassView.findViewById(R.id.passview_title);
+		ivcontent=(ImageView)findViewById(R.id.passview_image);
 		mpassname = (TextView) mPassView.findViewById(R.id.passview_name);
 		int myPointBalance = PointsManager.getInstance(context).queryPoints();
 		mCurrentPoints.setText(myPointBalance + "");
@@ -152,8 +158,6 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 		// 检查答案
 		if (checkResult == STATUS_ANSWER_RIGHT) {
 			// 过关并获得奖励
-			// Toast.makeText(this, "STATUS_ANSWER_RIGHT",
-			// Toast.LENGTH_SHORT).show();
 			handlePassEvent();
 		} else if (checkResult == STATUS_ANSWER_WRONG) {
 			// 闪烁文字并提示用户
@@ -174,16 +178,16 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 		sparkTheWrods(Color.GREEN,true);	
 		SPUtils.put(MainActivity.this, STAGEINDEX, ++mCurrentStageIndex);
 		SPUtils.remove(MainActivity.this, STAGEWORDS);
-		// ToastUtil.showShort(context,
-		// getResources().getString(R.string.answer_right));
+//		 ToastUtil.showShort(context,
+//		 getResources().getString(R.string.answer_right));
 		PointsManager.getInstance(context).awardPoints(5);
-
-		// sparkTheWrodsSuccess();
+//		new next().execute();
 
 	}
 	private void showPassView(){
 		mPassView.setVisibility(View.VISIBLE);
-		mpasstitle.setText(mCurrentStageIndex + "");
+		ivcontent.setImageBitmap(Util.getImageFromAssetsFile(MainActivity.this,
+				"images/" + mCurrentMovie.getUrl()));
 		mpassname.setText(mCurrentMovie.getName());
 	}
 
@@ -471,6 +475,15 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 		OffersManager.getInstance(context).onAppExit();
 		PointsManager.getInstance(context).unRegisterNotify(this);
 	}
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
+		UMSsoHandler ssoHandler = mController.getConfig().getSsoHandler(requestCode) ;
+	    if(ssoHandler != null){
+	       ssoHandler.authorizeCallBack(requestCode, resultCode, data);
+	    }
+	}
 
 	@Override
 	public void onClick(View v) {
@@ -479,7 +492,7 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 		case R.id.share_button_icon:
 			Bitmap bitmap = Util
 					.convertViewToBitmap(findViewById(R.id.main_frame));
-			((MyApplication) getApplicationContext()).setShare(
+			((MyApplication) getApplicationContext()).setShare(mController,
 					(Activity) context, null, bitmap, mSnsPostListener);
 			if ((Boolean) SPUtils.get(context, STAGESHARE, false)) {
 				ToastUtil.showShort(context,
@@ -500,7 +513,7 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 			OffersManager.getInstance(context).showOffersWall();
 			break;
 		case R.id.passview_btnnext:
-//			mPassView.setVisibility(View.INVISIBLE);
+			mPassView.setVisibility(View.INVISIBLE);
 			new next().execute();
 			break;
 		default:

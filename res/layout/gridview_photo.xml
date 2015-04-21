@@ -4,6 +4,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+    <include layout="@layout/title_framelayout"/>
+
     <GridView
         android:id="@+id/gv_photos"
         android:layout_width="match_parent"
