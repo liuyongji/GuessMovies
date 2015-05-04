@@ -1,6 +1,9 @@
 package com.bmob.im.demo.ui.fragment;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,6 +20,11 @@ import cn.bmob.v3.BmobUser;
 
 import com.lyj.guessmovies.R;
 import com.lyj.guessmovies.app.MyApplication;
+import com.lyj.guessmovies.data.Const;
+import com.lyj.guessmovies.ui.MenuActivity;
+import com.lyj.guessmovies.util.SPUtils;
+import com.lyj.guessmovies.util.ToastUtil;
+import com.bmob.im.demo.bean.User;
 //import com.lyj.guessmovies.model.MoviesUser;
 import com.bmob.im.demo.ui.BlackListActivity;
 import com.bmob.im.demo.ui.FragmentBase;
@@ -33,26 +41,25 @@ import com.bmob.im.demo.util.SharePreferenceUtil;
  * @date 2014-6-7 下午1:00:27
  */
 @SuppressLint("SimpleDateFormat")
-public class SettingsFragment extends FragmentBase implements OnClickListener{
+public class SettingsFragment extends FragmentBase implements OnClickListener {
 
-	Button btn_logout;
+	Button btn_logout, btn_reset;
 	TextView tv_set_name;
 	RelativeLayout layout_info, rl_switch_notification, rl_switch_voice,
-			rl_switch_vibrate,layout_blacklist;
+			rl_switch_vibrate, layout_blacklist;
 
 	ImageView iv_open_notification, iv_close_notification, iv_open_voice,
 			iv_close_voice, iv_open_vibrate, iv_close_vibrate;
-	
-	View view1,view2;
+
+	View view1, view2;
 	SharePreferenceUtil mSharedUtil;
-	private BmobChatUser bmobUser;
-	
+	private User bmobUser;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		bmobUser = BmobUser.getCurrentUser(getActivity(), BmobChatUser.class);
+		bmobUser = userManager.getCurrentUser(User.class);
 		mSharedUtil = mApplication.getSpUtil();
 	}
 
@@ -68,14 +75,14 @@ public class SettingsFragment extends FragmentBase implements OnClickListener{
 		// TODO Auto-generated method stub
 		super.onActivityCreated(savedInstanceState);
 		initView();
-//		initData();
+		initData();
 	}
 
 	private void initView() {
 		initTopBarForLeft("设置");
-		//黑名单列表
+		// 黑名单列表
 		layout_blacklist = (RelativeLayout) findViewById(R.id.layout_blacklist);
-		
+
 		layout_info = (RelativeLayout) findViewById(R.id.layout_info);
 		rl_switch_notification = (RelativeLayout) findViewById(R.id.rl_switch_notification);
 		rl_switch_voice = (RelativeLayout) findViewById(R.id.rl_switch_voice);
@@ -95,10 +102,11 @@ public class SettingsFragment extends FragmentBase implements OnClickListener{
 
 		tv_set_name = (TextView) findViewById(R.id.tv_set_name);
 		btn_logout = (Button) findViewById(R.id.btn_logout);
+		btn_reset = (Button) findViewById(R.id.btn_reset);
 
 		// 初始化
 		boolean isAllowNotify = mSharedUtil.isAllowPushNotify();
-		
+
 		if (isAllowNotify) {
 			iv_open_notification.setVisibility(View.VISIBLE);
 			iv_close_notification.setVisibility(View.INVISIBLE);
@@ -123,14 +131,15 @@ public class SettingsFragment extends FragmentBase implements OnClickListener{
 			iv_close_vibrate.setVisibility(View.VISIBLE);
 		}
 		btn_logout.setOnClickListener(this);
+		btn_reset.setOnClickListener(this);
 		layout_info.setOnClickListener(this);
 		layout_blacklist.setOnClickListener(this);
 
 	}
 
 	private void initData() {
-//		tv_set_name.setText(BmobUserManager.getInstance(getActivity())
-//				.getCurrentUser().getUsername());
+		// tv_set_name.setText(BmobUserManager.getInstance(getActivity())
+		// .getCurrentUser().getUsername());
 		tv_set_name.setText(bmobUser.getUsername());
 	}
 
@@ -145,17 +154,17 @@ public class SettingsFragment extends FragmentBase implements OnClickListener{
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
 		case R.id.layout_blacklist:// 启动到黑名单页面
-			startAnimActivity(new Intent(getActivity(),BlackListActivity.class));
+			startAnimActivity(new Intent(getActivity(), BlackListActivity.class));
 			break;
 		case R.id.layout_info:// 启动到个人资料页面
-			Intent intent =new Intent(getActivity(),SetMyInfoActivity.class);
+			Intent intent = new Intent(getActivity(), SetMyInfoActivity.class);
 			intent.putExtra("from", "me");
 			startActivity(intent);
 			break;
 		case R.id.btn_logout:
 			MyApplication.getInstance().logout();
 			getActivity().finish();
-			startActivity(new Intent(getActivity(), LoginActivity.class));
+			startActivity(new Intent(getActivity(), MenuActivity.class));
 			break;
 		case R.id.rl_switch_notification:
 			if (iv_open_notification.getVisibility() == View.VISIBLE) {
@@ -199,6 +208,26 @@ public class SettingsFragment extends FragmentBase implements OnClickListener{
 				iv_close_vibrate.setVisibility(View.INVISIBLE);
 				mSharedUtil.setAllowVibrateEnable(true);
 			}
+			break;
+		case R.id.btn_reset:
+			AlertDialog.Builder builder = new Builder(getActivity());
+			builder.setMessage("重置以后，将回复到初始状态，但购买的道具会保留");
+			builder.setTitle("确认重置吗？");
+			builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					// TODO Auto-generated method stub
+					bmobUser.setHighScore(0);
+					bmobUser.setObjectId(bmobUser.getObjectId());
+					bmobUser.update(getActivity());
+					SPUtils.put(getActivity(), Const.STAGEINDEX, 0);
+					dialog.dismiss();
+					ToastUtil.showShort(getActivity(), "重置成功");
+				}
+			});
+			builder.setNegativeButton("取消", null);
+			builder.create().show();
 			break;
 
 		}

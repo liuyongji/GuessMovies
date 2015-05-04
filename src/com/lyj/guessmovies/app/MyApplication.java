@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import net.youmi.android.offers.PointsManager;
+
 import cn.bmob.im.BmobUserManager;
 import cn.bmob.im.bean.BmobChatUser;
 import cn.bmob.im.db.BmobDB;
@@ -12,18 +14,17 @@ import cn.bmob.im.db.BmobDB;
 import com.bmob.im.demo.util.CollectionUtils;
 import com.bmob.im.demo.util.SharePreferenceUtil;
 import com.lyj.guessmovies.R;
+import com.lyj.guessmovies.data.Const;
 import com.lyj.guessmovies.model.Movie;
-import com.lyj.guessmovies.util.AppUtil;
 import com.lyj.guessmovies.util.SDCardUtils;
+import com.lyj.guessmovies.util.SPUtils;
+import com.lyj.guessmovies.util.ToastUtil;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
-import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
-import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
-import com.nostra13.universalimageloader.utils.StorageUtils;
 import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.bean.SocializeEntity;
 import com.umeng.socialize.controller.UMServiceFactory;
 import com.umeng.socialize.controller.UMSocialService;
 import com.umeng.socialize.controller.listener.SocializeListeners.SnsPostListener;
@@ -41,10 +42,8 @@ import com.umeng.socialize.weixin.media.WeiXinShareContent;
 import android.app.Activity;
 import android.app.Application;
 import android.app.NotificationManager;
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.media.MediaPlayer;
-import android.util.Log;
 import android.widget.ImageView;
 
 public class MyApplication extends Application {
@@ -52,9 +51,8 @@ public class MyApplication extends Application {
 	MediaPlayer mMediaPlayer;
 	public static MyApplication mInstance;
 	private List<Movie> movies;
-	private String user;
 	SharePreferenceUtil mSpUtil;
-//	private UMSocialService mController;
+	private UMSocialService mController;
 	public final static String URL = "http://guessmovie.bmob.cn/";
 
 	private ImageLoaderConfiguration configuration;
@@ -65,6 +63,9 @@ public class MyApplication extends Application {
 	public void onCreate() {
 		// TODO Auto-generated method stub
 		super.onCreate();
+		init();
+		mController = UMServiceFactory
+				.getUMSocialService("com.lyj.guessmovies");
 		mInstance=this;
 		File file = null;
 		if (SDCardUtils.isSDCardEnable()) {
@@ -86,26 +87,26 @@ public class MyApplication extends Application {
 				.cacheInMemory(true)
 				.cacheOnDisc(true).build();
 	}
-	public static void initImageLoader(Context context) {
-		File cacheDir = StorageUtils.getOwnCacheDirectory(context,
-				"bmobim/Cache");// ��ȡ�������Ŀ¼��ַ
-		// ��������ImageLoader(���е�ѡ��ǿ�ѡ��,ֻʹ����Щ������붨��)����������趨��APPLACATION���棬����Ϊȫ�ֵ����ò���
-		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
-				context)
-				// �̳߳��ڼ��ص�����
-				.threadPoolSize(3).threadPriority(Thread.NORM_PRIORITY - 2)
-				.memoryCache(new WeakMemoryCache())
-				.denyCacheImageMultipleSizesInMemory()
-				.discCacheFileNameGenerator(new Md5FileNameGenerator())
-				// �������ʱ���URI�����MD5 ����
-				.tasksProcessingOrder(QueueProcessingType.LIFO)
-				.discCache(new UnlimitedDiscCache(cacheDir))// �Զ��建��·��
-				// .defaultDisplayImageOptions(DisplayImageOptions.createSimple())
-				.writeDebugLogs() // Remove for release app
-				.build();
-		// Initialize ImageLoader with configuration.
-		ImageLoader.getInstance().init(config);// ȫ�ֳ�ʼ��������
-	}
+//	public static void initImageLoader(Context context) {
+//		File cacheDir = StorageUtils.getOwnCacheDirectory(context,
+//				"bmobim/Cache");// ��ȡ�������Ŀ¼��ַ
+//		// ��������ImageLoader(���е�ѡ��ǿ�ѡ��,ֻʹ����Щ������붨��)����������趨��APPLACATION���棬����Ϊȫ�ֵ����ò���
+//		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
+//				context)
+//				// �̳߳��ڼ��ص�����
+//				.threadPoolSize(3).threadPriority(Thread.NORM_PRIORITY - 2)
+//				.memoryCache(new WeakMemoryCache())
+//				.denyCacheImageMultipleSizesInMemory()
+//				.discCacheFileNameGenerator(new Md5FileNameGenerator())
+//				// �������ʱ���URI�����MD5 ����
+//				.tasksProcessingOrder(QueueProcessingType.LIFO)
+//				.discCache(new UnlimitedDiscCache(cacheDir))// �Զ��建��·��
+//				// .defaultDisplayImageOptions(DisplayImageOptions.createSimple())
+//				.writeDebugLogs() // Remove for release app
+//				.build();
+//		// Initialize ImageLoader with configuration.
+//		ImageLoader.getInstance().init(config);// ȫ�ֳ�ʼ��������
+//	}
 	private Map<String, BmobChatUser> contactList = new HashMap<String, BmobChatUser>();
 
 	/**
@@ -147,10 +148,10 @@ public class MyApplication extends Application {
 
 	public synchronized SharePreferenceUtil getSpUtil() {
 		if (mSpUtil == null) {
-//			String currentId = BmobUserManager.getInstance(
-//					getApplicationContext()).getCurrentUserObjectId();
-//			String sharedName = currentId + PREFERENCE_NAME;
-			mSpUtil = new SharePreferenceUtil(this, "lyj");
+			String currentId = BmobUserManager.getInstance(
+					getApplicationContext()).getCurrentUserObjectId();
+			String sharedName = currentId + PREFERENCE_NAME;
+			mSpUtil = new SharePreferenceUtil(this, sharedName);
 		}
 		return mSpUtil;
 	}
@@ -183,22 +184,13 @@ public class MyApplication extends Application {
 		}
 	}
 
-	public void setUser(String user) {
-		this.user = user;
-	}
-
-	public String getUser() {
-		return user;
-	}
-
 	public void setMovies(List<Movie> movies) {
 		this.movies = movies;
 	}
 
-	public void setShare(UMSocialService mController,final Activity context, String shareContent,
-			Bitmap shareImage, SnsPostListener mSnsPostListener) {
-		mController = UMServiceFactory
-				.getUMSocialService("com.lyj.guessmovies");
+	public void setShare(final Activity context, String shareContent,
+			Bitmap shareImage,boolean isimage) {
+		
 		if (shareContent != null) {
 			mController.setShareContent(shareContent);
 		}
@@ -212,30 +204,40 @@ public class MyApplication extends Application {
 				"44b17186dd669255992c24b9fd96715c");
 		wxHandler.addToSocialSDK();
 		UMWXHandler wxCircleHandler = new UMWXHandler(context,
-				"wx21f5da6bf8bfeaca", "44b17186dd669255992c24b9fd96715c");
+				"wx21f5da6bf8bfeaca", "44b17186dd669255992c24b9fd96715c");		
 		wxCircleHandler.setToCircle(true);
 		wxCircleHandler.addToSocialSDK();
-		WeiXinShareContent weixinContent = new WeiXinShareContent();
-		weixinContent.setTitle(context.getResources().getString(
-				R.string.app_name));
-		weixinContent.setShareImage(new UMImage(context, shareImage));
-		weixinContent.setTargetUrl(URL);
-		mController.setShareMedia(weixinContent);
-
-		CircleShareContent circleMedia = new CircleShareContent();
-		circleMedia.setShareImage(new UMImage(context, shareImage));
-		circleMedia.setTargetUrl(URL);
-		mController.setShareMedia(circleMedia);
-		mController.registerListener(mSnsPostListener);
-
 		UMQQSsoHandler qqSsoHandler = new UMQQSsoHandler(context, "1104535806",
 				"TfVEwXEel7zQXA8B");
 		qqSsoHandler.addToSocialSDK();
 		QZoneSsoHandler qZoneSsoHandler = new QZoneSsoHandler(context,
 				"1104535806", "TfVEwXEel7zQXA8B");
 		qZoneSsoHandler.addToSocialSDK();
+		
+		WeiXinShareContent weixinContent = new WeiXinShareContent();//微信
+		CircleShareContent circleMedia = new CircleShareContent(); //朋友圈
+		QQShareContent qqShareContent = new QQShareContent(); //QQ好友
+		QZoneShareContent qzone = new QZoneShareContent();    //QQ空间
+		
+		
+		weixinContent.setTitle(context.getResources().getString(
+				R.string.app_name));
+		if (isimage) {
+			weixinContent.setShareImage(new UMImage(context, shareImage));
+			circleMedia.setShareImage(new UMImage(context, shareImage));
+		}else {
+			weixinContent.setShareContent(Const.sharecontent);
+			circleMedia.setShareContent(Const.sharecontent);
+		}
+		
+		
+		
+		weixinContent.setTargetUrl(URL);
+		mController.setShareMedia(weixinContent);
+		circleMedia.setTargetUrl(URL);
+		mController.setShareMedia(circleMedia);
+		mController.registerListener(mSnsPostListener);
 
-		QQShareContent qqShareContent = new QQShareContent();
 		// qqShareContent.setShareContent(shareContent);
 		// qqShareContent.setTitle(context.getResources().getString(R.string.app_name));
 		qqShareContent.setShareImage(new UMImage(context, shareImage));
@@ -243,7 +245,7 @@ public class MyApplication extends Application {
 
 		mController.setShareMedia(qqShareContent);
 
-		QZoneShareContent qzone = new QZoneShareContent();
+		
 		qzone.setShareContent(shareContent);
 		// qzone.setTargetUrl(Result.url);
 		// qzone.setTitle(context.getResources().getString(R.string.app_name));
@@ -255,28 +257,25 @@ public class MyApplication extends Application {
 		mController.openShare(context, false);
 
 	}
-	
-	
-	
-	public void EMChatSet(){
-		int pid = android.os.Process.myPid();
-		String processAppName = AppUtil.getProssName(this, pid);
+	private SnsPostListener mSnsPostListener = new SnsPostListener() {
 
-		// 如果app启用了远程的service，此application:onCreate会被调用2次
-		// 为了防止环信SDK被初始化2次，加此判断会保证SDK被初始化1次
-		// 默认的app会在以包名为默认的process name下运行，如果查到的process name不是app的process
-		// name就立即返回
+		@Override
+		public void onStart() {
 
-		if (processAppName == null
-				|| !processAppName.equalsIgnoreCase("com.lyj.guessmovies")) {
-			Log.e("lyj", "enter the service process!");
-			// "com.easemob.chatuidemo"为demo的包名，换到自己项目中要改成自己包名
-
-			// 则此application::onCreate 是被service 调用的，直接返回
-			return;
 		}
-//		EMChat.getInstance().init(this);
-//		EMChat.getInstance().setDebugMode(true);
-	}
 
+		@Override
+		public void onComplete(SHARE_MEDIA platform, int stCode,
+				SocializeEntity entity) {
+			if (stCode == 200) {
+				if ((Boolean) SPUtils.get(getApplicationContext(), Const.STAGESHARE, false)) {
+					PointsManager.getInstance(getApplicationContext()).awardPoints(50);
+					SPUtils.put(getApplicationContext(), Const.STAGESHARE, true);
+				}
+				ToastUtil.showShort(getApplicationContext(), "分享成功");
+			} else {
+				ToastUtil.showShort(getApplicationContext(), "分享失败");
+			}
+		}
+	};
 }

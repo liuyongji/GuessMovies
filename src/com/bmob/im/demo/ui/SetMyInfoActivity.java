@@ -66,7 +66,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 @SuppressLint({ "SimpleDateFormat", "ClickableViewAccessibility", "InflateParams" })
 public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 
-	TextView tv_set_name, tv_set_nick, tv_set_gender;
+	TextView tv_set_name, tv_set_nick, tv_set_gender,tv_highscore;
 	ImageView iv_set_avator, iv_arraw, iv_nickarraw;
 	LinearLayout layout_all;
 
@@ -81,7 +81,7 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		// ��Ϊ�����ֻ��������������ĵ�����ť����Ҫ�������ص�����Ȼ���ڵ����պ����������ť������setContentView֮ǰ���ò�����Ч
+		// 因为魅族手机下面有三个虚拟的导航按钮，需要将其隐藏掉，不然会遮掉拍照和相册两个按钮，且在setContentView之前调用才能生效
 		int currentapiVersion = android.os.Build.VERSION.SDK_INT;
 		if (currentapiVersion >= 14) {
 			getWindow().getDecorView().setSystemUiVisibility(
@@ -94,6 +94,7 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 	}
 
 	private void initView() {
+		tv_highscore=(TextView)findViewById(R.id.tv_highscore);
 		layout_all = (LinearLayout) findViewById(R.id.layout_all);
 		iv_set_avator = (ImageView) findViewById(R.id.iv_set_avator);
 		iv_arraw = (ImageView) findViewById(R.id.iv_arraw);
@@ -103,7 +104,7 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 		layout_head = (RelativeLayout) findViewById(R.id.layout_head);
 		layout_nick = (RelativeLayout) findViewById(R.id.layout_nick);
 		layout_gender = (RelativeLayout) findViewById(R.id.layout_gender);
-		// ������ʾ��
+		// 黑名单提示语
 		layout_black_tips = (RelativeLayout) findViewById(R.id.layout_black_tips);
 		tv_set_gender = (TextView) findViewById(R.id.tv_set_gender);
 		btn_chat = (Button) findViewById(R.id.btn_chat);
@@ -113,7 +114,7 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 		btn_chat.setEnabled(false);
 		btn_back.setEnabled(false);
 		if (from.equals("me")) {
-			initTopBarForLeft("��������");
+			initTopBarForLeft("个人资料");
 			layout_head.setOnClickListener(this);
 			layout_nick.setOnClickListener(this);
 			layout_gender.setOnClickListener(this);
@@ -123,14 +124,14 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 			btn_chat.setVisibility(View.GONE);
 			btn_add_friend.setVisibility(View.GONE);
 		} else {
-			initTopBarForLeft("��ϸ����");
+			initTopBarForLeft("详细资料");
 			iv_nickarraw.setVisibility(View.INVISIBLE);
 			iv_arraw.setVisibility(View.INVISIBLE);
-			//���ܶԷ��ǲ�����ĺ��ѣ�����Է�����Ϣ--BmobIM_V1.1.2�޸�
+			//不管对方是不是你的好友，均可以发送消息--BmobIM_V1.1.2修改
 			btn_chat.setVisibility(View.VISIBLE);
 			btn_chat.setOnClickListener(this);
-			if (from.equals("add")) {// �Ӹ�������б���Ӻ���--��Ϊ��ȡ������˵ķ����������Ƿ���ʾ���ѵ�����������������Ҫ�ж�������û��Ƿ����Լ��ĺ���
-				if (mApplication.getContactList().containsKey(username)) {// �Ǻ���
+			if (from.equals("add")) {// 从附近的人列表添加好友--因为获取附近的人的方法里面有是否显示好友的情况，因此在这里需要判断下这个用户是否是自己的好友
+				if (mApplication.getContactList().containsKey(username)) {// 是好友
 //					btn_chat.setVisibility(View.VISIBLE);
 //					btn_chat.setOnClickListener(this);
 					btn_back.setVisibility(View.VISIBLE);
@@ -141,7 +142,7 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 					btn_add_friend.setVisibility(View.VISIBLE);
 					btn_add_friend.setOnClickListener(this);
 				}
-			} else {// �鿴����
+			} else {// 查看他人
 //				btn_chat.setVisibility(View.VISIBLE);
 //				btn_chat.setOnClickListener(this);
 				btn_back.setVisibility(View.VISIBLE);
@@ -176,19 +177,20 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 					btn_add_friend.setEnabled(true);
 					updateUser(user);
 				} else {
-					ShowLog("onSuccess ���޴���");
+					ShowLog("onSuccess 查无此人");
 				}
 			}
 		});
 	}
 
 	private void updateUser(User user) {
-		// ���
+		// 更改
 		refreshAvatar(user.getAvatar());
 		tv_set_name.setText(user.getUsername());
 		tv_set_nick.setText(user.getNick());
-		tv_set_gender.setText(user.getSex() == true ? "��" : "Ů");
-		// ����Ƿ�Ϊ�����û�
+		tv_highscore.setText(user.getHighScore()==null?"0":user.getHighScore()+"");
+		tv_set_gender.setText(user.getSex() == true ? "男" : "女");
+		// 检测是否为黑名单用户
 		if (from.equals("other")) {
 			if (BmobDB.create(this).isBlackUser(user.getUsername())) {
 				btn_back.setVisibility(View.GONE);
@@ -201,7 +203,7 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 	}
 
 	/**
-	 * ����ͷ�� refreshAvatar
+	 * 更新头像 refreshAvatar
 	 * 
 	 * @return void
 	 * @throws
@@ -228,7 +230,7 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
-		case R.id.btn_chat:// ��������
+		case R.id.btn_chat:// 发起聊天
 			Intent intent = new Intent(this, ChatActivity.class);
 			intent.putExtra("user", user);
 			startAnimActivity(intent);
@@ -241,38 +243,38 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 			startAnimActivity(UpdateInfoActivity.class);
 //			addBlog();
 			break;
-		case R.id.layout_gender:// �Ա�
+		case R.id.layout_gender:// 性别
 			showSexChooseDialog();
 			break;
-		case R.id.btn_back:// ����
+		case R.id.btn_back:// 黑名单
 			showBlackDialog(user.getUsername());
 			break;
-		case R.id.btn_add_friend://��Ӻ���
+		case R.id.btn_add_friend://添加好友
 			addFriend();
 			break;
 		}
 	}
 	
-	String[] sexs = new String[]{ "��", "Ů" };
+	String[] sexs = new String[]{ "男", "女" };
 	private void showSexChooseDialog() {
 		new AlertDialog.Builder(this)
-		.setTitle("��ѡ��")
+		.setTitle("单选框")
 		.setIcon(android.R.drawable.ic_dialog_info)
 		.setSingleChoiceItems(sexs, 0,
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog,
 							int which) {
-						BmobLog.i("�������"+sexs[which]);
+						BmobLog.i("点击的是"+sexs[which]);
 						updateInfo(which);
 						dialog.dismiss();
 					}
 				})
-		.setNegativeButton("ȡ��", null)
+		.setNegativeButton("取消", null)
 		.show();
 	}
 
 	
-	/** �޸�����
+	/** 修改资料
 	  * updateInfo
 	  * @Title: updateInfo
 	  * @return void
@@ -290,8 +292,8 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 			@Override
 			public void onSuccess() {
 				// TODO Auto-generated method stub
-				ShowToast("�޸ĳɹ�");
-				tv_set_gender.setText(u.getSex() == true ? "��" : "Ů");
+				ShowToast("修改成功");
+				tv_set_gender.setText(u.getSex() == true ? "男" : "女");
 			}
 
 			@Override
@@ -302,7 +304,7 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 		});
 	}
 	/**
-	 * ��Ӻ�������
+	 * 添加好友请求
 	 * 
 	 * @Title: addFriend
 	 * @Description: TODO
@@ -312,10 +314,10 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 	 */
 	private void addFriend() {
 		final ProgressDialog progress = new ProgressDialog(this);
-		progress.setMessage("�������...");
+		progress.setMessage("正在添加...");
 		progress.setCanceledOnTouchOutside(false);
 		progress.show();
-		// ����tag����
+		// 发送tag请求
 		BmobChatManager.getInstance(this).sendTagMessage(BmobConfig.TAG_ADD_CONTACT,
 				user.getObjectId(), new PushListener() {
 
@@ -323,21 +325,21 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 					public void onSuccess() {
 						// TODO Auto-generated method stub
 						progress.dismiss();
-						ShowToast("��������ɹ����ȴ�Է���֤��");
+						ShowToast("发送请求成功，等待对方验证！");
 					}
 
 					@Override
 					public void onFailure(int arg0, final String arg1) {
 						// TODO Auto-generated method stub
 						progress.dismiss();
-						ShowToast("��������ɹ����ȴ�Է���֤��");
-						ShowLog("��������ʧ��:" + arg1);
+						ShowToast("发送请求成功，等待对方验证！");
+						ShowLog("发送请求失败:" + arg1);
 					}
 				});
 	}
 
 	/**
-	 * ��ʾ������ʾ��
+	 * 显示黑名单提示框
 	 * 
 	 * @Title: showBlackDialog
 	 * @Description: TODO
@@ -346,32 +348,32 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 	 * @throws
 	 */
 	private void showBlackDialog(final String username) {
-		DialogTips dialog = new DialogTips(this, "�������",
-				"��������㽫�����յ��Է�����Ϣ��ȷ��Ҫ������", "ȷ��", true, true);
+		DialogTips dialog = new DialogTips(this, "加入黑名单",
+				"加入黑名单，你将不再收到对方的消息，确定要继续吗？", "确定", true, true);
 		dialog.SetOnSuccessListener(new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialogInterface, int userId) {
-				// ��ӵ������б�
+				// 添加到黑名单列表
 				userManager.addBlack(username, new UpdateListener() {
 
 					@Override
 					public void onSuccess() {
 						// TODO Auto-generated method stub
-						ShowToast("������ӳɹ�!");
+						ShowToast("黑名单添加成功!");
 						btn_back.setVisibility(View.GONE);
 						layout_black_tips.setVisibility(View.VISIBLE);
-						// �����������ڴ��б���ĺ����б�
+						// 重新设置下内存中保存的好友列表
 						MyApplication.getInstance().setContactList(CollectionUtils.list2map(BmobDB.create(SetMyInfoActivity.this).getContactList()));
 					}
 
 					@Override
 					public void onFailure(int arg0, String arg1) {
 						// TODO Auto-generated method stub
-						ShowToast("�������ʧ��:" + arg1);
+						ShowToast("黑名单添加失败:" + arg1);
 					}
 				});
 			}
 		});
-		// ��ʾȷ�϶Ի���
+		// 显示确认对话框
 		dialog.show();
 		dialog = null;
 	}
@@ -391,7 +393,7 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 
 			@Override
 			public void onClick(View arg0) {
-				ShowLog("�������");
+				ShowLog("点击拍照");
 				// TODO Auto-generated method stub
 				layout_choose.setBackgroundColor(getResources().getColor(
 						R.color.base_color_text_white));
@@ -401,10 +403,10 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 				if (!dir.exists()) {
 					dir.mkdirs();
 				}
-				// ԭͼ
+				// 原图
 				File file = new File(dir, new SimpleDateFormat("yyMMddHHmmss")
 						.format(new Date()));
-				filePath = file.getAbsolutePath();// ��ȡ��Ƭ�ı���·��
+				filePath = file.getAbsolutePath();// 获取相片的保存路径
 				Uri imageUri = Uri.fromFile(file);
 
 				Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -418,7 +420,7 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				ShowLog("������");
+				ShowLog("点击相册");
 				layout_photo.setBackgroundColor(getResources().getColor(
 						R.color.base_color_text_white));
 				layout_choose.setBackgroundDrawable(getResources().getDrawable(
@@ -449,7 +451,7 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 		avatorPop.setFocusable(true);
 		avatorPop.setOutsideTouchable(true);
 		avatorPop.setBackgroundDrawable(new BitmapDrawable());
-		// ����Ч�� �ӵײ�����
+		// 动画效果 从底部弹起
 		avatorPop.setAnimationStyle(R.style.Animations_GrowFromBottom);
 		avatorPop.showAtLocation(layout_all, Gravity.BOTTOM, 0, 0);
 	}
@@ -482,7 +484,7 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 	}
 
 	Bitmap newBitmap;
-	boolean isFromCamera = false;// ���������ת
+	boolean isFromCamera = false;// 区分拍照旋转
 	int degree = 0;
 
 	@Override
@@ -490,22 +492,22 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 		// TODO Auto-generated method stub
 		super.onActivityResult(requestCode, resultCode, data);
 		switch (requestCode) {
-		case BmobConstants.REQUESTCODE_UPLOADAVATAR_CAMERA:// �����޸�ͷ��
+		case BmobConstants.REQUESTCODE_UPLOADAVATAR_CAMERA:// 拍照修改头像
 			if (resultCode == RESULT_OK) {
 				if (!Environment.getExternalStorageState().equals(
 						Environment.MEDIA_MOUNTED)) {
-					ShowToast("SD������");
+					ShowToast("SD不可用");
 					return;
 				}
 				isFromCamera = true;
 				File file = new File(filePath);
 				degree = PhotoUtil.readPictureDegree(file.getAbsolutePath());
-				Log.i("life", "���պ�ĽǶȣ�" + degree);
+				Log.i("life", "拍照后的角度：" + degree);
 				startImageAction(Uri.fromFile(file), 200, 200,
 						BmobConstants.REQUESTCODE_UPLOADAVATAR_CROP, true);
 			}
 			break;
-		case BmobConstants.REQUESTCODE_UPLOADAVATAR_LOCATION:// �����޸�ͷ��
+		case BmobConstants.REQUESTCODE_UPLOADAVATAR_LOCATION:// 本地修改头像
 			if (avatorPop != null) {
 				avatorPop.dismiss();
 			}
@@ -516,7 +518,7 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 			if (resultCode == RESULT_OK) {
 				if (!Environment.getExternalStorageState().equals(
 						Environment.MEDIA_MOUNTED)) {
-					ShowToast("SD������");
+					ShowToast("SD不可用");
 					return;
 				}
 				isFromCamera = false;
@@ -524,24 +526,24 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 				startImageAction(uri, 200, 200,
 						BmobConstants.REQUESTCODE_UPLOADAVATAR_CROP, true);
 			} else {
-				ShowToast("��Ƭ��ȡʧ��");
+				ShowToast("照片获取失败");
 			}
 
 			break;
-		case BmobConstants.REQUESTCODE_UPLOADAVATAR_CROP:// �ü�ͷ�񷵻�
+		case BmobConstants.REQUESTCODE_UPLOADAVATAR_CROP:// 裁剪头像返回
 			// TODO sent to crop
 			if (avatorPop != null) {
 				avatorPop.dismiss();
 			}
 			if (data == null) {
-				// Toast.makeText(this, "ȡ��ѡ��", Toast.LENGTH_SHORT).show();
+				// Toast.makeText(this, "取消选择", Toast.LENGTH_SHORT).show();
 				return;
 			} else {
 				saveCropAvator(data);
 			}
-			// ��ʼ���ļ�·��
+			// 初始化文件路径
 			filePath = "";
-			// �ϴ�ͷ��
+			// 上传头像
 			uploadAvatar();
 			break;
 		default:
@@ -551,7 +553,7 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 	}
 
 	private void uploadAvatar() {
-		BmobLog.i("ͷ���ַ��" + path);
+		BmobLog.i("头像地址：" + path);
 		final BmobFile bmobFile = new BmobFile(new File(path));
 		bmobFile.upload(this, new UploadFileListener() {
 
@@ -559,7 +561,7 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 			public void onSuccess() {
 				// TODO Auto-generated method stub
 				String url = bmobFile.getFileUrl(SetMyInfoActivity.this);
-				// ����BmobUser����
+				// 更新BmobUser对象
 				updateUserAvatar(url);
 			}
 
@@ -572,7 +574,7 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 			@Override
 			public void onFailure(int arg0, String msg) {
 				// TODO Auto-generated method stub
-				ShowToast("ͷ���ϴ�ʧ�ܣ�" + msg);
+				ShowToast("头像上传失败：" + msg);
 			}
 		});
 	}
@@ -584,15 +586,15 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 			@Override
 			public void onSuccess() {
 				// TODO Auto-generated method stub
-				ShowToast("ͷ����³ɹ���");
-				// ����ͷ��
+				ShowToast("头像更新成功！");
+				// 更新头像
 				refreshAvatar(url);
 			}
 
 			@Override
 			public void onFailure(int code, String msg) {
 				// TODO Auto-generated method stub
-				ShowToast("ͷ�����ʧ�ܣ�" + msg);
+				ShowToast("头像更新失败：" + msg);
 			}
 		});
 	}
@@ -600,7 +602,7 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 	String path;
 
 	/**
-	 * ����ü���ͷ��
+	 * 保存裁剪的头像
 	 * 
 	 * @param data
 	 */
@@ -615,13 +617,13 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 					bitmap = PhotoUtil.rotaingImageView(degree, bitmap);
 				}
 				iv_set_avator.setImageBitmap(bitmap);
-				// ����ͼƬ
+				// 保存图片
 				String filename = new SimpleDateFormat("yyMMddHHmmss")
 						.format(new Date())+".png";
 				path = BmobConstants.MyAvatarDir + filename;
 				PhotoUtil.saveBitmap(BmobConstants.MyAvatarDir, filename,
 						bitmap, true);
-				// �ϴ�ͷ��
+				// 上传头像
 				if (bitmap != null && bitmap.isRecycled()) {
 					bitmap.recycle();
 				}
@@ -629,7 +631,7 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 		}
 	}
 	
-	/** ���Թ�����ϵ�Ƿ����
+	/** 测试关联关系是否可用
 	  * @Title: addBlog
 	  * @Description: TODO
 	  * @param  
@@ -642,13 +644,13 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 		//		relation.add(blog);
 		//		user.setBlogs(relation);
 		final Blog blog = new Blog();
-		blog.setBrief("���");
+		blog.setBrief("你好");
 		blog.save(this, new SaveListener() {
 			
 			@Override
 			public void onSuccess() {
 				// TODO Auto-generated method stub
-				BmobLog.i("blog����ɹ�");
+				BmobLog.i("blog保存成功");
 				User  u =new User();
 				u.setBlog(blog);
 				updateUserData(u, new UpdateListener() {
@@ -656,7 +658,7 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 					@Override
 					public void onSuccess() {
 						// TODO Auto-generated method stub
-						BmobLog.i("user���³ɹ�");
+						BmobLog.i("user更新成功");
 					}
 					
 					@Override

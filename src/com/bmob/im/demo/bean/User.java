@@ -4,11 +4,11 @@ import cn.bmob.im.bean.BmobChatUser;
 import cn.bmob.v3.datatype.BmobGeoPoint;
 import cn.bmob.v3.datatype.BmobRelation;
 
-/** ÖØÔØBmobChatUser¶ÔÏó£ºÈô»¹ÓÐÆäËûÐèÒªÔö¼ÓµÄÊôÐÔ¿ÉÔÚ´ËÌí¼Ó
+/** ï¿½ï¿½ï¿½ï¿½BmobChatUserï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½Ô¿ï¿½ï¿½Ú´ï¿½ï¿½ï¿½ï¿½
   * @ClassName: TextUser
   * @Description: TODO
   * @author smile
-  * @date 2014-5-29 ÏÂÎç6:15:45
+  * @date 2014-5-29 ï¿½ï¿½ï¿½ï¿½6:15:45
   */
 public class User extends BmobChatUser {
 
@@ -18,28 +18,34 @@ public class User extends BmobChatUser {
 	private static final long serialVersionUID = 1L;
 	
 	/**
-	 * ·¢²¼µÄ²©¿ÍÁÐ±í
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ä²ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
 	 */
 	private BmobRelation blogs;
 	
 	/**
-	 * //ÏÔÊ¾Êý¾ÝÆ´ÒôµÄÊ××ÖÄ¸
+	 * //ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Æ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸
 	 */
 	private String sortLetters;
 	
 	/**
-	 * //ÐÔ±ð-true-ÄÐ
+	 * //ï¿½Ô±ï¿½-true-ï¿½ï¿½
 	 */
 	private Boolean sex;
 	
 	private Blog blog;
 	
 	/**
-	 * µØÀí×ø±ê
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	private BmobGeoPoint location;//
 	
 	private Integer hight;
+	
+	private Boolean adclear;
+	
+	private Integer highScore;
+	
+	private Boolean firstlogin;
 	
 	
 	public Blog getBlog() {
@@ -77,6 +83,24 @@ public class User extends BmobChatUser {
 	}
 	public void setSortLetters(String sortLetters) {
 		this.sortLetters = sortLetters;
+	}
+	public Boolean getAdclear() {
+		return adclear;
+	}
+	public void setAdclear(Boolean adclear) {
+		this.adclear = adclear;
+	}
+	public Integer getHighScore() {
+		return highScore;
+	}
+	public void setHighScore(Integer highScore) {
+		this.highScore = highScore;
+	}
+	public Boolean getFirstlogin() {
+		return firstlogin;
+	}
+	public void setFirstlogin(Boolean firstlogin) {
+		this.firstlogin = firstlogin;
 	}
 	
 }

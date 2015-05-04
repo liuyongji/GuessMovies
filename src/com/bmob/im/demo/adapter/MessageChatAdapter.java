@@ -47,17 +47,17 @@ import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListene
   */
 public class MessageChatAdapter extends BaseListAdapter<BmobMsg> {
 
-	//8��Item������
-	//�ı�
+	//8种Item的类型
+	//文本
 	private final int TYPE_RECEIVER_TXT = 0;
 	private final int TYPE_SEND_TXT = 1;
-	//ͼƬ
+	//图片
 	private final int TYPE_SEND_IMAGE = 2;
 	private final int TYPE_RECEIVER_IMAGE = 3;
-	//λ��
+	//位置
 	private final int TYPE_SEND_LOCATION = 4;
 	private final int TYPE_RECEIVER_LOCATION = 5;
-	//����
+	//语音
 	private final int TYPE_SEND_VOICE =6;
 	private final int TYPE_RECEIVER_VOICE = 7;
 	
@@ -106,22 +106,22 @@ public class MessageChatAdapter extends BaseListAdapter<BmobMsg> {
 	
 	private View createViewByType(BmobMsg message, int position) {
 		int type = message.getMsgType();
-	   if(type==BmobConfig.TYPE_IMAGE){//ͼƬ����
+	   if(type==BmobConfig.TYPE_IMAGE){//图片类型
 			return getItemViewType(position) == TYPE_RECEIVER_IMAGE ? 
 					mInflater.inflate(R.layout.item_chat_received_image, null) 
 					:
 					mInflater.inflate(R.layout.item_chat_sent_image, null);
-		}else if(type==BmobConfig.TYPE_LOCATION){//λ������
+		}else if(type==BmobConfig.TYPE_LOCATION){//位置类型
 			return getItemViewType(position) == TYPE_RECEIVER_LOCATION ? 
 					mInflater.inflate(R.layout.item_chat_received_location, null) 
 					:
 					mInflater.inflate(R.layout.item_chat_sent_location, null);
-		}else if(type==BmobConfig.TYPE_VOICE){//��������
+		}else if(type==BmobConfig.TYPE_VOICE){//语音类型
 			return getItemViewType(position) == TYPE_RECEIVER_VOICE ? 
 					mInflater.inflate(R.layout.item_chat_received_voice, null) 
 					:
 					mInflater.inflate(R.layout.item_chat_sent_voice, null);
-		}else{//ʣ��Ĭ�ϵĶ����ı�
+		}else{//剩下默认的都是文本
 			return getItemViewType(position) == TYPE_RECEIVER_TXT ? 
 					mInflater.inflate(R.layout.item_chat_received_message, null) 
 					:
@@ -136,25 +136,25 @@ public class MessageChatAdapter extends BaseListAdapter<BmobMsg> {
 		if (convertView == null) {
 			convertView = createViewByType(item, position);
 		}
-		//�ı�����
+		//文本类型
 		ImageView iv_avatar = ViewHolder.get(convertView, R.id.iv_avatar);
-		final ImageView iv_fail_resend = ViewHolder.get(convertView, R.id.iv_fail_resend);//ʧ���ط�
-		final TextView tv_send_status = ViewHolder.get(convertView, R.id.tv_send_status);//����״̬
+		final ImageView iv_fail_resend = ViewHolder.get(convertView, R.id.iv_fail_resend);//失败重发
+		final TextView tv_send_status = ViewHolder.get(convertView, R.id.tv_send_status);//发送状态
 		TextView tv_time = ViewHolder.get(convertView, R.id.tv_time);
 		TextView tv_message = ViewHolder.get(convertView, R.id.tv_message);
-		//ͼƬ
+		//图片
 		ImageView iv_picture = ViewHolder.get(convertView, R.id.iv_picture);
-		final ProgressBar progress_load = ViewHolder.get(convertView, R.id.progress_load);//�����
-		//λ��
+		final ProgressBar progress_load = ViewHolder.get(convertView, R.id.progress_load);//进度条
+		//位置
 		TextView tv_location = ViewHolder.get(convertView, R.id.tv_location);
-		//����
+		//语音
 		final ImageView iv_voice = ViewHolder.get(convertView, R.id.iv_voice);
-		//��������
+		//语音长度
 		final TextView tv_voice_length = ViewHolder.get(convertView, R.id.tv_voice_length);
 		
-		//���ͷ������������
+		//点击头像进入个人资料
 		String avatar = item.getBelongAvatar();
-		if(avatar!=null && !avatar.equals("")){//����ͷ��-Ϊ�˲�ÿ�ζ�����ͷ��
+		if(avatar!=null && !avatar.equals("")){//加载头像-为了不每次都加载头像
 			ImageLoader.getInstance().displayImage(avatar, iv_avatar, ImageLoadOptions.getOptions(),animateFirstListener);
 		}else{
 			iv_avatar.setImageResource(R.drawable.head);
@@ -182,11 +182,11 @@ public class MessageChatAdapter extends BaseListAdapter<BmobMsg> {
 		tv_time.setText(TimeUtil.getChatTime(Long.parseLong(item.getMsgTime())));
 		
 		if(getItemViewType(position)==TYPE_SEND_TXT
-//				||getItemViewType(position)==TYPE_SEND_IMAGE//ͼƬ��������
+//				||getItemViewType(position)==TYPE_SEND_IMAGE//图片单独处理
 				||getItemViewType(position)==TYPE_SEND_LOCATION
-				||getItemViewType(position)==TYPE_SEND_VOICE){//ֻ���Լ����͵���Ϣ�����ط�����
-			//״̬����
-			if(item.getStatus()==BmobConfig.STATUS_SEND_SUCCESS){//���ͳɹ�
+				||getItemViewType(position)==TYPE_SEND_VOICE){//只有自己发送的消息才有重发机制
+			//状态描述
+			if(item.getStatus()==BmobConfig.STATUS_SEND_SUCCESS){//发送成功
 				progress_load.setVisibility(View.INVISIBLE);
 				iv_fail_resend.setVisibility(View.INVISIBLE);
 				if(item.getMsgType()==BmobConfig.TYPE_VOICE){
@@ -194,16 +194,16 @@ public class MessageChatAdapter extends BaseListAdapter<BmobMsg> {
 					tv_voice_length.setVisibility(View.VISIBLE);
 				}else{
 					tv_send_status.setVisibility(View.VISIBLE);
-					tv_send_status.setText("�ѷ���");
+					tv_send_status.setText("已发送");
 				}
-			}else if(item.getStatus()==BmobConfig.STATUS_SEND_FAIL){//����������Ӧ���߲�ѯʧ�ܵ�ԭ����ɵķ���ʧ�ܣ�����Ҫ�ط�
+			}else if(item.getStatus()==BmobConfig.STATUS_SEND_FAIL){//服务器无响应或者查询失败等原因造成的发送失败，均需要重发
 				progress_load.setVisibility(View.INVISIBLE);
 				iv_fail_resend.setVisibility(View.VISIBLE);
 				tv_send_status.setVisibility(View.INVISIBLE);
 				if(item.getMsgType()==BmobConfig.TYPE_VOICE){
 					tv_voice_length.setVisibility(View.GONE);
 				}
-			}else if(item.getStatus()==BmobConfig.STATUS_SEND_RECEIVERED){//�Է��ѽ��յ�
+			}else if(item.getStatus()==BmobConfig.STATUS_SEND_RECEIVERED){//对方已接收到
 				progress_load.setVisibility(View.INVISIBLE);
 				iv_fail_resend.setVisibility(View.INVISIBLE);
 				if(item.getMsgType()==BmobConfig.TYPE_VOICE){
@@ -211,9 +211,9 @@ public class MessageChatAdapter extends BaseListAdapter<BmobMsg> {
 					tv_voice_length.setVisibility(View.VISIBLE);
 				}else{
 					tv_send_status.setVisibility(View.VISIBLE);
-					tv_send_status.setText("���Ķ�");
+					tv_send_status.setText("已阅读");
 				}
-			}else if(item.getStatus()==BmobConfig.STATUS_SEND_START){//��ʼ�ϴ�
+			}else if(item.getStatus()==BmobConfig.STATUS_SEND_START){//开始上传
 				progress_load.setVisibility(View.VISIBLE);
 				iv_fail_resend.setVisibility(View.INVISIBLE);
 				tv_send_status.setVisibility(View.INVISIBLE);
@@ -222,7 +222,7 @@ public class MessageChatAdapter extends BaseListAdapter<BmobMsg> {
 				}
 			}
 		}
-		//���������ʾ����
+		//根据类型显示内容
 		final String text = item.getContent();
 		switch (item.getMsgType()) {
 		case BmobConfig.TYPE_TEXT:
@@ -234,9 +234,9 @@ public class MessageChatAdapter extends BaseListAdapter<BmobMsg> {
 			}
 			break;
 
-		case BmobConfig.TYPE_IMAGE://ͼƬ��
+		case BmobConfig.TYPE_IMAGE://图片类
 			try {
-				if (text != null && !text.equals("")) {//���ͳɹ�֮��洢��ͼƬ���͵�content�ͽ��յ����ǲ�һ���
+				if (text != null && !text.equals("")) {//发送成功之后存储的图片类型的content和接收到的是不一样的
 					dealWithImage(position, progress_load, iv_fail_resend, tv_send_status, iv_picture, item);
 				}
 				iv_picture.setOnClickListener(new OnClickListener() {
@@ -257,47 +257,25 @@ public class MessageChatAdapter extends BaseListAdapter<BmobMsg> {
 			}
 			break;
 			
-		case BmobConfig.TYPE_LOCATION://λ����Ϣ
-			try {
-				if (text != null && !text.equals("")) {
-					String address  = text.split("&")[0];
-					final String latitude = text.split("&")[1];//ά��
-					final String longtitude = text.split("&")[2];//����
-					tv_location.setText(address);
-//					tv_location.setOnClickListener(new OnClickListener() {
-//						
-//						@Override
-//						public void onClick(View arg0) {
-//							// TODO Auto-generated method stub
-//							Intent intent = new Intent(mContext, LocationActivity.class);
-//							intent.putExtra("type", "scan");
-//							intent.putExtra("latitude", Double.parseDouble(latitude));//ά��
-//							intent.putExtra("longtitude", Double.parseDouble(longtitude));//����
-//							mContext.startActivity(intent);
-//						}
-//					});
-				}
-			} catch (Exception e) {
-				
-			}
+		case BmobConfig.TYPE_LOCATION://位置信息
 			break;
-		case BmobConfig.TYPE_VOICE://������Ϣ
+		case BmobConfig.TYPE_VOICE://语音消息
 			try {
 				if (text != null && !text.equals("")) {
 					tv_voice_length.setVisibility(View.VISIBLE);
 					String content = item.getContent();
-					if (item.getBelongId().equals(currentObjectId)) {//���͵���Ϣ
+					if (item.getBelongId().equals(currentObjectId)) {//发送的消息
 						if(item.getStatus()==BmobConfig.STATUS_SEND_RECEIVERED
-								||item.getStatus()==BmobConfig.STATUS_SEND_SUCCESS){//�����ͳɹ����߷������Ķ���ʱ������ʾ��������
+								||item.getStatus()==BmobConfig.STATUS_SEND_SUCCESS){//当发送成功或者发送已阅读的时候，则显示语音长度
 							tv_voice_length.setVisibility(View.VISIBLE);
 							String length = content.split("&")[2];
 							tv_voice_length.setText(length+"\''");
 						}else{
 							tv_voice_length.setVisibility(View.INVISIBLE);
 						}
-					} else {//�յ�����Ϣ
+					} else {//收到的消息
 						boolean isExists = BmobDownloadManager.checkTargetPathExist(currentObjectId,item);
-						if(!isExists){//��ָ����ʽ��¼���ļ������ڣ�����Ҫ���أ���Ϊ���ļ��Ƚ�С���ʷ��ڴ�����
+						if(!isExists){//若指定格式的录音文件不存在，则需要下载，因为其文件比较小，故放在此下载
 							String netUrl = content.split("&")[0];
 							final String length = content.split("&")[1];
 							BmobDownloadManager downloadTask = new BmobDownloadManager(mContext,item,new DownloadListener() {
@@ -307,7 +285,7 @@ public class MessageChatAdapter extends BaseListAdapter<BmobMsg> {
 									// TODO Auto-generated method stub
 									progress_load.setVisibility(View.VISIBLE);
 									tv_voice_length.setVisibility(View.GONE);
-									iv_voice.setVisibility(View.INVISIBLE);//ֻ��������ɲ���ʾ���ŵİ�ť
+									iv_voice.setVisibility(View.INVISIBLE);//只有下载完成才显示播放的按钮
 								}
 								
 								@Override
@@ -333,7 +311,7 @@ public class MessageChatAdapter extends BaseListAdapter<BmobMsg> {
 						}
 					}
 				}
-				//���������ļ�
+				//播放语音文件
 				iv_voice.setOnClickListener(new NewRecordPlayClickListener(mContext,item,iv_voice));
 			} catch (Exception e) {
 				
@@ -346,7 +324,7 @@ public class MessageChatAdapter extends BaseListAdapter<BmobMsg> {
 		return convertView;
 	}
 	
-	/** ��ȡͼƬ�ĵ�ַ--
+	/** 获取图片的地址--
 	  * @Description: TODO
 	  * @param @param item
 	  * @param @return 
@@ -362,14 +340,14 @@ public class MessageChatAdapter extends BaseListAdapter<BmobMsg> {
 			}else{
 				showUrl = text;
 			}
-		}else{//������յ�����Ϣ������Ҫ����������
+		}else{//如果是收到的消息，则需要从网络下载
 			showUrl = text;
 		}
 		return showUrl;
 	}
 	
 	
-	/** ����ͼƬ
+	/** 处理图片
 	  * @Description: TODO
 	  * @param @param position
 	  * @param @param progress_load
@@ -382,7 +360,7 @@ public class MessageChatAdapter extends BaseListAdapter<BmobMsg> {
 	  */
 	private void dealWithImage(int position,final ProgressBar progress_load,ImageView iv_fail_resend,TextView tv_send_status,ImageView iv_picture,BmobMsg item){
 		String text = item.getContent();
-		if(getItemViewType(position)==TYPE_SEND_IMAGE){//���͵���Ϣ
+		if(getItemViewType(position)==TYPE_SEND_IMAGE){//发送的消息
 			if(item.getStatus()==BmobConfig.STATUS_SEND_START){
 				progress_load.setVisibility(View.VISIBLE);
 				iv_fail_resend.setVisibility(View.INVISIBLE);
@@ -391,7 +369,7 @@ public class MessageChatAdapter extends BaseListAdapter<BmobMsg> {
 				progress_load.setVisibility(View.INVISIBLE);
 				iv_fail_resend.setVisibility(View.INVISIBLE);
 				tv_send_status.setVisibility(View.VISIBLE);
-				tv_send_status.setText("�ѷ���");
+				tv_send_status.setText("已发送");
 			}else if(item.getStatus()==BmobConfig.STATUS_SEND_FAIL){
 				progress_load.setVisibility(View.INVISIBLE);
 				iv_fail_resend.setVisibility(View.VISIBLE);
@@ -400,16 +378,16 @@ public class MessageChatAdapter extends BaseListAdapter<BmobMsg> {
 				progress_load.setVisibility(View.INVISIBLE);
 				iv_fail_resend.setVisibility(View.INVISIBLE);
 				tv_send_status.setVisibility(View.VISIBLE);
-				tv_send_status.setText("���Ķ�");
+				tv_send_status.setText("已阅读");
 			}
-//			����Ƿ��͵�ͼƬ�Ļ�����Ϊ��ʼ���ʹ洢�ĵ�ַ�Ǳ��ص�ַ�����ͳɹ�֮��洢���Ǳ��ص�ַ+"&"+�����ַ�������Ҫ�ж���
+//			如果是发送的图片的话，因为开始发送存储的地址是本地地址，发送成功之后存储的是本地地址+"&"+网络地址，因此需要判断下
 			String showUrl = "";
 			if(text.contains("&")){
 				showUrl = text.split("&")[0];
 			}else{
 				showUrl = text;
 			}
-			//Ϊ�˷���ÿ�ζ���ȡ����ͼƬ��ʾ
+			//为了方便每次都是取本地图片显示
 			ImageLoader.getInstance().displayImage(showUrl, iv_picture);
 		}else{
 			ImageLoader.getInstance().displayImage(text, iv_picture,options,new ImageLoadingListener() {

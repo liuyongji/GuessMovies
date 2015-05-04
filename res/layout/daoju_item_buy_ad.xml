@@ -6,7 +6,7 @@
     android:background="@drawable/input_bg"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:padding="30dp" >
+    android:padding="10dp" >
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -23,7 +23,7 @@
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="去除所有广告"
+                android:text="去除所有广告    10.00元"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_size_large" />
 

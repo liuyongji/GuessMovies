@@ -6,7 +6,6 @@
 
     <include layout="@layout/title_framelayout" />
 
-
     <include
         android:id="@+id/goods1"
         layout="@layout/daoju_item_buy_coin_500" />
@@ -14,45 +13,78 @@
     <include
         android:id="@+id/goods1"
         layout="@layout/daoju_item_buy_ad" />
-    
-    <LinearLayout 
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="5dp"
-    android:background="@drawable/input_bg"
-    android:gravity="center_vertical"
-    android:orientation="horizontal"
-    android:padding="30dp" >
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/input_bg"
         android:gravity="center_vertical"
-        android:orientation="vertical" >
-
+        android:orientation="horizontal"
+        android:padding="10dp" >
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:singleLine="false"
             android:text="@string/buy_goods_wall"
             android:textColor="@color/text_gray" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent" >
 
         <Button
             android:id="@+id/daoju_getcoin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="前往" />
-
+            android:layout_gravity="right"
+            android:text="前  往" />
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/input_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp" >
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:singleLine="false"
+            android:text="@string/buy_share"
+            android:textColor="@color/text_gray" />
 
-</LinearLayout>
+        <Button
+            android:id="@+id/daoju_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="分  享" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/input_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp" >
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:singleLine="false"
+            android:text="@string/buy_sign"
+            android:textColor="@color/text_gray" />
+
+        <Button
+            android:id="@+id/daoju_sign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="签  到" />
+    </LinearLayout>
 
 </LinearLayout>

@@ -27,6 +27,8 @@ import com.bmob.im.demo.view.HeaderLayout.onRightImageButtonClickListener;
 import com.bmob.im.demo.view.dialog.DialogTips;
 import com.lyj.guessmovies.R;
 import com.lyj.guessmovies.app.MyApplication;
+import com.lyj.guessmovies.data.Const;
+import com.lyj.guessmovies.util.SPUtils;
 
 /** 基类
   * @ClassName: BaseActivity
@@ -226,6 +228,12 @@ public class BaseActivity extends FragmentActivity {
 						MyApplication.getInstance().setContactList(CollectionUtils.list2map(arg0));
 					}
 				});
+		User user=userManager.getCurrentUser(User.class);
+		if((Integer)SPUtils.get(getApplicationContext(), Const.STAGEINDEX, 0)>user.getHighScore()){
+			user.setHighScore((Integer)SPUtils.get(getApplicationContext(), Const.STAGEINDEX, 0));
+		}
+		
+		
 	}
 	
 	

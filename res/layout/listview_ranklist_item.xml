@@ -5,13 +5,14 @@
     android:background="@drawable/input_bg"
     android:gravity="center_vertical"
     android:orientation="horizontal"
+    android:id="@+id/listview_ranklist_item_linear"
     android:padding="10dp" >
 
     <ImageView
         android:id="@+id/imageView_face"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/icon" />
+        android:src="@drawable/default_head" />
 
     <TextView
         android:id="@+id/textView_name"
@@ -22,31 +23,35 @@
         android:textColor="@color/black"
         android:textSize="@dimen/text_size_large" />
 
-    <TextView
-        android:id="@+id/textView_score"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:text="score"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_size_large" />
+   
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:layout_gravity="center_vertical"
         android:gravity="center_vertical"
-        android:paddingLeft="10dp" >
-
-        <TextView
+        android:padding="10dp" >
+        <TextView
             android:id="@+id/textView_rank"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:text="1"
-            android:textColor="@color/black"
+            android:textColor="@color/dialog_color_title"
             android:textSize="@dimen/base_action_bar_title_size" />
+
+         <TextView
+             android:id="@+id/textView_score"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginRight="40dp"
+             android:layout_toLeftOf="@id/textView_rank"
+             android:text="score"
+             android:textColor="@color/black"
+             android:textSize="@dimen/text_size_large" />
+
+        
     </RelativeLayout>
 
 </LinearLayout>

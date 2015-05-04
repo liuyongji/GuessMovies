@@ -2,6 +2,9 @@ package com.lyj.guessmovies.adapter;
 
 import java.util.List;
 
+import cn.bmob.im.BmobUserManager;
+
+import com.bmob.im.demo.bean.User;
 import com.lyj.guessmovies.data.Const;
 import com.lyj.guessmovies.model.Movie;
 import com.lyj.guessmovies.util.SPUtils;
@@ -30,13 +33,18 @@ public class MyViewPagerAdapter extends PagerAdapter implements Const{
 		
 	}
 	private void initData(){
+		User user=BmobUserManager.getInstance(context).getCurrentUser(User.class);
+		if (user!=null) {
+			mCurrentStage=user.getHighScore();
+		}else
 		mCurrentStage=(Integer) SPUtils.get(context, STAGEINDEX, 0);
 	}
 
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return movies.size();
+//		return movies.size();
+		return mCurrentStage;
 	}
 
 	@Override

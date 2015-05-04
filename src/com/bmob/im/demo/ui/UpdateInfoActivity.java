@@ -29,7 +29,7 @@ public class UpdateInfoActivity extends ActivityBase {
 	}
 
 	private void initView() {
-		initTopBarForBoth("�޸��ǳ�", R.drawable.base_action_bar_true_bg_selector,
+		initTopBarForBoth("修改昵称", R.drawable.base_action_bar_true_bg_selector,
 				new onRightImageButtonClickListener() {
 
 					@Override
@@ -37,7 +37,7 @@ public class UpdateInfoActivity extends ActivityBase {
 						// TODO Auto-generated method stub
 						String nick = edit_nick.getText().toString();
 						if (nick.equals("")) {
-							ShowToast("����д�ǳ�!");
+							ShowToast("请填写昵称!");
 							return;
 						}
 						updateInfo(nick);
@@ -46,7 +46,7 @@ public class UpdateInfoActivity extends ActivityBase {
 		edit_nick = (EditText) findViewById(R.id.edit_nick);
 	}
 
-	/** �޸�����
+	/** 修改资料
 	  * updateInfo
 	  * @Title: updateInfo
 	  * @return void
@@ -56,7 +56,7 @@ public class UpdateInfoActivity extends ActivityBase {
 		final User user = userManager.getCurrentUser(User.class);
 		User u = new User();
 		u.setNick(nick);
-		u.setHight(110);
+//		u.setHight(110);
 		u.setObjectId(user.getObjectId());
 		u.update(this, new UpdateListener() {
 
@@ -64,7 +64,7 @@ public class UpdateInfoActivity extends ActivityBase {
 			public void onSuccess() {
 				// TODO Auto-generated method stub
 				final User c = userManager.getCurrentUser(User.class);
-				ShowToast("�޸ĳɹ�:"+c.getNick()+",height = "+c.getHight());
+				ShowToast("修改成功:"+c.getNick());
 				finish();
 			}
 

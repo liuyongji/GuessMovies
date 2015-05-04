@@ -1,1165 +1,1968 @@
 [
     {
-        "name": "杀人回忆",
-        "url": "srhy.jpg"
-    },
-	{
-        "name": "与犯罪的战争",
-        "url": "yufanzuidzhanzheng.jpg"
-    },
-	{
-        "name": "霜花店",
-        "url": "xianghuadian.jpg"
-    },
-	{
-        "name": "隐秘而伟大",
-        "url": "yinmierweida.jpg"
-    },
-	{
-        "name": "我的见鬼女友",
-        "url": "wodejianguinvyou.jpg"
-    },
-	{
-        "name": "雪国列车",
-        "url": "xueguolieche.jpg"
+        "name": "江南布鲁斯",
+        "url": "jiangnanbulusi.jpg",
+		"brief":"《江南布鲁斯》是由韩国导演柳河执导和编剧，李敏镐、金来沅等主演的动作剧情片。影片以上世纪七十年代的韩国首尔为背景，讲述了江南区房地产开发刚刚兴起的时期里，政客与黑社会勾结，合伙通过江南地区房地产谋取利益的故事。"
     },
     {
+        "name": "杀人回忆",
+        "url": "srhy.jpg",
+		"brief":"电影《杀人回忆》由奉俊昊执导，宋康昊、金相庆、朴海日等人主演。2003年韩国票房冠军影片，并获评年度最佳电影首位，狂扫韩国国内各大电影奖项。"
+    },
+	{
+        "name": "辩护人",
+        "url": "bianhuren.jpg",
+		"brief":"影片以20世纪八十年代的釜山为背景，以已故前总统卢武铉曾在担任律师时，负责釜林事件辩护的故事为原型，讲述了没有钱、没有学历、没有背景的税务律师宋宇锡经历的改变其人生的五次公审。"
+    },
+	{
+        "name": "我的野蛮女友",
+        "url": "wodeyemannvyou.jpg",	"brief":"《我的野蛮女友》是由郭在容执导，全智贤、车太贤主演的一部韩国爱情电影。影片是根据韩国一部颇为流行的网络小说改编而成。讲述了既美丽又野蛮的女主与大学生牵牛之间发生的有趣而又浪漫爱情故事。2001年07月26日于韩国上映。"
+    },
+	{
+        "name": "假如爱有天意",
+        "url": "jiaruai.jpg",	"brief":"《假如爱有天意》是由导演郭在容担任编剧及导演，孙艺珍、曹承佑、赵寅成等共同主演的韩国爱情电影，其创作灵感来自于一本韩国小说“RAINFALL”。影片讲述了大学生智惠，无意中找到母亲主熙留下的日记，重温她的初恋。"
+    },
+	{
+        "name": "鸣梁",
+        "url": "mingliang.jpg",
+        "brief":"《鸣梁海战》是韩国导演金韩民执导的一部战争电影，由崔岷植饰演将军李舜臣，讲述了朝鲜名将李舜臣率领12艘军舰，击败了数十倍于自己的日军水师的传奇故事。"
+    },
+	{
+        "name": "阳光姐妹淘",
+        "url": "ygjmt3.jpg",
+		"brief":"《阳光姐妹淘》2011年上映的一部韩国喜剧电影，由姜炯哲导演执导，沈恩京、姜素拉、闵孝琳等主演。故事采用了现实和回忆交错的结构方式，即在展示“过去”的同时也展现了“现代”。"
+    },
+	{
+        "name": "熔炉",
+        "url": "ronglu.jpg",
+        "brief": "电影《熔炉》改编自孔枝泳作家同名小说，以发生於光州一所聋哑障碍人学校中性暴力事件为蓝本所描述的真实故事。"
+    },
+	{
+        "name": "开心家族",
+        "url": "kaixinjiazu.jpg",
+		 "brief":"《开心家族》是一部由车太贤主演的韩国喜剧，讲述的是一名男子（车太贤饰）身处绝望之境，在死亡之前与现身前来阻止自己的鬼魂相遇并由此展开一连串的搞笑故事。该电影获得2011年第32届韩国电影青龙奖第二名。"
+    },
+    {
+        "name": "盗贼联盟",
+        "url": "duobaolianmeng.jpg",
+		 "brief":"《盗贼同盟》影片讲述5名身怀绝技的韩国小偷接受前任大佬的提议，与4名中国小偷集团成员合作，盗窃隐藏在澳门赌场内的钻石“太阳之泪”的过程。"
+    },
+	 {
+        "name": "雏菊",
+        "url": "chuju.jpg",
+        "brief": "雏菊以黑帮作为故事背景，描述国际刑警正宇正在执行追捕逃犯的任务，而他的心却被偶遇的画家慧瑛所捕获。谁料被他追捕的杀手朴义，与他爱上了同一个女人。纠缠在三人之间的命中注定的爱情，从此开始。 "
+    },
+	{
+        "name": "创可贴",
+        "url": "chuangketie.jpg",
+		 "brief":"《创可贴》是由郑基勋执导，高修、韩孝珠、马东锡、金成伍等主演的韩国爱情片。影片讲述了因失去爱妻内心受到创伤的消防员姜一与同样受到感情伤害的队医美秀相识相恋，相互“疗伤”的故事。"
+    },
+	{
         "name": "白夜行",
         "url": "baiyexing.jpg",
         "brief": "《白夜行》改编自日本推理小说家东野圭吾的同名作品，由朴信宇导演执导，韩石圭、孙艺珍、高洙主演。"
     },
 	{
-        "name": "共同警备区",
-        "url": "gongtongjingbeiqu.jpg"
-    },
-	{
-        "name": "辩护人",
-        "url": "bianhuren.jpg"
-    },
-	{
         "name": "七号房的礼物",
-        "url": "qihaofangdliwu.jpg"
-    },
-	{
-        "name": "卑劣的街头",
-        "url": "beiliedejietou.jpg"
-    },
-	{
-        "name": "老男孩",
-        "url": "laonanhai.jpg"
-    },
-	 {
-        "name": "流感",
-        "url": "liugan.jpg"
-    },
-	{
-        "name": "我的野蛮女友",
-        "url": "wodeyemannvyou.jpg"
-    },
-	{
-        "name": "阳光姐妹淘",
-        "url": "ygjmt3.jpg"
+        "url": "qihaofangdliwu.jpg",
+		 "brief": "《7号房的礼物》是一部2013年上映的韩国悲喜剧电影，是韩国第8部超过1000万观影人次的本土电影。电影由柳承龙 葛素媛 郑镇荣 等人联合主演.《7号房的礼物》是韩影史票房第一位的喜剧电影，第二为《奇怪的她》，第三为《超速绯闻》。"
     },
 	{
         "name": "我脑海中的橡皮擦",
-        "url": "wonaohaizhongde.jpg"
+        "url": "wonaohaizhongde.jpg",
+		"brief":"电影由郑宇成、孙艺珍联袂主演，《我脑中的橡皮擦》讲述的是关于一个女孩的记忆。哲洙是一个私生子，在建筑公司当工人，他的梦想是成为建筑师。秀真是富人家的千金，可她却有着非常严重的健忘症。有一天……"
     },
-    {
-        "name": "温暖的告别",
-        "url": "wennuandegaobie.jpg"
-    },
-    {
-        "name": "委托人",
-        "url": "weituoren.jpg"
-    },
-    {
-        "name": "王的男人",
-        "url": "wangdenanren.jpg"
-    },
-    {
-        "name": "蓝盐",
-        "url": "lanyan.jpg"
-    },
-    {
-        "name": "不当交易",
-        "url": "budangjiaoyi.jpg"
-    },
-    {
-        "name": "新世界",
-        "url": "xinshijie.jpg"
-    },
-    {
-        "name": "回家的路",
-        "url": "huijiadelu.jpg"
-    },
-    {
-        "name": "惊险游戏",
-        "url": "jxyx.jpg"
-    },
-    {
-        "name": "双面君王",
-        "url": "shaungmianjunwang.jpg"
-    },
-    {
-        "name": "回归",
-        "url": "huigui.jpg"
-    },
-    {
-        "name": "落跑老爸",
-        "url": "luopaolaoba.jpg"
-    },
-    {
-        "name": "人间中毒",
-        "url": "renjianzongdu.jpg"
-    },
-    {
-        "name": "蒙太奇",
-        "url": "mtq.jpg"
-    },
-    {
-        "name": "率性而活",
-        "url": "shuaixingerhuo.jpg"
-    },
-    {
-        "name": "共谋者",
-        "url": "gongmouzhe.jpg"
-    },
-    {
-        "name": "傻瓜",
-        "url": "shagua.jpg"
-    },
-    
-    {
-        "name": "醉画仙",
-        "url": "zuihuaxian.jpg"
-    },
-    {
-        "name": "爱人",
-        "url": "airen.jpg"
-    },
-    {
-        "name": "苔藓",
-        "url": "taixian.jpg"
-    },
-    {
-        "name": "奥罗拉公主",
-        "url": "aoluolagongzhu.jpg"
-    },
-    {
-        "name": "心跳",
-        "url": "xintiao.jpg"
-    },
-    {
-        "name": "悲伤电影",
-        "url": "beishangdianying.jpg"
-    },
-    {
-        "name": "抓奸侦探",
-        "url": "zhuajianzhentan.jpg"
-    },
-    {
-        "name": "邻居",
-        "url": "linju.jpg"
-    },
-    {
-        "name": "我的哥哥",
-        "url": "wodegege.jpg"
-    },
-    {
-        "name": "摩天楼",
-        "url": "moutianlou.jpg"
-    },
-    {
-        "name": "海盗",
-        "url": "haidao.jpg"
-    },
-    {
-        "name": "高跟鞋",
-        "url": "gaogenxie.jpg"
-    },
-    {
-        "name": "平行理论",
-        "url": "pingxinglilun.jpg"
-    },
-    {
-        "name": "罗密欧点",
-        "url": "luomioudian.jpg"
-    },
-    {
-        "name": "妈妈别哭",
-        "url": "mamabieku.jpg"
-    },
-    {
-        "name": "冠军",
-        "url": "guanjun.jpg"
-    },
-    {
-        "name": "甜蜜的人生",
-        "url": "tianmiderensheng.jpg"
-    },
-    {
-        "name": "外出",
-        "url": "waichu.jpg"
-    },
-    {
-        "name": "实尾岛",
-        "url": "shiweidao.jpg"
-    },
-    
-    {
-        "name": "捉迷藏",
-        "url": "zhuomicang.jpg"
-    },
-    
-    {
-        "name": "年轻的母亲",
-        "url": "nqdmq.jpg"
-    },
-    {
-        "name": "公司职员",
-        "url": "gongsizhiyuan.jpg"
-    },
-    {
-        "name": "太极旗飘扬",
-        "url": "taijiqipiaoyang.jpg"
-    },
-    {
-        "name": "北逃",
-        "url": "beitao.jpg"
-    },
-    {
-        "name": "布拉夫夫人",
-        "url": "bulafufuren.jpg"
-    },
-    {
-        "name": "怆寿",
-        "url": "changshou.jpg"
-    },
-    
-    {
-        "name": "顶级较量",
-        "url": "dingjijiaoliang.jpg"
-    },
-    {
-        "name": "方糖",
-        "url": "fangtang.jpg"
-    },
-    {
-        "name": "丰山犬",
-        "url": "fengshanquan.jpg"
-    },
-    {
-        "name": "购物车",
-        "url": "gouwuche.jpg"
-    },
-    {
-        "name": "国际市场",
-        "url": "guojishichang.jpg"
-    },
-    {
-        "name": "为了皇帝",
-        "url": "weilehuangdi.jpg"
-    },
-    {
-        "name": "仁寺洞丑闻",
-        "url": "rensidongchouwen.jpg"
-    },
-    {
-        "name": "今天的恋爱",
-        "url": "jintiandelianai.jpg"
-    },
-    {
-        "name": "伟大的族谱",
-        "url": "weidadezupu.jpg"
-    },
-    {
-        "name": "当男人恋爱时",
-        "url": "dangnanrenlianaishi.jpg"
-    },
-    {
-        "name": "电影就是电影",
-        "url": "dianyingjiushidianying.jpg"
-    },
-    {
-        "name": "可疑的顾客们",
-        "url": "keyidegukemen.jpg"
-    },
-    {
-        "name": "周末同床",
-        "url": "zhoumotongchuang.jpg"
-    },
-    {
+	{
         "name": "奶奶强盗团",
-        "url": "nainaiqiangdaotuan.jpg"
+        "url": "nainaiqiangdaotuan.jpg",
+		"brief":"讲述了3个老太太省吃俭用了8年积攒下来一笔钱，打算作为夏威夷旅行的资金使用，却在银行存钱时被抢匪劫去。大为恼火的三人为了追回钱只能扮作银行抢匪，并在实施计划的过程中发生了不少爆笑事件。"
+
+    },
+	{
+        "name": "素媛",
+        "url": "suyuan.jpg",
+		"brief":"电影全长122分钟，展示一个未成年少女在遭遇性侵后如何走出心灵的阴影和家人如何面对生活的故事，根据韩国真实案件改编而来。该片获2013年第34届韩国电影青龙奖最佳影片。"
+    },
+	{
+        "name": "老男孩",
+        "url": "laonanhai.jpg",
+		"brief":"影片讲述了一个复仇的故事，主人公吴大修在一次醉酒回家的路上突遭绑架，被囚禁在一个私人监牢中长达15年之久，在最终得以重见天日之后，他不顾一切的要找到自己遭到绑架的原因，并展开了疯狂的复仇计划。"
+    },
+	{
+        "name": "隐秘而伟大",
+        "url": "yinmierweida.jpg",
+		"brief":"影片由张哲秀导演，金秀贤、朴基雄、李玹雨主演。上映后连续刷新韩国影史十一项票房纪录，以中小成本的投资规模最终累计票房696万3821观影人次   ，在2013年韩国本土片中排名年度第五。"
+    },
+	{
+        "name": "共同警备区",
+        "url": "gongtongjingbeiqu.jpg",
+		"brief":"《共同警备区》是由朴赞郁执导，宋康昊、李秉宪、李英爱、申河均主演的悬疑冷战电影。影片以朝鲜半岛南北关系为背景，讲述了韩朝士兵从对立的驻守军人发展为好友却又兵戎相见的故事."
+    },
+	{
+        "name": "晚秋",
+        "url": "wanqiu.jpg",
+        "brief": "《晚秋》是金泰勇执导的一部电影，由汤唯、玄彬主演，根据李满熙导演1966年的同名电影改编而成，影片以美国西雅图为背景，讲述两名男女在异国他乡的爱情故事。 "
     },
     {
-        "name": "完美搭档",
-        "url": "wanmeidadang.jpg"
+        "name": "天国的邮递员",
+        "url": "tianguodeyoudiyuan.jpg",
+        "brief": "《天国的邮递员》是由CJEntertainment于2009年出品的电视电影，采用一部电影加两集TV电视的形式播出。由李亨民导演、北川悦吏子编剧，金在中、韩孝周领衔主演 。该片讲述了在生死的边缘，彼此生活在不同的世界上两个男女的爱情故事。 "
     },
-    {
-        "name": "少年菀得",
-        "url": "shaonianyude.jpg"
-    },
-    {
-        "name": "庆州",
-        "url": "qingzhou.jpg"
-    },
-    {
-        "name": "快乐人生",
-        "url": "kuailerensheng.jpg"
-    },
-    {
+	{
         "name": "慢放镜头",
-        "url": "manfangjingtou.jpg"
+        "url": "manfangjingtou.jpg",
+		"brief":"《慢放镜头》中，车太贤饰演的主人公拥有所谓的“动态视力”，能看到一般人看不到的瞬间。他因此成为了韩国监视器管制中心的王牌职员，从无数的监视镜头呈现的画面中找出解决问题的关键。"
+    },
+	{
+        "name": "香草",
+        "url": "xiangcao.jpg",
+		"brief":"尚银（姜惠贞饰）是一个20岁的年轻女孩，虽然尚银的生理年龄已经20岁，但她的心理年龄却只有7岁，每天尚银都沉浸在自己的世界里，天真、快乐的生活着。"
+    },
+	{
+        "name": "雪国列车",
+        "url": "xueguolieche.jpg",
+		"brief":"《雪国列车》改编自获得1986年昂格莱姆国际漫画节大奖的法国同名科幻漫画原著，由韩国著名导演奉俊昊执导，韩国著名导演朴赞郁担任制片人。影片于2013年8月1日在韩国公映。首日观众60万997人次，刷新了韩国平日单片最高票房纪录。"
+    },
+	{
+        "name": "朋友2",
+        "url": "pengyou2.jpg",
+		"brief":"《朋友2》是由郭景泽执导，刘五性、金宇彬、朱镇模等主演的韩国黑帮电影，也是郭景泽2001年导演的影片《朋友》的续作。"
+    },
+	{
+        "name": "监视者们",
+        "url": "jianshizhemen.jpg",
+		"brief":"《监视者们》翻拍自香港电影《跟踪》，描写隐蔽真实身份的监视专家们与每次受到危机四伏的追踪却都能幸运逃脱的秘密犯罪者之间惊心动魄的对决。"
+    },
+	{
+        "name": "我的黑色小礼服",
+        "url": "wodeheisexiaolifu.jpg",
+        "brief": "《我的黑色小礼服》是由许仁茂执导，尹恩惠、朴寒星、车艺莲、刘仁娜主演的一部韩国剧情片。影片讲述了走出校园后在梦想与现实之间彷徨的20岁年轻女性们的故事。 "
+    },
+	{
+        "name": "黄海",
+        "url": "huanghai.jpg",
+        "brief":"黄海，《追击者》原班人马崭新力作，在中韩两地取景，讲述河正宇扮演的朝鲜族出租车司机偷渡到韩国杀人、寻妻并卷入阴谋的故事，是一部极端残酷的现实主义作品。 "
+    },
+	{
+        "name": "新世界",
+        "url": "xinshijie.jpg",
+        "brief": "《新世界》是2013年由朴勋政自编自导，黄政民，李政宰等主演的一部犯罪剧情片，讲述了一个发生在警察、黑帮“卧底”和黑帮老大之间的关于阴谋与背叛的故事。 "
+    },
+	{
+        "name": "卑劣的街头",
+        "url": "beiliedejietou.jpg",
+        "brief":"2006年韩国黑帮电影，由柳河执导，赵寅成、李宝英等主演。该片通过对三流黑帮头目“炳斗”在各黑色利益集团之间跌宕起伏的遭遇的讲述，达到对“欲望”“利益”等人性问题的探讨 "
     },
     {
-        "name": "我们是兄弟",
-        "url": "womenshixiongdi.jpg"
+        "name": "与犯罪的战争",
+        "url": "yufanzuidzhanzheng.jpg",
+        "brief": "《与犯罪的战争》是尹钟彬导演的犯罪题材影片，由韩国演员河正宇、崔岷植出演，讲述了釜山一带黑恶势力在内外夹击的生死关头面临的人性挑战。 "
+    },
+	{
+        "name": "朝我的心脏开枪",
+        "url": "chaowodexinzangkaiqiang.jpg",
+        "brief": "朝我的心脏开枪 是由畅销书作家郑柚井曾荣获2009年第5届世界文学奖的同名小说改编而成的作品。因为疯了被关进精神病院和被关进精神病院而疯了的两个20多岁的男子一起逃出精神病院的故事。 "
+    },
+	{
+        "name": "演员就是演员",
+        "url": "yanyuanjiushiyanyuan.jpg",
+        "brief": "演员就是演员由金基德任编剧和制作人、韩国偶像团体MBLAQ成员李准主演的影片。奇特呈现并解读“演员”这一职业。讲述了疯狂想要成名的小演员一夜蹿红又经历人气下滑跌落谷底的故事，真实再现了一个演员大喜大悲、人生如戏的不同阶段。 "
+    },
+	{
+        "name": "共谋者",
+        "url": "gongmouzhe.jpg",
+        "brief": "《共谋者》，由金洪宣导演，将镜头对准了人体器官走私贩卖组织，讲述了在中韩之间往返的游船之上，以无辜游客作为脏器获取对象的黑暗故事。 "
+    },
+	{
+        "name": "我的小小新娘",
+        "url": "wodexiaoxiaoxinniang.jpg",
+        "brief": "导演：金豪俊 年龄，身高，心智的差距是男女主角要克服的问题，也是本片笑料的发源地。 "
+    },
+	{
+        "name": "薄荷糖",
+        "url": "bohetang.jpg",
+        "brief": "导演:李沧东 主演: 薛景求,文素利 以完全倒叙的方式结构整部电影的片子，近来最知名的有三部：[失忆]，[不可撤消]及本片 "
+    },
+	{
+        "name": "孝子洞理发师",
+        "url": "xiaozidonglifashi.jpg",
+        "brief": "导演：林振生 主演：宋江浩，文素利 本片是一部温馨幽默的电影，用一个小小理发师的命运折射出韩国的政治变化。 "
+    },
+	{
+        "name": "恋爱操作团",
+        "url": "lianaicaozuotuan.jpg",
+        "brief": "《恋爱操作团》翻拍自法国同名影片，被称为“韩国版的《大鼻子情圣》”，讲述了为剩男剩女们实现爱情的“恋爱代理人”的故事。 "
+    },
+	{
+        "name": "柏林",
+        "url": "bolin.jpg",
+        "brief": "《柏林》被定位为谍战动作悬疑片，耗资百亿韩币，是2013年最受期待的影片之一。该片以德国柏林为背景，讲述了深陷国际阴谋被祖国抛弃的四位朝韩特工，为了各自不同的目的，各自为战并相互展开追击的惊险追逃故事 "
+    },
+	{
+        "name": "傻瓜",
+        "url": "shagua.jpg",
+        "brief": "影片改编自韩国网络漫画家姜道英的同名漫画《傻瓜》，讲述在一条小村子里有位27岁还天真烂漫的傻瓜承龙，一边照顾着唯一的妹妹，一边等待外留学的初恋，终于在10年等待后，这位承龙心目中的天使回到了小村庄，重新相遇后二人发生的故事。 "
+    },
+	{
+        "name": "周末同床",
+        "url": "zhoumotongchuang.jpg",
+        "brief": "周末同床 最轻松愉快的韩国情色片 "
     },
     {
-        "name": "我爱你",
-        "url": "woaini.jpg"
+        "name": "霜花店",
+        "url": "xianghuadian.jpg",
+        "brief": "《霜花店》是由柳河编导，赵寅成、朱镇模、宋智孝主演的一部韩国剧情片。影片讲述了高丽国王，美少年组成的亲卫队“健龙卫”队长，美丽的王妃之间上演的美丽而危险的有关爱情与背叛的故事。 "
     },
     {
-        "name": "我的爱在我身边",
-        "url": "wodeaizaiwoshenbian.jpg"
-    },
-    {
-        "name": "技术者们",
-        "url": "jishuzhemen.jpg"
-    },
-    {
-        "name": "田禹治",
-        "url": "tianyuzhi.jpg"
-    },
-    {
-        "name": "真实游戏",
-        "url": "zhenshiyouxi.jpg"
-    },
-    {
-        "name": "美人图",
-        "url": "meirentu.jpg"
-    },
-    {
-        "name": "老兵",
-        "url": "laobing.jpg"
-    },
-    {
-        "name": "荆棘",
-        "url": "jingji.jpg"
-    },
-    {
-        "name": "菊花香",
-        "url": "juhuaxiang.jpg"
-    },
-    {
-        "name": "谁和她睡过了",
-        "url": "shuihetashuiguole.jpg"
-    },
-    {
-        "name": "雪之泪",
-        "url": "xuezhilei.jpg"
-    },
-    {
-        "name": "马粥街残酷史",
-        "url": "mazhoujiecankushi.jpg"
-    },
-    {
-        "name": "鸣梁",
-        "url": "mingliang.jpg"
-    },
-    {
-        "name": "黑色之家",
-        "url": "heisezhijia.jpg"
+        "name": "我的见鬼女友",
+        "url": "wodejianguinvyou.jpg",
+        "brief": "影片讲述了女主人公予丽因童年的一场意外车祸不幸遭遇可以看到鬼魂出没，后来邂逅惊悚魔术师兆邱因“见鬼”而生情，上演了一场有些惊悚却也甜蜜有趣的爱情故事。 "
     },
     
+    {
+        "name": "流感",
+        "url": "liugan.jpg",
+        "brief": "《流感》是由金成洙编导，张赫、秀爱主演的一部韩国灾难惊悚电影。影片讲述的是致命感冒病毒大爆发的时期，消防员“姜智久”与女医生“金仁慧”共同踏上寻找病毒宿主之路，并在途中发生的一连串故事。 "
+    },
+	{
+        "name": "今天的恋爱",
+        "url": "jintiandelianai.jpg",
+        "brief": "电影讲述小学老师姜俊秀和天气主播金贤雨是相识18年的朋友。他们是连住处密码也知道的关系，却不是恋人。俊秀对贤雨有意，贤雨却喜欢去别人那里寻找心动的感觉。  "
+    },
+	{
+        "name": "汉江怪物",
+        "url": "hanjiangguiwu.jpg",
+        "brief": "《汉江怪物》是以一个传统韩国家庭面对汉江怪物为题材，宋康昊、裴斗娜等主演的一部科幻电影，电影由奉俊昊导演，于2006年7月27日韩国上映。 "
+    },
+	{
+        "name": "妻子结婚了",
+        "url": "qizijiehunle.jpg",
+        "brief": " 改自同名小说作品的韩国剧情片，由郑允洙所执导，演员孙艺珍、金柱赫、朱相昱等领衔主演。该片于2008年10月23日在韩国上映。 影片讲述了一个女人不顾已婚的身分宣言要再结婚一次，同时拥有两个丈夫的故事。"
+    },
+	{
+        "name": "嫌疑人X的献身",
+        "url": "xianyirenX.jpg",
+        "brief": "电影《嫌疑人X的献身》讲述了一位寡言的天才数学家石固，他暗恋着特别亲和的女邻居花善，有一天他察觉花善出于自卫而杀人的事实。数学家石固为了保全心爱的花善，为这桩犯罪设计完美的不在场的证明。 "
+    },
+	{
+        "name": "共犯",
+        "url": "gongfan.jpg",
+        "brief": "刚刚在灾难大片《摩天楼》中 饱受水火之苦的韩国美女孙艺珍，将在2013年为我们带来一部新作《共犯》，“喜剧女王”女王继《白夜行》之后将再展惊悚演技。 "
+    },
+    {
+        "name": "只有你",
+        "url": "zhiyouni.jpg",
+        "brief": "只有你 是韩国导演宋一坤2011年最新力作，影片主要讲述的是韩国人最擅长的纯真爱情故事，在2011年釜山电影节被选为开幕之作。 "
+    },
+    {
+        "name": "观相",
+        "url": "guanxiang.jpg",
+        "brief": "该片讲述的是朝鲜时代的内卿首阳大君，被卷入金宗瑞的权力斗争中的故事。 "
+    },
+	{
+        "name": "我是杀人犯",
+        "url": "woshisharenfan.jpg",
+        "brief": "讲述了连锁杀人犯李斗锡（朴施厚饰）在15年公诉时效结束两年后，承认自己是杀人犯并以犯案经历为基础编著忏悔传《我是杀人犯》而一举成名，而警官崔向久（郑在泳饰）为了将不受法律制约的李斗锡绳之以法而不断冒险调查杀人事件中未解之谜的故事。 "
+    },
+    {
+        "name": "朋友",
+        "url": "pengyou.jpg",
+        "brief": " 这部融合吸收了众多我国香港江湖片元素的血性影片，拍出了韩国特有的凌烈和实感，其实电影也如江湖，没有永远的朋友，没有永远的师徒 "
+    },
+	{
+        "name": "奇怪的她",
+        "url": "qiguaideta.jpg",
+        "brief": "《奇怪的她》是由黄东赫执导的韩国喜剧电影，讲述了70多岁的老奶奶突然变成了20多岁的花季女子的奇幻故事。由沈恩京、罗文姬等主演，于2014年1月22日在韩国上映。"
+    },
+	{
+        "name": "马粥街残酷史",
+        "url": "mazhoujiecankushi.jpg",
+        "brief": "《马粥街残酷史》是由韩国导演柳河执导，权相佑，韩佳人，李廷镇主演一部学院派动作爱情影片，该片描述了转入正文高中的模范学生铉洙、大哥雨植及漂亮的女生银洙之间的三角恋情和友情。 "
+    },
     {
         "name": "我的PS搭档",
-        "url": "wodepsdadang.jpg"
+        "url": "wodepsdadang.jpg",
+        "brief": "《我的PS搭档》是由卞成贤执导，金雅中、池城联袂主演的爱情喜剧片。影片讲述的是被爱情伤害过一男一女因为偶然的串线导致阴差阳错地互通了电话，通话的过程既搞笑又充满刺激性的对话，是一出极富喜感的故事 "
     },
-   
-    {
-        "name": "哭泣的拳头",
-        "url": "kuqidequantou.jpg"
-    },
-    {
-        "name": "雏菊",
-        "url": "chuju.jpg"
-    },
-    {
-        "name": "帝王之妾",
-        "url": "diwangzhiqie.jpg"
-    },
-    {
-        "name": "七天",
-        "url": "qitian.jpg"
-    },
-    {
-        "name": "快乐到死",
-        "url": "kuailedaosi.jpg"
-    },
-    {
-        "name": "两个心脏",
-        "url": "lianggexinzang.jpg"
-    },
-    {
+	{
         "name": "神之一手",
-        "url": "shenzhiyishou.jpg"
+        "url": "shenzhiyishou.jpg",
+        "brief": "《神之一手》是由赵范九执导，郑雨盛、李凡秀、李诗英、安圣基领衔主演的一部犯罪动作片。影片讲述的是被杀手组织阴谋陷害以杀兄罪名入狱的围棋选手泰硕在出狱后展开复仇的故事。 "
     },
     {
         "name": "海岸线",
-        "url": "haianxian.jpg"
+        "url": "haianxian.jpg",
+        "brief": "帅哥张东健的出现令人将这部深刻探讨人性的影片误认为战争片。 "
+    },
+	{
+        "name": "孤胆特工",
+        "url": "gudantegong.jpg",
+        "brief": "《孤胆特工》是由李桢凡执导，元斌和金赛纶领衔主演的一部韩国动作剧情片。影片讲述主人公是过着与世隔绝生活的一名男子，在唯一能敞开心扉的少女被绑架之后，主人公为了救她而不惜一切代价的故事。 "
+    },
+	{
+        "name": "看见恶魔",
+        "url": "kanjianemo.jpg",
+        "brief": "电影《看见恶魔》讲述的是以杀人作为人生乐事的连环杀人魔与决心为死去的未婚妻报复的李秉宪之间展开的对决。由于本片的部分镜头过于血腥而成为韩国首部被限制上映的商业影片。 "
+    },
+	{
+        "name": "春夏秋冬又一春",
+        "url": "chunxiaqiudongyouyichun.jpg",
+        "brief": "导演：金基德 主演：吴永洙，徐在英 《春夏秋冬又一春]》的背景是一格局封闭的空间，可以看作是一个有所局限的世界或精神世界的隐喻。 "
     },
     {
-        "name": "亲切的金子",
-        "url": "qinqiedjinzi.jpg"
+        "name": "加油站袭击事件",
+        "url": "jiayouzhanxijishijian.jpg",
+        "brief": "四个发色各异的青年，一夜之间两次袭击一家加油站，搞定加油站老板和工作人员后，揍人，对话和营业的方式，一切按他们的逻辑重新设定。 "
+    },
+    {
+        "name": "外婆的家",
+        "url": "waipodejia.jpg",
+        "brief": "女导演李廷香把这部亲情片拍得非常酷，小男孩和祖母之间的关系并不是简单的迂回递讲，而是纠缠在这个男孩的反复无常中。 "
+    },
+	{
+        "name": "我女友的男朋友",
+        "url": "wonvyoudenanpengyou.jpg",
+        "brief": "是一部由韩国演员高多美，崔元英主演的写爱情喜剧，于2007年3月22日在韩国上映。 "
+    },
+    {
+        "name": "温暖的告别",
+        "url": "wennuandegaobie.jpg",
+        "brief": " "
+    },
+    {
+        "name": "委托人",
+        "url": "weituoren.jpg",
+        "brief": " "
+    },
+    {
+        "name": "王的男人",
+        "url": "wangdenanren.jpg",
+        "brief": " "
+    },
+    {
+        "name": "蓝盐",
+        "url": "lanyan.jpg",
+        "brief": " "
+    },
+	
+    {
+        "name": "不当交易",
+        "url": "budangjiaoyi.jpg",
+        "brief": " "
+    },
+    
+    {
+        "name": "回家的路",
+        "url": "huijiadelu.jpg",
+        "brief": " "
+    },
+	
+    {
+        "name": "惊险游戏",
+        "url": "jxyx.jpg",
+        "brief": " "
+    },
+    {
+        "name": "双面君王",
+        "url": "shaungmianjunwang.jpg",
+        "brief": "影片以朝鲜光海君为了逃避被毒杀的危机，便由与其相貌酷似的平民代替了王的身份为主题，讲述光海君在朝鲜历史上消失的那15天里所未人知的故事。 "
+    },
+    {
+        "name": "回归",
+        "url": "huigui.jpg",
+        "brief": " "
+    },
+    {
+        "name": "落跑老爸",
+        "url": "luopaolaoba.jpg",
+        "brief": " "
+    },
+    {
+        "name": "蒙太奇",
+        "url": "mtq.jpg",
+        "brief": " "
+    },
+    {
+        "name": "率性而活",
+        "url": "shuaixingerhuo.jpg",
+        "brief": " "
+    },
+    
+    
+    {
+        "name": "醉画仙",
+        "url": "zuihuaxian.jpg",
+        "brief": " "
+    },
+    {
+        "name": "爱人",
+        "url": "airen.jpg",
+        "brief": " "
+    },
+    {
+        "name": "苔藓",
+        "url": "taixian.jpg",
+        "brief": " "
+    },
+    {
+        "name": "奥罗拉公主",
+        "url": "aoluolagongzhu.jpg",
+        "brief": " "
+    },
+    {
+        "name": "心跳",
+        "url": "xintiao.jpg",
+        "brief": " "
+    },
+    {
+        "name": "悲伤电影",
+        "url": "beishangdianying.jpg",
+        "brief": " "
+    },
+    {
+        "name": "抓奸侦探",
+        "url": "zhuajianzhentan.jpg",
+        "brief": " "
+    },
+    {
+        "name": "邻居",
+        "url": "linju.jpg",
+        "brief": " "
+    },
+    {
+        "name": "我的哥哥",
+        "url": "wodegege.jpg",
+        "brief": " "
+    },
+    {
+        "name": "摩天楼",
+        "url": "moutianlou.jpg",
+        "brief": " "
+    },
+    {
+        "name": "海贼",
+        "url": "haidao.jpg",
+        "brief": " "
+    },
+    {
+        "name": "高跟鞋",
+        "url": "gaogenxie.jpg",
+        "brief": " "
+    },
+    {
+        "name": "平行理论",
+        "url": "pingxinglilun.jpg",
+        "brief": " "
+    },
+    {
+        "name": "罗密欧点",
+        "url": "luomioudian.jpg",
+        "brief": " "
+    },
+    {
+        "name": "妈妈别哭",
+        "url": "mamabieku.jpg",
+        "brief": " "
+    },
+    {
+        "name": "冠军",
+        "url": "guanjun.jpg",
+        "brief": " "
+    },
+    {
+        "name": "甜蜜的人生",
+        "url": "tianmiderensheng.jpg",
+        "brief": " "
+    },
+    {
+        "name": "外出",
+        "url": "waichu.jpg",
+        "brief": " "
+    },
+    {
+        "name": "实尾岛",
+        "url": "shiweidao.jpg",
+        "brief": "《实尾岛》是一部完全可以媲美斯皮尔伯格《拯救大兵瑞恩》的战争片，铁丝网下的训练，死囚与教官之间的矛盾，以及死囚重新面临死亡时的挣扎与迷茫，团结与背叛，使这部讲述死囚的影片显示出了格外的动作魅力。 "
+    },
+    {
+        "name": "捉迷藏",
+        "url": "zhuomicang.jpg",
+        "brief": " "
+    },
+    {
+        "name": "年轻的母亲",
+        "url": "nqdmq.jpg",
+        "brief": " "
+    },
+    {
+        "name": "公司职员",
+        "url": "gongsizhiyuan.jpg",
+        "brief": " "
+    },
+    {
+        "name": "太极旗飘扬",
+        "url": "taijiqipiaoyang.jpg",
+        "brief": " 《太极旗飘扬》是由姜帝圭执导，张东健、元斌联袂主演的战争电影。影片以1950年爆发的朝鲜半岛战争为时代背景，讲述了一对被迫被推上战场的亲兄弟的悲情命运。"
+    },
+    {
+        "name": "北逃",
+        "url": "beitao.jpg",
+        "brief": " "
+    },
+    {
+        "name": "布拉芙夫人",
+        "url": "bulafufuren.jpg",
+        "brief": " "
+    },
+    {
+        "name": "怆寿",
+        "url": "changshou.jpg",
+        "brief": " "
+    },
+    {
+        "name": "顶级较量",
+        "url": "dingjijiaoliang.jpg",
+        "brief": " "
+    },
+    {
+        "name": "方糖",
+        "url": "fangtang.jpg",
+        "brief": " 电影《方糖》是由著名女演员林秀晶主演的一部韩国电影，影片讲述的是一个梦想成为优秀骑手的少女和她的爱马挑战梦想的故事。电影以爱马天雷喜欢吃的方糖为媒介，讲述了诗恩与天雷的幸福回忆和美好梦想。"
+    },
+    {
+        "name": "丰山犬",
+        "url": "fengshanquan.jpg",
+        "brief": " "
+    },
+    {
+        "name": "购物车",
+        "url": "gouwuche.jpg",
+        "brief": " "
+    },
+    {
+        "name": "国际市场",
+        "url": "guojishichang.jpg",
+        "brief": " "
+    },
+    {
+        "name": "为了皇帝",
+        "url": "weilehuangdi.jpg",
+        "brief": " "
+    },
+    {
+        "name": "仁寺洞丑闻",
+        "url": "rensidongchouwen.jpg",
+        "brief": " "
+    },
+    
+    {
+        "name": "伟大的族谱",
+        "url": "weidadezupu.jpg",
+        "brief": " "
+    },
+    {
+        "name": "当男人恋爱时",
+        "url": "dangnanrenlianaishi.jpg",
+        "brief": " "
+    },
+    {
+        "name": "电影就是电影",
+        "url": "dianyingjiushidianying.jpg",
+        "brief": " "
+    },
+    {
+        "name": "可疑的顾客们",
+        "url": "keyidegukemen.jpg",
+        "brief": " "
+    },
+    
+    {
+        "name": "少年菀得",
+        "url": "shaonianyude.jpg",
+        "brief": " "
+    },
+    {
+        "name": "庆州",
+        "url": "qingzhou.jpg",
+        "brief": " "
+    },
+    {
+        "name": "快乐人生",
+        "url": "kuailerensheng.jpg",
+        "brief": " "
+    },
+    {
+        "name": "我们是兄弟",
+        "url": "womenshixiongdi.jpg",
+        "brief": " "
+    },
+    {
+        "name": "我爱你",
+        "url": "woaini.jpg",
+        "brief": " "
+    },
+    {
+        "name": "我的爱在我身边",
+        "url": "wodeaizaiwoshenbian.jpg",
+        "brief": " "
+    },
+    {
+        "name": "技术者们",
+        "url": "jishuzhemen.jpg",
+        "brief": " "
+    },
+    {
+        "name": "田禹治",
+        "url": "tianyuzhi.jpg",
+        "brief": " "
+    },
+    {
+        "name": "真实游戏",
+        "url": "zhenshiyouxi.jpg",
+        "brief": " "
+    },
+    {
+        "name": "老兵",
+        "url": "laobing.jpg",
+        "brief": " "
+    },
+    {
+        "name": "荆棘",
+        "url": "jingji.jpg",
+        "brief": " "
+    },
+    {
+        "name": "菊花香",
+        "url": "juhuaxiang.jpg",
+        "brief": " "
+    },
+    {
+        "name": "谁和她睡过了",
+        "url": "shuihetashuiguole.jpg",
+        "brief": " "
+    },
+    {
+        "name": "雪之泪",
+        "url": "xuezhilei.jpg",
+        "brief": " "
+    },
+    
+    {
+        "name": "哭泣的拳头",
+        "url": "kuqidequantou.jpg",
+        "brief": " "
+    },
+   
+    {
+        "name": "帝王之妾",
+        "url": "diwangzhiqie.jpg",
+        "brief": " "
+    },
+    {
+        "name": "七天",
+        "url": "qitian.jpg",
+        "brief": " "
+    },
+    {
+        "name": "快乐到死",
+        "url": "kuailedaosi.jpg",
+        "brief": " "
+    },
+    {
+        "name": "两个心脏",
+        "url": "lianggexinzang.jpg",
+        "brief": " "
     },
     
     {
         "name": "欢迎来到东莫村",
-        "url": "huanyinglaidaodongmocun.jpg"
+        "url": "huanyinglaidaodongmocun.jpg",
+        "brief": " "
     },
     {
         "name": "纯情漫画",
-        "url": "chunqingmanhua.jpg"
+        "url": "chunqingmanhua.jpg",
+        "brief": " "
     },
     {
-        "name": "孩子们",
-        "url": "haizimen.jpg"
+        "name": "20岁的秘密生活",
+        "url": "20suidemimishenghuo.jpg",
+        "brief": " "
     },
     {
-        "name": "汉江怪物",
-        "url": "hanjiangguiwu.jpg"
+        "name": "26年",
+        "url": "26nian.jpg",
+        "brief": " "
     },
     {
-        "name": "两个月亮",
-        "url": "lianggeyueliang.jpg"
+        "name": "90分钟",
+        "url": "90fenzhong.jpg",
+        "brief": " "
     },
     {
-        "name": "孤胆特工",
-        "url": "gudantegong.jpg"
+        "name": "七级公务员",
+        "url": "qijigongwuyuan.jpg",
+        "brief": " "
     },
     {
-        "name": "野兽男孩",
-        "url": "yeshounanhai.jpg"
+        "name": "三个少女",
+        "url": "sangeshaonv.jpg",
+        "brief": " "
     },
     {
-        "name": "嚎叫",
-        "url": "haojiao.jpg"
+        "name": "不后悔",
+        "url": "buhouhui.jpg",
+        "brief": " "
     },
     {
-        "name": "神汉流氓",
-        "url": "shenahnliuman.jpg"
+        "name": "不忠的诱惑",
+        "url": "buzhongdeyouhuo.jpg",
+        "brief": " "
     },
     {
-        "name": "盲症",
-        "url": "mangzheng.jpg"
+        "name": "丑女大翻身",
+        "url": "chounvdafanshen.jpg",
+        "brief": " "
     },
     {
-        "name": "举报者",
-        "url": "jubaozhe.jpg"
+        "name": "世界上最美的离别",
+        "url": "shijieshangzuimeidelibie.jpg",
+        "brief": " "
     },
     {
-        "name": "消失的头颅",
-        "url": "xiaoshidetoulu.jpg"
+        "name": "举起金刚",
+        "url": "juqijingang.jpg",
+        "brief": " "
+    },
+    {
+        "name": "云霄飞车",
+        "url": "yunxiaofeiche.jpg",
+        "brief": " "
+    },
+    {
+        "name": "人狗奇缘",
+        "url": "rengouqiyuan.jpg",
+        "brief": " "
+    },
+    {
+        "name": "传说的拳头",
+        "url": "chuanshuodequantou.jpg",
+        "brief": " "
+    },
+    {
+        "name": "儿子",
+        "url": "erzi.jpg",
+        "brief": " "
+    },
+    {
+        "name": "再见男孩",
+        "url": "zaijiannanhai.jpg",
+        "brief": " "
+    },
+    {
+        "name": "出轨的滋味",
+        "url": "chuguideziwei.jpg",
+        "brief": " "
+    },
+    {
+        "name": "别告诉爸爸",
+        "url": "biegaosubaba.jpg",
+        "brief": " "
+    },
+    {
+        "name": "剧场前",
+        "url": "juchangqian.jpg",
+        "brief": " "
+    },
+    {
+        "name": "南方大作战",
+        "url": "nanfangdazuozhan.jpg",
+        "brief": " "
+    },
+    {
+        "name": "南营洞",
+        "url": "nanyingdong.jpg",
+        "brief": " "
+    },
+    {
+        "name": "卡车",
+        "url": "kache.jpg",
+        "brief": " "
+    },
+    {
+        "name": "向着炮火",
+        "url": "xiangzhepaohuo.jpg",
+        "brief": " "
+    },
+    {
+        "name": "君子好逑3",
+        "url": "junzihaoqiu3.jpg",
+        "brief": " "
+    },
+    {
+        "name": "哥哥我爱你",
+        "url": "gegewoaini.jpg",
+        "brief": " "
+    },
+    {
+        "name": "国家代表",
+        "url": "guojiadaibiao.jpg",
+        "brief": " "
+    },
+    {
+        "name": "夏娃的诱惑",
+        "url": "xiawadeyouhuo.jpg",
+        "brief": " "
+    },
+    {
+        "name": "大明猩",
+        "url": "damingxing.jpg",
+        "brief": " "
+    },
+    {
+        "name": "大麦的隐秘私生活",
+        "url": "damaideyinmisishenghuo.jpg",
+        "brief": " "
+    },
+	
+    {
+        "name": "天堂租来的房子",
+        "url": "tiantangzulaidefangzi.jpg",
+        "brief": " "
     },
     
     {
-        "name": "看见恶魔",
-        "url": "kanjianemo.jpg"
+        "name": "好女孩",
+        "url": "haonvhai.jpg",
+        "brief": " "
     },
     {
-        "name": "地铁惊魂",
-        "url": "ditiejinghun.jpg"
+        "name": "妻子的男人秘密",
+        "url": "qizidenanrenmimi.jpg",
+        "brief": " "
+    },
+    
+    {
+        "name": "娘家母亲",
+        "url": "niangjiamuqin.jpg",
+        "brief": " "
     },
     {
-        "name": "嫌疑人",
-        "url": "xiangyiren.jpg"
+        "name": "娜塔莉的情人",
+        "url": "natalideqingren.jpg",
+        "brief": " "
     },
     {
-        "name": "危险的传言",
-        "url": "weixiandechuanyan.jpg"
+        "name": "婚纱",
+        "url": "hunsha.jpg",
+        "brief": "《婚纱》是由权亨镇执导的一部关于母女情的影片，宋允儿、金香奇主演。影片讲述了一位身患绝症的单身母亲在有限的时间内和女儿之间的感人故事，于2010年在韩国上映。 "
     },
     {
-        "name": "野兽",
-        "url": "yeshou.jpg"
+        "name": "完美对垒",
+        "url": "wanmeiduilei.jpg",
+        "brief": " "
     },
     {
-        "name": "海雾",
-        "url": "haiwu.jpg"
+        "name": "官能女官",
+        "url": "guannengnvguan.jpg",
+        "brief": " "
     },
     {
-        "name": "彷徨之刃",
-        "url": "panghuangzhiren.jpg"
+        "name": "宝贝和我",
+        "url": "baobeihewo.jpg",
+        "brief": " "
     },
     {
-        "name": "熔炉",
-        "url": "ronglu.jpg"
+        "name": "寄宿公寓",
+        "url": "jisugongyu.jpg",
+        "brief": " "
     },
     {
-        "name": "恋爱的温度",
-        "url": "lianaidewendu.jpg"
+        "name": "密阳",
+        "url": "miyang.jpg",
+        "brief": " "
     },
     {
-        "name": "提线木偶",
-        "url": "tixianmuou.jpg"
+        "name": "对不起谢谢你",
+        "url": "duibuqixiexieni.jpg",
+        "brief": " "
     },
     {
-        "name": "火车",
-        "url": "huoche.jpg"
+        "name": "寻找金钟旭",
+        "url": "xunzhaojinzhongxu.jpg",
+        "brief": " "
     },
     {
-        "name": "畅销书",
-        "url": "changxiaoshu.jpg"
+        "name": "强哲",
+        "url": "qiangzhe.jpg",
+        "brief": " "
     },
     {
-        "name": "老师的恩惠",
-        "url": "laoshideenhui.jpg"
+        "name": "快递惊魂",
+        "url": "kuaidijinghun.jpg",
+        "brief": " "
+    },
+    
+    {
+        "name": "悲情的城市",
+        "url": "beiqingdechengshi.jpg",
+        "brief": " "
     },
     {
-        "name": "狼少年",
-        "url": "langshaonian.jpg"
+        "name": "情侣们",
+        "url": "qinglvmen.jpg",
+        "brief": " "
     },
     {
-        "name": "素媛",
-        "url": "suyuan.jpg"
+        "name": "情爱魔力",
+        "url": "qingaimoli.jpg",
+        "brief": " "
     },
     {
-        "name": "那家伙的声音",
-        "url": "najiahuodeshengyin.jpg"
+        "name": "我们的幸福时光",
+        "url": "womendexingfushiguang.jpg",
+        "brief": " "
     },
     {
-        "name": "走到尽头",
-        "url": "zoudaojintou.jpg"
-    },
-    {
-        "name": "计划男",
-        "url": "jihuanan.jpg"
-    },
-    {
-        "name": "监视者们",
-        "url": "jianshizhemen.jpg"
-    },
-    {
-        "name": "老千",
-        "url": "laoqian.jpg"
-    },
-    {
-        "name": "高地战",
-        "url": "gaodizhan.jpg"
-    },
-    {
-        "name": "杀人者",
-        "url": "sharenzhe.jpg"
-    },
-    {
-        "name": "母亲",
-        "url": "muqin.jpg"
-    },
-    {
-        "name": "卑劣的街头",
-        "url": "beiliedejietou.jpg"
-    },
-    {
-        "name": "哭泣的男人",
-        "url": "kuqidenanren.jpg"
-    },
-    {
-        "name": "韩公主",
-        "url": "hangongzhu.jpg"
-    },
-    {
-        "name": "奇怪的她",
-        "url": "qiguaideta.jpg"
-    },
-    {
-        "name": "昏迷",
-        "url": "hunmi.jpg"
-    },
-    {
-        "name": "三更",
-        "url": "sangeng.jpg"
-    },
-    {
-        "name": "和声",
-        "url": "hesheng.jpg"
-    },
-    {
-        "name": "优雅的谎言",
-        "url": "youyadehuangyan.jpg"
-    },
-    {
-        "name": "汉城大劫案",
-        "url": "hanchengdajiean.jpg"
-    },
-    {
-        "name": "假如爱有天意",
-        "url": "jiaruai.jpg"
-    },
-    {
-        "name": "失踪",
-        "url": "shizong.jpg"
-    },
-    {
-        "name": "宿命",
-        "url": "suming.jpg"
-    },
-    {
-        "name": "塑料树",
-        "url": "suliaoshu.jpg"
-    },
-    {
-        "name": "绿洲",
-        "url": "lvzhou.jpg"
-    },
-    {
-        "name": "爱的蹦极",
-        "url": "aidebengji.jpg"
-    },
-    {
-        "name": "五感图",
-        "url": "wugantu.jpg"
-    },
-    {
-        "name": "猪堕井的那天",
-        "url": "zhuduojingdeneitian.jpg"
-    },
-    {
-        "name": "春逝",
-        "url": "chunshi.jpg"
-    },
-    {
-        "name": "八月照相馆",
-        "url": "bayuezhaoxiangguan.jpg"
-    },
-    {
-        "name": "公路电影",
-        "url": "gongludianying.jpg"
-    },
-    {
-        "name": "漂流欲室",
-        "url": "piaoliuyushi.jpg"
-    },
-    {
-        "name": "男人的未来是女人",
-        "url": "nanrendeweilaishinvren.jpg"
-    },
-    {
-        "name": "周末同床",
-        "url": "zhoumotongchuang.jpg"
-    },
-    {
-        "name": "单身贵族",
-        "url": "danshenguizu.jpg"
-    },
-    {
-        "name": "亲切的金子",
-        "url": "qinqiedejinzi.jpg"
-    },
-    {
-        "name": "杀人漫画",
-        "url": "sharenmanhua.jpg"
-    },
-    {
-        "name": "方子传",
-        "url": "fangzichuan.jpg"
-    },
-    {
-        "name": "生活的发现",
-        "url": "shenghuodefaxian.jpg"
-    },
-    {
-        "name": "送还",
-        "url": "songhai.jpg"
-    },
-    {
-        "name": "无处藏身",
-        "url": "wuchuzangshen.jpg"
-    },
-    {
-        "name": "嫉妒是我的力量",
-        "url": "jidushiwodeliliang.jpg"
-    },
-    {
-        "name": "收件人不详",
-        "url": "shoujianrenbuxiang.jpg"
-    },
-    {
-        "name": "处女心经",
-        "url": "chunvxinjing.jpg"
-    },
-    {
-        "name": "爱的色放",
-        "url": "aidesefang.jpg"
-    },
-    {
-        "name": "花之岛",
-        "url": "huazhidao.jpg"
-    },
-    {
-        "name": "朋友2",
-        "url": "pengyou2.jpg"
-    },
-    {
-        "name": "绿色椅子",
-        "url": "lvseyizi.jpg"
+        "name": "我妹妹",
+        "url": "womeimei.jpg",
+        "brief": " "
     },
     {
         "name": "我的帕瓦罗蒂",
-        "url": "wodepawaluodi.jpg"
+        "url": "wodepawaluodi.jpg",
+        "brief": " "
+    },
+    
+    {
+        "name": "执行者",
+        "url": "zhixingzhe.jpg",
+        "brief": " "
     },
     {
-        "name": "偷情家族",
-        "url": "touqingjiazu.jpg"
+        "name": "撒玛利亚女孩",
+        "url": "samaliyanvhai.jpg",
+        "brief": "导演：金基德 金基德风格全面内敛的第一部作品 "
     },
     {
-        "name": "傻瓜",
-        "url": "shagua.jpg"
+        "name": "断箭",
+        "url": "duanjian.jpg",
+        "brief": " "
     },
     {
-        "name": "交换温柔",
-        "url": "jiaohuanwenrou.jpg"
+        "name": "无法者",
+        "url": "wufazhe.jpg",
+        "brief": " "
     },
     {
-        "name": "选择",
-        "url": "xuanze.jpg"
+        "name": "无籍者",
+        "url": "wujizhe.jpg",
+        "brief": " "
     },
     {
-        "name": "死亡教室",
-        "url": "siwangjiaoshi.jpg"
+        "name": "无颜美女",
+        "url": "wuyanmeinv.jpg",
+        "brief": " "
+    },
+    
+    {
+        "name": "暴风前夜",
+        "url": "baofengqianye.jpg",
+        "brief": " "
     },
     {
-        "name": "愤怒的伦理学",
-        "url": "fennudelunlixue.jpg"
+        "name": "有毒的欲望",
+        "url": "yoududeyuwang.jpg",
+        "brief": " "
+    },
+    
+    {
+        "name": "极乐岛杀人事件",
+        "url": "jiledaosharenshijian.jpg",
+        "brief": " "
     },
     {
-        "name": "恩娇",
-        "url": "enjiao.jpg"
+        "name": "梅洛",
+        "url": "meiluo.jpg",
+        "brief": " "
     },
     {
-        "name": "黄山伐",
-        "url": "huangshanfa.jpg"
+        "name": "梦精爱",
+        "url": "mengjingai.jpg",
+        "brief": " "
     },
     {
-        "name": "时失2公里",
-        "url": "shishi2gongli.jpg"
+        "name": "棒球之爱",
+        "url": "bangqiuzhiai.jpg",
+        "brief": " "
     },
     {
-        "name": "海雾",
-        "url": "haiwu.jpg"
+        "name": "欲望之花",
+        "url": "yuwangzhihua.jpg",
+        "brief": " "
     },
     {
-        "name": "美人",
-        "url": "meiren.jpg"
+        "name": "水族旅馆",
+        "url": "shuizulvguan.jpg",
+        "brief": " "
     },
     {
-        "name": "杀手公司",
-        "url": "shashougongsi.jpg"
+        "name": "泪",
+        "url": "lei.jpg",
+        "brief": " "
     },
     {
-        "name": "精彩的一天",
-        "url": "jingcaideyitian.jpg"
+        "name": "海云台",
+        "url": "haiyuntai.jpg",
+        "brief": " "
     },
     {
-        "name": "交换日记",
-        "url": "jiaohuanriji.jpg"
+        "name": "深夜电台",
+        "url": "shenyediantai.jpg",
+        "brief": " "
+    },
+    
+    {
+        "name": "爱情导师",
+        "url": "aiqingdaoshi.jpg",
+        "brief": " "
     },
     {
-        "name": "守望者",
-        "url": "shouwangzhe.jpg"
+        "name": "爱情戏",
+        "url": "aiqingxi.jpg",
+        "brief": " "
     },
     {
-        "name": "黑色之家",
-        "url": "heisezhijia.jpg"
+        "name": "爱的活力",
+        "url": "aidehuoli.jpg",
+        "brief": " "
     },
     {
-        "name": "孝子洞理发师",
-        "url": "xiaozidonglifashi.jpg"
+        "name": "牛铃之声",
+        "url": "niulingzhisheng.jpg",
+        "brief": " "
     },
     {
-        "name": "顶楼大象",
-        "url": "dingloudaxiang.jpg"
+        "name": "犯罪少年",
+        "url": "fanzuishaonian.jpg",
+        "brief": " "
     },
     {
-        "name": "绿鱼",
-        "url": "lvyu.jpg"
+        "name": "猛男诞生记",
+        "url": "mengnandanshengji.jpg",
+        "brief": " "
     },
     {
-        "name": "密爱",
-        "url": "miai.jpg"
+        "name": "猫女孩",
+        "url": "maonvhai.jpg",
+        "brief": " "
     },
     {
-        "name": "美人图",
-        "url": "meirentu.jpg"
+        "name": "玩物",
+        "url": "wanwu.jpg",
+        "brief": " "
     },
     {
-        "name": "错爱双鱼座",
-        "url": "cuoaishuangyuzuo.jpg"
+        "name": "番街的奇迹",
+        "url": "fanjiedeqiji.jpg",
+        "brief": " "
     },
     {
-        "name": "丑闻",
-        "url": "chouwen.jpg"
+        "name": "痛症",
+        "url": "tongzheng.jpg",
+        "brief": " "
     },
     {
-        "name": "坏小子",
-        "url": "huaixiaozi.jpg"
+        "name": "登陆之日",
+        "url": "dengluzhiri.jpg",
+        "brief": " "
     },
     {
-        "name": "薄荷糖",
-        "url": "bohetang.jpg"
+        "name": "白专家",
+        "url": "baizhuanjia.jpg",
+        "brief": " "
     },
     {
-        "name": "梦精记",
-        "url": "mengjingji.jpg"
+        "name": "百万富翁的初恋",
+        "url": "baiwanfuwengdechulian.jpg",
+        "brief": " "
     },
     {
-        "name": "娜塔莉",
-        "url": "natali.jpg"
+        "name": "粪礼",
+        "url": "fenli.jpg",
+        "brief": " "
     },
     {
-        "name": "拯救地球",
-        "url": "zhengjiudiqiu.jpg"
+        "name": "红地毯",
+        "url": "hongditan.jpg",
+        "brief": "《红地毯》是一部由朴范秀编剧并导演，尹启相、高俊熙、黄灿盛、赵达焕、吴政世等主演的爱情喜剧片。该片讲述的是梦想拍出商业巨制的19禁电影导演政祐，与童星出身的女明星恩珠坠入爱河的故事。 "
     },
     {
-        "name": "人间中毒",
-        "url": "renjianzhongdu.jpg"
+        "name": "绿头苍蝇",
+        "url": "lvtoucangying.jpg",
+        "brief": " "
     },
     {
-        "name": "红字",
-        "url": "hongzi.jpg"
+        "name": "美丽",
+        "url": "meili.jpg",
+        "brief": " "
+    },
+    {
+        "name": "美味速递",
+        "url": "meiweisudi.jpg",
+        "brief": " "
+    },
+    {
+        "name": "美娜的文具店",
+        "url": "meinadewenjudian.jpg",
+        "brief": " "
+    },
+    {
+        "name": "美景之屋",
+        "url": "meijingzhiwu.jpg",
+        "brief": " "
     },
     {
         "name": "肌肤的纹理",
-        "url": "jifudewenli.jpg"
+        "url": "jifudewenli.jpg",
+        "brief": "夜晚的街道，摄影师民宇（金允泰）目睹了一场车祸，并且在车祸中丧生的少女（崔宝英）死在了民宇的怀里。当女孩的温度逐渐在自己的怀抱里消失时，民宇发现到少女冰凉的肌肤与自己温热的皮肤被触摸的感觉是如此不同…… "
+    },
+    {
+        "name": "花心大坏蛋",
+        "url": "huaxindahuaidan.jpg",
+        "brief": " "
+    },
+    {
+        "name": "莫比乌斯",
+        "url": "mobiwusi.jpg",
+        "brief": " "
+    },
+    {
+        "name": "蝙蝠",
+        "url": "bianfu.jpg",
+        "brief": " "
+    },
+    {
+        "name": "血的期中考试",
+        "url": "xuedeqizhongkaoshi.jpg",
+        "brief": " "
+    },
+    {
+        "name": "被破坏的男人",
+        "url": "beipohuaidenanren.jpg",
+        "brief": " "
+    },
+    {
+        "name": "触不到的恋人",
+        "url": "chubudaodelianren.jpg",
+        "brief": "《触不到的恋人》是由李铉升执导，李政宰、全智贤、崔允英等人主演的韩国爱情电影。影片讲述了分别在两个时段住进同一栋屋子里的男女主人公，通过一个神秘的邮箱互相书信交流的跨越时空的爱情故事。2000年9月9日于韩国上映。 "
+    },
+    {
+        "name": "豆家族",
+        "url": "doujiazu.jpg",
+        "brief": " "
+    },
+    {
+        "name": "赤脚梦想",
+        "url": "chijiaomengxiang.jpg",
+        "brief": " "
+    },
+    {
+        "name": "越狱二人组",
+        "url": "yueyuerrenzu.jpg",
+        "brief": " "
+    },
+    {
+        "name": "车警官",
+        "url": "chejingguan.jpg",
+        "brief": " "
+    },
+    {
+        "name": "那小子真帅",
+        "url": "neixiaozizhenshuai.jpg",
+        "brief": " "
+    },
+    {
+        "name": "野蛮师姐",
+        "url": "yemanshijie.jpg",
+        "brief": "《野蛮师姐》是由郭在容执导，全智贤、张赫主演的韩国电影。影片讲述全智贤延续了自己一贯的“野蛮”形象，在片中饰演一个性格直爽、大胆的女警官，和张赫饰演的男朋友之间发生了一系列的悲喜剧故事。影片于2004年6月4日在韩国上映。 "
+    },
+    {
+        "name": "钢铁大吴",
+        "url": "gangtiedawu.jpg",
+        "brief": " "
+    },
+    {
+        "name": "间谍",
+        "url": "jiandie.jpg",
+        "brief": " "
+    },
+    {
+        "name": "阿里郎",
+        "url": "alilang.jpg",
+        "brief": " "
+    },
+    {
+        "name": "随风而逝",
+        "url": "suifengershi.jpg",
+        "brief": " "
+    },
+    {
+        "name": "青春学堂",
+        "url": "qingchunxuetang.jpg",
+        "brief": " "
+    },
+    {
+        "name": "领跑人",
+        "url": "lingpaoren.jpg",
+        "brief": " "
+    },
+    {
+        "name": "风流韵事出租车",
+        "url": "fengliuyunshichuzuche.jpg",
+        "brief": " "
+    },
+    {
+        "name": "马拉松",
+        "url": "malasong.jpg",
+        "brief": " "
+    },
+    {
+        "name": "龙之战",
+        "url": "longzhizhan.jpg",
+        "brief": " "
+    },
+    {
+        "name": "孩子们",
+        "url": "haizimen.jpg",
+        "brief": " "
+    },
+    
+    {
+        "name": "两个月亮",
+        "url": "lianggeyueliang.jpg",
+        "brief": " "
+    },
+    
+    {
+        "name": "野兽男孩",
+        "url": "yeshounanhai.jpg",
+        "brief": " "
+    },
+    {
+        "name": "嚎叫",
+        "url": "haojiao.jpg",
+        "brief": " "
+    },
+    {
+        "name": "神汉流氓",
+        "url": "shenahnliuman.jpg",
+        "brief": " "
+    },
+    {
+        "name": "盲症",
+        "url": "mangzheng.jpg",
+        "brief": " "
+    },
+    {
+        "name": "举报者",
+        "url": "jubaozhe.jpg",
+        "brief": " "
+    },
+    {
+        "name": "消失的头颅",
+        "url": "xiaoshidetoulu.jpg",
+        "brief": " "
+    },
+    
+    {
+        "name": "地铁惊魂",
+        "url": "ditiejinghun.jpg",
+        "brief": " "
+    },
+    {
+        "name": "嫌疑人",
+        "url": "xiangyiren.jpg",
+        "brief": " "
+    },
+    {
+        "name": "危险的传言",
+        "url": "weixiandechuanyan.jpg",
+        "brief": " "
+    },
+    {
+        "name": "野兽",
+        "url": "yeshou.jpg",
+        "brief": " "
+    },
+    {
+        "name": "彷徨之刃",
+        "url": "panghuangzhiren.jpg",
+        "brief": " "
+    },
+    
+    {
+        "name": "恋爱的温度",
+        "url": "lianaidewendu.jpg",
+        "brief": " "
+    },
+    {
+        "name": "提线木偶",
+        "url": "tixianmuou.jpg",
+        "brief": " "
+    },
+    {
+        "name": "火车",
+        "url": "huoche.jpg",
+        "brief": " "
+    },
+    {
+        "name": "畅销书",
+        "url": "changxiaoshu.jpg",
+        "brief": " "
+    },
+    {
+        "name": "老师的恩惠",
+        "url": "laoshideenhui.jpg",
+        "brief": " "
+    },
+    {
+        "name": "狼少年",
+        "url": "langshaonian.jpg",
+        "brief": " "
+    },
+    {
+        "name": "那家伙的声音",
+        "url": "najiahuodeshengyin.jpg",
+        "brief": " "
+    },
+    {
+        "name": "走到尽头",
+        "url": "zoudaojintou.jpg",
+        "brief": " "
+    },
+    {
+        "name": "计划男",
+        "url": "jihuanan.jpg",
+        "brief": " "
+    },
+    {
+        "name": "老千",
+        "url": "laoqian.jpg",
+        "brief": " "
+    },
+    {
+        "name": "高地战",
+        "url": "gaodizhan.jpg",
+        "brief": " "
+    },
+    {
+        "name": "杀人者",
+        "url": "sharenzhe.jpg",
+        "brief": " "
+    },
+    {
+        "name": "母亲",
+        "url": "muqin.jpg",
+        "brief": " "
+    },
+    {
+        "name": "哭泣的男人",
+        "url": "kuqidenanren.jpg",
+        "brief": " "
+    },
+    {
+        "name": "韩公主",
+        "url": "hangongzhu.jpg",
+        "brief": " "
+    },
+    
+    {
+        "name": "昏迷",
+        "url": "hunmi.jpg",
+        "brief": " "
+    },
+    {
+        "name": "三更",
+        "url": "sangeng.jpg",
+        "brief": " "
+    },
+    {
+        "name": "和声",
+        "url": "hesheng.jpg",
+        "brief": " "
+    },
+    {
+        "name": "优雅的谎言",
+        "url": "youyadehuangyan.jpg",
+        "brief": " "
+    },
+    {
+        "name": "汉城大劫案",
+        "url": "hanchengdajiean.jpg",
+        "brief": " "
+    },
+    {
+        "name": "失踪",
+        "url": "shizong.jpg",
+        "brief": " "
+    },
+    {
+        "name": "宿命",
+        "url": "suming.jpg",
+        "brief": " "
+    },
+    {
+        "name": "塑料树",
+        "url": "suliaoshu.jpg",
+        "brief": " "
+    },
+    {
+        "name": "绿洲",
+        "url": "lvzhou.jpg",
+        "brief": "导演：李沧东 某些过于直白的镜头令你看时极度不舒服，看过之后却难以忘记。 "
+    },
+    {
+        "name": "爱的蹦极",
+        "url": "aidebengji.jpg",
+        "brief": " "
+    },
+    {
+        "name": "五感图",
+        "url": "wugantu.jpg",
+        "brief": " "
+    },
+    {
+        "name": "猪堕井的那天",
+        "url": "zhuduojingdeneitian.jpg",
+        "brief": " "
+    },
+    {
+        "name": "春逝",
+        "url": "chunshi.jpg",
+        "brief": " "
+    },
+    {
+        "name": "八月照相馆",
+        "url": "bayuezhaoxiangguan.jpg",
+        "brief": "一个总是高高兴兴地照相馆老板永元，一个老是冒冒失失的交通女警德琳，因为冲洗违章照片而相识。 "
+    },
+    {
+        "name": "公路电影",
+        "url": "gongludianying.jpg",
+        "brief": " "
+    },
+    {
+        "name": "漂流欲室",
+        "url": "piaoliuyushi.jpg",
+        "brief": "导演：金基德 用一种毁灭一切的方式，证明了爱情是唯一崇高的东西 "
+    },
+    {
+        "name": "男人的未来是女人",
+        "url": "nanrendeweilaishinvren.jpg",
+        "brief": " "
+    },
+    {
+        "name": "单身贵族",
+        "url": "danshenguizu.jpg",
+        "brief": "导演：权七仁 难得的为成年而拍得爱情小品，细腻而有趣。 "
+    },
+    {
+        "name": "亲切的金子",
+        "url": "qinqiedejinzi.jpg",
+        "brief": " "
+    },
+    {
+        "name": "生活的发现",
+        "url": "shenghuodefaxian.jpg",
+        "brief": " "
+    },
+    {
+        "name": "送还",
+        "url": "songhai.jpg",
+        "brief": " "
+    },
+    {
+        "name": "无处藏身",
+        "url": "wuchuzangshen.jpg",
+        "brief": "片中的“四十台阶”杀人案拍得诗意盎然，成为韩国电影经典以幕，并被多次引用  "
+    },
+    {
+        "name": "嫉妒是我的力量",
+        "url": "jidushiwodeliliang.jpg",
+        "brief": " "
+    },
+    {
+        "name": "收件人不详",
+        "url": "shoujianrenbuxiang.jpg",
+        "brief": "目前为止，韩国惟一一部，正面呈述对美国军队的复杂情感的影片。对昌古的母亲，美国是家乡；对昌古是耻辱的标签；对村人是仇恨的载体；对少女恩洛，美国既带给她光明也夺走她的自由。 "
+    },
+    {
+        "name": "处女心经",
+        "url": "chunvxinjing.jpg",
+        "brief": " "
+    },
+    {
+        "name": "爱的色放",
+        "url": "aidesefang.jpg",
+        "brief": " "
+    },
+    {
+        "name": "花之岛",
+        "url": "huazhidao.jpg",
+        "brief": " "
+    },
+    {
+        "name": "绿色椅子",
+        "url": "lvseyizi.jpg",
+        "brief": " "
+    },
+    {
+        "name": "偷情家族",
+        "url": "touqingjiazu.jpg",
+        "brief": " "
+    },
+    {
+        "name": "交换温柔",
+        "url": "jiaohuanwenrou.jpg",
+        "brief": " "
+    },
+    {
+        "name": "选择",
+        "url": "xuanze.jpg",
+        "brief": " "
+    },
+    {
+        "name": "死亡教室",
+        "url": "siwangjiaoshi.jpg",
+        "brief": " "
+    },
+    {
+        "name": "愤怒的伦理学",
+        "url": "fennudelunlixue.jpg",
+        "brief": " "
+    },
+    {
+        "name": "恩娇",
+        "url": "enjiao.jpg",
+        "brief": "这部电影改编自韩国一部有争议的小说，讲述了一位七十岁的“国民诗人”与他的弟子以及一名十七岁少女之间的欲望和感情纠葛而引申出的错伦之恋，被誉为韩版“洛丽塔”，该影片于2012年4月25日上映[1] ，女主角金高恩凭借这部电影获得八项新人奖。 "
+    },
+    {
+        "name": "黄山伐",
+        "url": "huangshanfa.jpg",
+        "brief": " "
+    },
+    {
+        "name": "时失2公里",
+        "url": "shishi2gongli.jpg",
+        "brief": " "
+    },
+    {
+        "name": "海雾",
+        "url": "haiwu.jpg",
+        "brief": " "
+    },
+    {
+        "name": "美人",
+        "url": "meiren.jpg",
+        "brief": " "
+    },
+    {
+        "name": "杀手公司",
+        "url": "shashougongsi.jpg",
+        "brief": " "
+    },
+    {
+        "name": "精彩的一天",
+        "url": "jingcaideyitian.jpg",
+        "brief": " "
+    },
+    {
+        "name": "交换日记",
+        "url": "jiaohuanriji.jpg",
+        "brief": " "
+    },
+    {
+        "name": "守望者",
+        "url": "shouwangzhe.jpg",
+        "brief": " "
+    },
+    {
+        "name": "黑色之家",
+        "url": "heisezhijia.jpg",
+        "brief": " "
+    },
+    
+    {
+        "name": "顶楼大象",
+        "url": "dingloudaxiang.jpg",
+        "brief": " "
+    },
+    {
+        "name": "绿鱼",
+        "url": "lvyu.jpg",
+        "brief": "黑道小人物的生存与挣扎，韩石圭的表演深入骨髓 "
+    },
+    {
+        "name": "密爱",
+        "url": "miai.jpg",
+        "brief": " "
+    },
+    {
+        "name": "美人图",
+        "url": "meirentu.jpg",
+        "brief": " "
+    },
+    {
+        "name": "错爱双鱼座",
+        "url": "cuoaishuangyuzuo.jpg",
+        "brief": " "
+    },
+    {
+        "name": "丑闻",
+        "url": "chouwen.jpg",
+        "brief": " "
+    },
+    {
+        "name": "坏小子",
+        "url": "huaixiaozi.jpg",
+        "brief": "最具金基德的“疯狂人格”的情色片，对人性的揭示十分赤裸。 "
+    },
+    
+    {
+        "name": "梦精记",
+        "url": "mengjingji.jpg",
+        "brief": " "
+    },
+    {
+        "name": "娜塔莉",
+        "url": "natali.jpg",
+        "brief": " "
+    },
+    {
+        "name": "拯救地球",
+        "url": "zhengjiudiqiu.jpg",
+        "brief": " "
+    },
+    {
+        "name": "人间中毒",
+        "url": "renjianzhongdu.jpg",
+        "brief": " "
+    },
+    {
+        "name": "红字",
+        "url": "hongzi.jpg",
+        "brief": " "
     },
     {
         "name": "蔷花红莲",
-        "url": "qianghuahonglian.jpg"
+        "url": "qianghuahonglian.jpg",
+        "brief": " 导演：金知云 标志着金知云恐怖美学已经完全成熟，林秀晶成为当年韩国影坛一大惊喜发现。"
     },
     {
         "name": "光复节特赦",
-        "url": "guangfujieteshe.jpg"
+        "url": "guangfujieteshe.jpg",
+        "brief": " "
     },
-    {
-        "name": "隐秘而伟大",
-        "url": "yinmierweida.jpg"
-    },
-    {
-        "name": "春夏秋冬又一春",
-        "url": "chunxiaqiudongyouyichun.jpg"
-    },
-    {
-        "name": "加油站袭击事件",
-        "url": "jiayouzhanxijishijian.jpg"
-    },
-    {
-        "name": "外婆的家",
-        "url": "waipodejia.jpg"
-    },
-    {
-        "name": "嫌疑人X",
-        "url": "xianyirenX.jpg"
-    },
+    
+    
     {
         "name": "追访有情人",
-        "url": "zhuifangyouqingren.jpg"
+        "url": "zhuifangyouqingren.jpg",
+        "brief": " "
     },
     
     {
-        "name": "我女友的男朋友",
-        "url": "wonvyoudenanpengyou.jpg"
-    },
-    {
         "name": "肚脐",
-        "url": "duqi.jpg"
+        "url": "duqi.jpg",
+        "brief": " "
     },
     {
         "name": "童僧",
-        "url": "tongseng.jpg"
+        "url": "tongseng.jpg",
+        "brief": " "
     },
-    {
-        "name": "我的小小新娘",
-        "url": "wodexiaoxiaoxinniang.jpg"
-    },
-    {
-        "name": "新世界",
-        "url": "xinshijie.jpg"
-    },
+    
     {
         "name": "同窗生",
-        "url": "tongchuangsheng.jpg"
+        "url": "tongchuangsheng.jpg",
+        "brief": " "
     },
     {
         "name": "江原道之力",
-        "url": "jiangyuandaozhili.jpg"
+        "url": "jiangyuandaozhili.jpg",
+        "brief": " "
     },
     {
         "name": "优雅的世界",
-        "url": "youyadeshijie.jpg"
+        "url": "youyadeshijie.jpg",
+        "brief": " "
     },
     {
         "name": "惩戒者",
-        "url": "chengjiezhe.jpg"
-    },
-    {
-        "name": "猫样少女",
-        "url": "maoyangshaonv.jpg"
-    },
-    {
-        "name": "萨玛利亚女孩",
-        "url": "shamaliyanvhai.jpg"
+        "url": "chengjiezhe.jpg",
+        "brief": " "
     },
     {
         "name": "标靶",
-        "url": "biaoba.jpg"
+        "url": "biaoba.jpg",
+        "brief": " "
     },
     {
         "name": "追击者",
-        "url": "zhuijizhe.jpg"
+        "url": "zhuijizhe.jpg",
+        "brief": " "
     },
     {
         "name": "我们的社区",
-        "url": "womendeshequ.jpg"
+        "url": "womendeshequ.jpg",
+        "brief": " "
     },
     {
         "name": "杀人漫画",
-        "url": "sharenmanhua.jpg"
+        "url": "sharenmanhua.jpg",
+        "brief": " "
     },
     {
         "name": "恐怖直播",
-        "url": "kbzhibo.jpg"
+        "url": "kbzhibo.jpg",
+        "brief": " "
     },
-    {
-        "name": "朋友",
-        "url": "pengyou.jpg"
-    },
+	
     {
         "name": "读心术",
-        "url": "duxinshu.jpg"
+        "url": "duxinshu.jpg",
+        "brief": " "
     },
     {
         "name": "第十一个妈妈",
-        "url": "dishiyigemama.jpg"
+        "url": "dishiyigemama.jpg",
+        "brief": " "
     },
-    
     {
         "name": "生死谍变",
-        "url": "shengsidiebian.jpg"
+        "url": "shengsidiebian.jpg",
+        "brief": " "
     },
     {
         "name": "下女",
-        "url": "xianv.jpg"
+        "url": "xianv.jpg",
+        "brief": " "
     },
     {
         "name": "我要复仇",
-        "url": "woyaofuchou.jpg"
+        "url": "woyaofuchou.jpg",
+        "brief": "导演：朴赞郁 这部影片不仅残酷而且绝望，但是没有像《割》那样否定人性。 "
     },
     {
         "name": "向日葵",
-        "url": "xiangrikui.jpg"
+        "url": "xiangrikui.jpg",
+        "brief": " "
     },
-    
     {
         "name": "圣殇",
-        "url": "shengshang.jpg"
+        "url": "shengshang.jpg",
+        "brief": " "
     },
     {
         "name": "方子传",
-        "url": "fangzizhuan.jpg"
+        "url": "fangzizhuan.jpg",
+        "brief": " "
+    },
+    {
+        "name": "华丽的假期",
+        "url": "hualidejiaqi.jpg",
+        "brief": " "
     },
     
     {
-        "name": "华丽的假期",
-        "url": "hualidejiaqi.jpg"
-    },
-    {
-        "name": "黄海",
-        "url": "huanghai.jpg"
-    },
-    {
         "name": "老千2",
-        "url": "laoqian2.jpg"
+        "url": "laoqian2.jpg",
+        "brief": " "
     },
-    {
-        "name": "柏林",
-        "url": "bolin.jpg"
-    },
+    
     {
         "name": "金氏漂流记",
-        "url": "jinshipiaoliuji.jpg"
+        "url": "jinshipiaoliuji.jpg",
+        "brief": " "
     },
     {
         "name": "舞蹈皇后",
-        "url": "wudaohuanghou.jpg"
+        "url": "wudaohuanghou.jpg",
+        "brief": " "
     },
     {
         "name": "梨泰院杀人事件",
-        "url": "litaiyuansharenshijian.jpg"
+        "url": "litaiyuansharenshijian.jpg",
+        "brief": " "
     },
     {
         "name": "建筑学概论",
-        "url": "jianzhuxuegailun.jpg"
+        "url": "jianzhuxuegailun.jpg",
+        "brief": " "
     },
     {
         "name": "空房间",
-        "url": "kongfangjian.jpg"
+        "url": "kongfangjian.jpg",
+        "brief": " "
     },
     {
         "name": "群盗",
-        "url": "qundao.jpg"
+        "url": "qundao.jpg",
+        "brief": " "
     },
-    
     {
         "name": "谁都有秘密",
-        "url": "suidouyoumimi.jpg"
+        "url": "suidouyoumimi.jpg",
+        "brief": " "
     },
     {
         "name": "幸福",
-        "url": "xingfu.jpg"
+        "url": "xingfu.jpg",
+        "brief": " "
     },
     {
         "name": "道熙啊",
-        "url": "daoxia.jpg"
+        "url": "daoxia.jpg",
+        "brief": " "
     },
-    {
-        "name": "我是杀人犯",
-        "url": "woshisharenfan.jpg"
-    },
+    
     {
         "name": "假日",
-        "url": "jiari.jpg"
+        "url": "jiari.jpg",
+        "brief": " "
     },
     {
         "name": "恋爱进行时",
-        "url": "lianaijinxingshi.jpg"
+        "url": "lianaijinxingshi.jpg",
+        "brief": "导演：李语惠 清新浪漫的小品，片中的母女情很有说服力 "
     },
     {
         "name": "甜涩性爱",
-        "url": "tsxa.jpg"
+        "url": "tsxa.jpg",
+        "brief": " "
     },
-    
     {
         "name": "义兄弟",
-        "url": "yixiongdi.jpg"
+        "url": "yixiongdi.jpg",
+        "brief": " "
     },
     {
         "name": "铁线虫入侵",
-        "url": "tiexiancongruqin.jpg"
+        "url": "tiexiancongruqin.jpg",
+        "brief": " "
     },
     {
         "name": "好朋友们",
-        "url": "haopengyoumen.jpg"
+        "url": "haopengyoumen.jpg",
+        "brief": " "
     },
     {
         "name": "华颐",
-        "url": "huayi.jpg"
+        "url": "huayi.jpg",
+        "brief": " "
     },
     {
         "name": "六月日记",
-        "url": "liuyueriji.jpg"
+        "url": "liuyueriji.jpg",
+        "brief": " "
     },
     {
         "name": "不可饶恕",
-        "url": "bukeraoshu.jpg"
+        "url": "bukeraoshu.jpg",
+        "brief": " "
     },
     {
         "name": "青春",
-        "url": "qingchun.jpg"
+        "url": "qingchun.jpg",
+        "brief": " "
     },
     {
         "name": "向左走向右爱",
-        "url": "xiangzuozouxiangyouai.jpg"
+        "url": "xiangzuozouxiangyouai.jpg",
+        "brief": " "
     },
     {
         "name": "影子杀人",
-        "url": "yingzisharen.jpg"
+        "url": "yingzisharen.jpg",
+        "brief": " "
     },
     {
         "name": "暴力城市",
-        "url": "baolichengshi.jpg"
+        "url": "baolichengshi.jpg",
+        "brief": " "
     },
-    {
-        "name": "共犯",
-        "url": "gongfan.jpg"
-    },
-    {
-        "name": "只有你",
-        "url": "zhiyouni.jpg"
-    },
+    
     {
         "name": "谋杀快乐",
-        "url": "moushakuaile.jpg"
+        "url": "moushakuaile.jpg",
+        "brief": " "
     },
     {
         "name": "我妻子的一切",
-        "url": "woqizideyiqie.jpg"
+        "url": "woqizideyiqie.jpg",
+        "brief": " "
     },
     {
         "name": "热血青春",
-        "url": "rexueqingchun.jpg"
+        "url": "rexueqingchun.jpg",
+        "brief": " "
     },
-    {
-        "name": "观想",
-        "url": "guanxiang.jpg"
-    },
+	
     {
         "name": "双重间谍",
-        "url": "shuangchongjiandie.jpg"
+        "url": "shuangchongjiandie.jpg",
+        "brief": " "
     },
     {
         "name": "色即是空",
-        "url": "sejishikong.jpg"
+        "url": "sejishikong.jpg",
+        "brief": " "
     },
-    
     {
         "name": "完美搭档",
-        "url": "wanmeidadan.jpg"
+        "url": "wanmeidadan.jpg",
+        "brief": " "
     },
     {
         "name": "中毒",
-        "url": "zhongdu.jpg"
+        "url": "zhongdu.jpg",
+        "brief": " "
     },
     {
         "name": "华丽的外出",
-        "url": "hualidewaichu.jpg"
+        "url": "hualidewaichu.jpg",
+        "brief": " "
     },
-    
     {
         "name": "逆鳞",
-        "url": "nilin.jpg"
+        "url": "nilin.jpg",
+        "brief": " "
     },
-    
     {
         "name": "非常主播",
-        "url": "feichangzhubo.jpg"
+        "url": "feichangzhubo.jpg",
+        "brief": " "
     },
     {
         "name": "爱的肢解",
-        "url": "aidezhijie.jpg"
+        "url": "aidezhijie.jpg",
+        "brief": " "
     },
     {
         "name": "抓住那个家伙",
-        "url": "zzngjh.jpg"
-    },
-    {
-        "name": "开心家族",
-        "url": "kaixinjiazu.jpg"
-    },
-    {
-        "name": "夺宝联盟",
-        "url": "duobaolianmeng.jpg"
+        "url": "zzngjh.jpg",
+        "brief": " "
     },
     {
         "name": "最终兵器弓",
-        "url": "zuizhongbingqigong.jpg"
+        "url": "zuizhongbingqigong.jpg",
+        "brief": " "
     },
     {
         "name": "假面",
-        "url": "jiamian.jpg"
-    },
-    
-    {
-        "name": "创可贴",
-        "url": "chuangketie.jpg"
+        "url": "jiamian.jpg",
+        "brief": " "
     }
+    
 ]

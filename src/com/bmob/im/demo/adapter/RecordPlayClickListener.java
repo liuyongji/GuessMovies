@@ -32,7 +32,7 @@ public class RecordPlayClickListener implements View.OnClickListener {
 
 	String currentObjectId = "";
 
-	static BmobMsg currentMsg = null;// �������������ͬ�����Ĳ���
+	static BmobMsg currentMsg = null;// 用于区分两个不同语音的播放
 
 	public RecordPlayClickListener(Context context, BmobMsg msg, ImageView voice) {
 		this.iv_voice = voice;
@@ -60,7 +60,7 @@ public class RecordPlayClickListener implements View.OnClickListener {
 	}
 
 	/**
-	 * �������Ŷ���
+	 * 开启播放动画
 	 * @Title: startRecordAnimation
 	 * @Description: TODO
 	 * @param
@@ -78,7 +78,7 @@ public class RecordPlayClickListener implements View.OnClickListener {
 	}
 
 	/**
-	 * ֹͣ���Ŷ���
+	 * 停止播放动画
 	 * 
 	 * @Title: stopRecordAnimation
 	 * @Description: TODO
@@ -102,16 +102,16 @@ public class RecordPlayClickListener implements View.OnClickListener {
 		if (playMananger.isPlaying()) {
 			playMananger.stopPlayback();
 			if (currentMsg != null
-					&& currentMsg.hashCode() == message.hashCode()) {// �Ƿ���ͬ��������Ϣ
+					&& currentMsg.hashCode() == message.hashCode()) {// 是否是同条语音消息
 				currentMsg = null;
 				return;
 			}
 		} else {
 			String localPath = message.getContent().split("&")[0];
-			BmobLog.i("voice", "���ص�ַ:" + localPath);
-			if (message.getBelongId().equals(currentObjectId)) {// ������Լ����͵�������Ϣ���򲥷ű��ص�ַ
+			BmobLog.i("voice", "本地地址:" + localPath);
+			if (message.getBelongId().equals(currentObjectId)) {// 如果是自己发送的语音消息，则播放本地地址
 				playMananger.playRecording(localPath, true);
-			} else {// ������յ�����Ϣ������Ҫ�����غ󲥷�
+			} else {// 如果是收到的消息，则需要先下载后播放
 
 			}
 		}

@@ -37,12 +37,12 @@ public class NewFriendActivity extends ActivityBase implements OnItemLongClickLi
 	}
 	
 	private void initView(){
-		initTopBarForLeft("������");
+		initTopBarForLeft("新朋友");
 		listview = (ListView)findViewById(R.id.list_newfriend);
 		listview.setOnItemLongClickListener(this);
 		adapter = new NewFriendAdapter(this,BmobDB.create(this).queryBmobInviteList());
 		listview.setAdapter(adapter);
-		if(from==null){//������֪ͨ���ĵ������λ�����һ��
+		if(from==null){//若来自通知栏的点击，则定位到最后一条
 			listview.setSelection(adapter.getCount());
 		}
 	}
@@ -57,20 +57,20 @@ public class NewFriendActivity extends ActivityBase implements OnItemLongClickLi
 	}
 	
 	public void showDeleteDialog(final int position,final BmobInvitation invite) {
-		DialogTips dialog = new DialogTips(this,invite.getFromname(),"ɾ���������", "ȷ��",true,true);
-		// ���óɹ��¼�
+		DialogTips dialog = new DialogTips(this,invite.getFromname(),"删除好友请求", "确定",true,true);
+		// 设置成功事件
 		dialog.SetOnSuccessListener(new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialogInterface, int userId) {
 				deleteInvite(position,invite);
 			}
 		});
-		// ��ʾȷ�϶Ի���
+		// 显示确认对话框
 		dialog.show();
 		dialog = null;
 	}
 	
 	/** 
-	 * ɾ������
+	 * 删除请求
 	  * deleteRecent
 	  * @param @param recent 
 	  * @return void

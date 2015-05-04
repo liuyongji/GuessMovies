@@ -4,9 +4,10 @@ import java.util.List;
 
 import net.youmi.android.AdManager;
 import net.youmi.android.offers.OffersManager;
-
 import cn.bmob.im.BmobChat;
+import cn.bmob.im.BmobUserManager;
 
+import com.bmob.im.demo.bean.User;
 import com.bmob.im.demo.ui.BmobMainActivity;
 import com.bmob.pay.tool.BmobPay;
 import com.bmob.pay.tool.PayListener;
@@ -46,14 +47,36 @@ public class MenuActivity extends Activity implements OnClickListener, Const {
 	private int mCurrentStageIndex;
 	private List<Movie> movies;
 	private FeedbackAgent agent;
+	private User muser;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		initView();
 		BmobPay.init(this, "6ac560f8ca942178c35e093c220e40b9");
-		BmobChat.DEBUG_MODE = true;
+		// BmobChat.DEBUG_MODE = true;
+		muser = BmobUserManager.getInstance(this).getCurrentUser(User.class);
+		AdManager.getInstance(this)
+				.init("e091bce73f6dc900", "f759de2e4964d60f");
+		OffersManager.getInstance(this).onAppLaunch();
+		myApplication = (MyApplication) this.getApplicationContext();
+		initData();
+		
+		if (muser != null) {
+			mCurrentStageIndex = muser.getHighScore();
+		} else {
+			mCurrentStageIndex = (Integer) SPUtils.get(this, STAGEINDEX, 0);
+		}
+		tvcurrentversion.setText("版本: " + AppUtil.getVersionName(this)
+				+ "，关卡数：" + movies.size() + "   "
+				+ getResources().getString(R.string.author));
+		agent = new FeedbackAgent(MenuActivity.this);
+		agent.sync();
+	}
+
+	private void initView() {
 		btnstart = (Button) findViewById(R.id.main_btnstart);
 		btnaddcoin = (Button) findViewById(R.id.btn_get_coins);
 		btnanswers = (Button) findViewById(R.id.btn_answers);
@@ -70,18 +93,6 @@ public class MenuActivity extends Activity implements OnClickListener, Const {
 		btnaddcoin.setOnClickListener(this);
 		btnanswers.setOnClickListener(this);
 		btnstart.setOnClickListener(this);
-		AdManager.getInstance(this)
-				.init("e091bce73f6dc900", "f759de2e4964d60f");
-		OffersManager.getInstance(this).onAppLaunch();
-		myApplication = (MyApplication) this.getApplicationContext();
-		initData();
-		mCurrentStageIndex = (Integer) SPUtils.get(this, STAGEINDEX, 0);
-		tvcurrentstage.setText(++mCurrentStageIndex + "");
-		tvcurrentversion.setText("版本: " + AppUtil.getVersionName(this)
-				+ "，关卡数：" + movies.size() + "   "
-				+ getResources().getString(R.string.author));
-		agent = new FeedbackAgent(MenuActivity.this);
-		agent.sync();
 	}
 
 	private void initData() {
@@ -101,7 +112,11 @@ public class MenuActivity extends Activity implements OnClickListener, Const {
 	}
 
 	private void update() {
-		mCurrentStageIndex = (Integer) SPUtils.get(this, STAGEINDEX, 0);
+		if (muser != null) {
+			mCurrentStageIndex = muser.getHighScore();
+		} else {
+			mCurrentStageIndex = (Integer) SPUtils.get(this, STAGEINDEX, 0);
+		}
 		tvcurrentstage.setText(++mCurrentStageIndex + "");
 	}
 
@@ -129,22 +144,21 @@ public class MenuActivity extends Activity implements OnClickListener, Const {
 			break;
 		case R.id.btn_feeback:
 			// ToastUtil.showShort(MenuActivity.this, "敬请期待……");
-			agent.startFeedbackActivity();
+//			agent.startFeedbackActivity();
+			Intent intent5=new Intent(MenuActivity.this, FeebackActivity.class);
+			startActivity(intent5);
 			break;
 		case R.id.btn_news:
-			// new BmobPay(MenuActivity.this).pay(0.02,"某商品",payListener);
 			ToastUtil.showShort(MenuActivity.this, "敬请期待……");
 			break;
 		case R.id.btn_shop:
-			Intent intent4 = new Intent(MenuActivity.this,
-					ShopActivity.class);
+			Intent intent4 = new Intent(MenuActivity.this, ShopActivity.class);
 			startActivity(intent4);
 			// ToastUtil.showShort(MenuActivity.this, "敬请期待……");
 			break;
 		case R.id.btn_ranklist:
-			// new BmobPay(MenuActivity.this).pay(0.02,"某商品",payListener);
-			// new BmobPay(MenuActivity.this).payByWX(0.02,"某商品",payListener);
-			Intent intent3 = new Intent(MenuActivity.this, LoginActivity.class);
+			Intent intent3 = new Intent(MenuActivity.this,
+					RankListActivity.class);
 			startActivity(intent3);
 			break;
 		default:

@@ -54,7 +54,7 @@ public class MessageRecentAdapter extends ArrayAdapter<BmobRecent> implements Fi
 		TextView tv_recent_time = ViewHolder.get(convertView, R.id.tv_recent_time);
 		TextView tv_recent_unread = ViewHolder.get(convertView, R.id.tv_recent_unread);
 		
-		//������
+		//填充数据
 		String avatar = item.getAvatar();
 		if(avatar!=null&& !avatar.equals("")){
 			ImageLoader.getInstance().displayImage(avatar, iv_recent_avatar, ImageLoadOptions.getOptions());
@@ -64,20 +64,20 @@ public class MessageRecentAdapter extends ArrayAdapter<BmobRecent> implements Fi
 		
 		tv_recent_name.setText(item.getUserName());
 		tv_recent_time.setText(TimeUtil.getChatTime(item.getTime()));
-		//��ʾ����
+		//显示内容
 		if(item.getType()==BmobConfig.TYPE_TEXT){
 			SpannableString spannableString = FaceTextUtils.toSpannableString(mContext, item.getMessage());
 			tv_recent_msg.setText(spannableString);
 		}else if(item.getType()==BmobConfig.TYPE_IMAGE){
-			tv_recent_msg.setText("[ͼƬ]");
+			tv_recent_msg.setText("[图片]");
 		}else if(item.getType()==BmobConfig.TYPE_LOCATION){
 			String all =item.getMessage();
-			if(all!=null &&!all.equals("")){//λ�����͵���Ϣ��װ��ʽ������λ��&ά��&����
+			if(all!=null &&!all.equals("")){//位置类型的信息组装格式：地理位置&维度&经度
 				String address = all.split("&")[0];
-				tv_recent_msg.setText("[λ��]"+address);
+				tv_recent_msg.setText("[位置]"+address);
 			}
 		}else if(item.getType()==BmobConfig.TYPE_VOICE){
-			tv_recent_msg.setText("[����]");
+			tv_recent_msg.setText("[语音]");
 		}
 		
 		int num = BmobDB.create(mContext).getUnreadCount(item.getTargetid());

@@ -2,22 +2,25 @@ package com.lyj.guessmovies.adapter;
 
 import java.util.List;
 
+import cn.bmob.im.BmobUserManager;
+
+import com.bmob.im.demo.bean.User;
 import com.lyj.guessmovies.R;
 import com.lyj.guessmovies.app.MyApplication;
 import com.lyj.guessmovies.data.Const;
 import com.lyj.guessmovies.model.Movie;
 import com.lyj.guessmovies.util.SPUtils;
-import com.lyj.guessmovies.util.Util;
-
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+//import android.view.ViewGroup.LayoutParams;
 import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class ImageAdapter extends BaseAdapter implements Const{
 	private Activity activity;
@@ -36,11 +39,17 @@ public class ImageAdapter extends BaseAdapter implements Const{
 		WindowManager wm = (WindowManager) activity
 				.getSystemService(Context.WINDOW_SERVICE);
 		width = wm.getDefaultDisplay().getWidth();
-		mCurrentIndex=(Integer) SPUtils.get(a, STAGEINDEX, 0);
+		User user=BmobUserManager.getInstance(a).getCurrentUser(User.class);
+		if (user!=null) {
+			mCurrentIndex=user.getHighScore();
+		}else {
+			mCurrentIndex=(Integer) SPUtils.get(a, STAGEINDEX, 0);
+		}
 	}
 
 	@Override
 	public int getCount() {
+//		return mCurrentIndex;
 		return list.size();
 	}
 
@@ -56,16 +65,23 @@ public class ImageAdapter extends BaseAdapter implements Const{
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		convertView = inflater.inflate(R.layout.lv_item, null);
-		ImageView imageView = (ImageView) convertView
-				.findViewById(R.id.imageView1);
+		if (position<mCurrentIndex) {
+			convertView = inflater.inflate(R.layout.listview_item, null);
+			ImageView imageView = (ImageView) convertView
+					.findViewById(R.id.imageView1);
 
-		imageView.setLayoutParams(new LinearLayout.LayoutParams(width / 3,
-				width / 3));
+			imageView.setLayoutParams(new LinearLayout.LayoutParams(width / 3,
+					width / 3));
 
-		 MyApplication.displayImage("assets://images/"+list.get(position).getUrl(), imageView);
-//		imageView.setImageBitmap(Util.getImageFromAssetsFile(activity,
-//				"images/" + list.get(position).getUrl()));
+			MyApplication.displayImage("assets://images/"+list.get(position).getUrl(), imageView);
+		}else {
+			convertView = inflater.inflate(R.layout.listview_item_empty, null);
+			TextView textView=(TextView)convertView.findViewById(R.id.listview_item_textview);
+			textView.setLayoutParams(new LinearLayout.LayoutParams(width / 3,
+			width / 3));
+			textView.setText(position+1+"");
+		}
+		
 
 		return convertView;
 	}

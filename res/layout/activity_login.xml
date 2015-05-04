@@ -4,18 +4,22 @@
     android:layout_height="fill_parent"
     android:background="@color/s_color_background_view" >
 
-    <include layout="@layout/title_framelayout" 
-        android:id="@+id/title" />"
+    <include
+        android:id="@+id/title"
+        layout="@layout/title_framelayout"
+        android:visibility="gone" />
 
-   
+    <include
+        android:id="@+id/common_actionbar"
+        layout="@layout/include_action_bar" />
+
     <LinearLayout
         android:id="@+id/linear_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/title"
+        android:layout_below="@id/common_actionbar"
+        android:layout_marginTop="30dp"
         android:orientation="vertical" >
-
-        
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -61,7 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/base_action_bar_height"
             android:layout_margin="@dimen/activity_vertical_margin"
-            android:background="@drawable/button_demoselector"
+            android:background="@drawable/btn_login_selector"
             android:gravity="center"
             android:text="登陆"
             android:textColor="@color/base_color_text_white"
@@ -69,7 +73,7 @@
     </LinearLayout>
 
     <LinearLayout
-         android:id="@+id/btn_register"
+        android:id="@+id/btn_register"
         android:layout_width="fill_parent"
         android:layout_height="48dp"
         android:layout_below="@id/linear_login"

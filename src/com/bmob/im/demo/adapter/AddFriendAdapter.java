@@ -55,32 +55,32 @@ public class AddFriendAdapter extends BaseListAdapter<BmobChatUser> {
 		}
 
 		name.setText(contract.getUsername());
-		btn_add.setText("���");
+		btn_add.setText("添加");
 		btn_add.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				final ProgressDialog progress = new ProgressDialog(mContext);
-				progress.setMessage("�������...");
+				progress.setMessage("正在添加...");
 				progress.setCanceledOnTouchOutside(false);
 				progress.show();
-				//����tag����
+				//发送tag请求
 				BmobChatManager.getInstance(mContext).sendTagMessage(BmobConfig.TAG_ADD_CONTACT, contract.getObjectId(),new PushListener() {
 					
 					@Override
 					public void onSuccess() {
 						// TODO Auto-generated method stub
 						progress.dismiss();
-						ShowToast("��������ɹ����ȴ�Է���֤!");
+						ShowToast("发送请求成功，等待对方验证!");
 					}
 					
 					@Override
 					public void onFailure(int arg0, final String arg1) {
 						// TODO Auto-generated method stub
 						progress.dismiss();
-						ShowToast("��������ʧ�ܣ����������!");
-						ShowLog("��������ʧ��:"+arg1);
+						ShowToast("发送请求失败，请重新添加!");
+						ShowLog("发送请求失败:"+arg1);
 					}
 				});
 			}

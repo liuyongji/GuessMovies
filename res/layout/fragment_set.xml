@@ -198,7 +198,16 @@
         style="@style/Smile.Button.logout"
         android:layout_width="fill_parent"
         android:layout_height="45dp"
+        android:background="@drawable/btn_login_selector"
         android:layout_margin="@dimen/activity_vertical_margin"
         android:text="@string/logout" />
+    <Button
+        android:id="@+id/btn_reset"
+        style="@style/Smile.Button.logout"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/btn_login_selector"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        android:text="关卡重置" />
 
 </LinearLayout>

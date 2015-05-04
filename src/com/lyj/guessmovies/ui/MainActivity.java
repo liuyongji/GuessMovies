@@ -26,6 +26,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.LinearLayout.LayoutParams;
 
+import cn.bmob.im.BmobUserManager;
+import com.bmob.im.demo.bean.User;
 import com.lyj.guessmovies.R;
 import com.lyj.guessmovies.app.MyApplication;
 import com.lyj.guessmovies.data.Const;
@@ -38,11 +40,8 @@ import com.lyj.guessmovies.util.SPUtils;
 import com.lyj.guessmovies.util.ToastUtil;
 import com.lyj.guessmovies.util.Util;
 import com.umeng.analytics.MobclickAgent;
-import com.umeng.socialize.bean.SHARE_MEDIA;
-import com.umeng.socialize.bean.SocializeEntity;
 import com.umeng.socialize.controller.UMServiceFactory;
 import com.umeng.socialize.controller.UMSocialService;
-import com.umeng.socialize.controller.listener.SocializeListeners.SnsPostListener;
 import com.umeng.socialize.sso.UMSsoHandler;
 
 public class MainActivity extends Activity implements IWordButtonClickListener,
@@ -86,9 +85,11 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 
 	// 当前关的索引
 	private int mCurrentStageIndex = -1;
+	private boolean mIsAdClear = false;
 	private List<Movie> movies;
 	private boolean mIsFirst;
 	private UMSocialService mController;
+	private User mUser;
 
 	// BackgroundMusic backgroundMusic;
 
@@ -98,28 +99,22 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 		setContentView(R.layout.activity_main);
 		mController = UMServiceFactory
 				.getUMSocialService("com.lyj.guessmovies");
-		mCurrentStageIndex = (Integer) SPUtils.get(this, STAGEINDEX, 0);
 		context = MainActivity.this;
 		initView();
 		initData();
 		// 初始化游戏数据
 		initCurrentStageData();
 		PointsManager.getInstance(this).registerNotify(this);
-		mIsFirst = (Boolean) SPUtils.get(this, ISFIRST, true);
-		if (mIsFirst) {
-			SPUtils.put(this, ISFIRST, false);
-			PointsManager.getInstance(context).awardPoints(100);
-		}
+//		mIsFirst = (Boolean) SPUtils.get(this, ISFIRST, true);
+		
 		SpotManager.getInstance(this).loadSpotAds();
 	}
 
 	private void initView() {
 		mViewPan = (ImageView) findViewById(R.id.imageView1);
 		mMyGridView = (MyGridView) findViewById(R.id.gridview);
-
 		// 注册监听
 		mMyGridView.registOnWordButtonClick(this);
-
 		mViewWordsContainer = (LinearLayout) findViewById(R.id.word_select_container);
 		mPassView = (LinearLayout) findViewById(R.id.pass_view);
 		btnshare = (ImageButton) findViewById(R.id.share_button_icon);
@@ -134,16 +129,32 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 		btngettip.setOnClickListener(this);
 		mCurrentStage = (TextView) findViewById(R.id.text_current_stage);
 		mCurrentPoints = (TextView) findViewById(R.id.txt_bar_coins);
-		ivcontent=(ImageView)findViewById(R.id.passview_image);
+		ivcontent = (ImageView) findViewById(R.id.passview_image);
 		mpassname = (TextView) mPassView.findViewById(R.id.passview_name);
 		int myPointBalance = PointsManager.getInstance(context).queryPoints();
 		mCurrentPoints.setText(myPointBalance + "");
 	}
 
 	private void initData() {
-
+		mUser = BmobUserManager.getInstance(this).getCurrentUser(User.class);
+		
+		
 		movies = ((MyApplication) getApplicationContext()).getMovies();
-
+		if (mUser!=null) {
+			mCurrentStageIndex = mUser.getHighScore();
+			mIsAdClear=mUser.getAdclear();
+		}else {
+			mCurrentStageIndex = (Integer) SPUtils.get(this, STAGEINDEX, 0);
+			mIsAdClear =false;
+		}
+		mIsFirst=(Boolean)SPUtils.getonlyfirst(this, ISFIRST, true);
+		if (mIsFirst) {
+			SPUtils.putonlyfirst(this, ISFIRST, false);
+			PointsManager.getInstance(context).awardPoints(100);
+		}
+		int myPointBalance = PointsManager.getInstance(context).queryPoints();
+		mCurrentPoints.setText(myPointBalance + "");
+		
 	}
 
 	@Override
@@ -161,7 +172,7 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 			handlePassEvent();
 		} else if (checkResult == STATUS_ANSWER_WRONG) {
 			// 闪烁文字并提示用户
-			sparkTheWrods(Color.RED,false);
+			sparkTheWrods(Color.RED, false);
 		} else if (checkResult == STATUS_ANSWER_LACK) {
 			// 设置文字颜色为白色（Normal）
 			for (int i = 0; i < mBtnSelectWords.size(); i++) {
@@ -175,16 +186,34 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 	 */
 	private void handlePassEvent() {
 
-		sparkTheWrods(Color.GREEN,true);	
+		sparkTheWrods(Color.GREEN, true);
+		if (mCurrentStageIndex >= movies.size()) {
+			ToastUtil.showLong(this,
+					getResources().getString(R.string.mission_compelete));
+			// TODO
+			mCurrentStageIndex = mCurrentStageIndex-1;
+			return ;
+		}
 		SPUtils.put(MainActivity.this, STAGEINDEX, ++mCurrentStageIndex);
 		SPUtils.remove(MainActivity.this, STAGEWORDS);
-//		 ToastUtil.showShort(context,
-//		 getResources().getString(R.string.answer_right));
-		PointsManager.getInstance(context).awardPoints(5);
-//		new next().execute();
+		// ToastUtil.showShort(context,
+		// getResources().getString(R.string.answer_right));
+		
+		PointsManager.getInstance(context).awardPoints(2);
+		if (mUser != null) {
+			if (mUser.getHighScore() < mCurrentStageIndex) {
+				User user = new User();
+				user.setObjectId(mUser.getObjectId());
+				user.setHighScore(mCurrentStageIndex);
+				user.update(context);
+			}
+		}
+		
+		// new next().execute();
 
 	}
-	private void showPassView(){
+
+	private void showPassView() {
 		mPassView.setVisibility(View.VISIBLE);
 		ivcontent.setImageBitmap(Util.getImageFromAssetsFile(MainActivity.this,
 				"images/" + mCurrentMovie.getUrl()));
@@ -195,11 +224,9 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 
 		@Override
 		protected Void doInBackground(Void... arg0) {
-			// TODO Auto-generated method stub
 			// try {
 			// Thread.sleep(600);
 			// } catch (InterruptedException e) {
-			// // TODO Auto-generated catch block
 			// e.printStackTrace();
 			// }
 			return null;
@@ -272,23 +299,23 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 
 	private Movie loadMovieInfo(int stageIndex) {
 
-		if (stageIndex > movies.size()) {
+		if (stageIndex >= movies.size()) {
 			ToastUtil.showLong(this,
 					getResources().getString(R.string.mission_compelete));
-			stageIndex = 0;
+			// TODO
+			stageIndex = stageIndex-1;
 		}
 
-		Movie movie = movies.get(stageIndex);
+		mCurrentMovie = movies.get(stageIndex);
 		// String[] stage = null;
-		mCurrentMovie = movie;
-		mCurrentStage.setText((mCurrentStageIndex +1)+"");
+		mCurrentStage.setText((mCurrentStageIndex + 1) + "");
 		mViewPan.setImageBitmap(Util.getImageFromAssetsFile(MainActivity.this,
-				"images/" + movie.getUrl()));
+				"images/" + mCurrentMovie.getUrl()));
 		// if(mCurrentStageIndex>0){
 		// new nextMusic().execute();
 		// }
 
-		return movie;
+		return mCurrentMovie;
 	}
 
 	private void initCurrentStageData() {
@@ -308,7 +335,7 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 		mAllWords = initAllWord();
 		// // 更新数据- MyGridView
 		mMyGridView.updateData(mAllWords);
-		if ((mCurrentStageIndex+1)% 5 == 0) {
+		if ((mCurrentStageIndex + 1) % 5 == 0 && !mIsAdClear) {
 			SpotManager.getInstance(this).showSpotAds(this);
 		}
 	}
@@ -435,7 +462,7 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 	/**
 	 * 文字闪烁
 	 */
-	private void sparkTheWrods(final int color,final boolean pass) {
+	private void sparkTheWrods(final int color, final boolean pass) {
 		// 定时器相关
 		final Timer timer = new Timer();
 		TimerTask task = new TimerTask() {
@@ -447,9 +474,9 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 					public void run() {
 						if (++mSpardTimes > SPASH_TIMES) {
 							if (pass) {
-								showPassView();	
+								showPassView();
 								timer.cancel();
-							}							
+							}
 							return;
 						}
 
@@ -464,7 +491,6 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 			}
 		};
 
-		
 		timer.schedule(task, 1, 150);
 	}
 
@@ -475,14 +501,16 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 		OffersManager.getInstance(context).onAppExit();
 		PointsManager.getInstance(context).unRegisterNotify(this);
 	}
+
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
 		super.onActivityResult(requestCode, resultCode, data);
-		UMSsoHandler ssoHandler = mController.getConfig().getSsoHandler(requestCode) ;
-	    if(ssoHandler != null){
-	       ssoHandler.authorizeCallBack(requestCode, resultCode, data);
-	    }
+		UMSsoHandler ssoHandler = mController.getConfig().getSsoHandler(
+				requestCode);
+		if (ssoHandler != null) {
+			ssoHandler.authorizeCallBack(requestCode, resultCode, data);
+		}
 	}
 
 	@Override
@@ -492,16 +520,12 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 		case R.id.share_button_icon:
 			Bitmap bitmap = Util
 					.convertViewToBitmap(findViewById(R.id.main_frame));
-			((MyApplication) getApplicationContext()).setShare(mController,
-					(Activity) context, null, bitmap, mSnsPostListener);
-			if ((Boolean) SPUtils.get(context, STAGESHARE, false)) {
-				ToastUtil.showShort(context,
-						getResources().getString(R.string.first_share));
-			}
+			((MyApplication) getApplicationContext()).setShare(
+					(Activity) context, null, bitmap, true);
 			break;
 		case R.id.btn_tip_answer:
 			boolean isSuccess = PointsManager.getInstance(context).spendPoints(
-					20);
+					10);
 			if (isSuccess) {
 				getTips();
 			}
@@ -553,7 +577,7 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 					handlePassEvent();
 				} else if (checkResult == STATUS_ANSWER_WRONG) {
 					// 闪烁文字并提示用户
-					sparkTheWrods(Color.RED,true);
+					sparkTheWrods(Color.RED, true);
 				} else if (checkResult == STATUS_ANSWER_LACK) {
 				}
 
@@ -571,27 +595,5 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 			}
 		}
 	}
-
-	private SnsPostListener mSnsPostListener = new SnsPostListener() {
-
-		@Override
-		public void onStart() {
-
-		}
-
-		@Override
-		public void onComplete(SHARE_MEDIA platform, int stCode,
-				SocializeEntity entity) {
-			if (stCode == 200) {
-				if ((Boolean) SPUtils.get(context, STAGESHARE, false)) {
-					PointsManager.getInstance(context).awardPoints(100);
-					SPUtils.put(context, STAGESHARE, true);
-				}
-
-			} else {
-				ToastUtil.showShort(getApplicationContext(), "分享失败");
-			}
-		}
-	};
 
 }

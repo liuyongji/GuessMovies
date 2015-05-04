@@ -17,21 +17,23 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
+
 /**
- *�Զ���Ի������
- *֧�֣��Ի���ȫ����ʾ���ơ�title��ʾ���ƣ�һ��button������
+ *自定义对话框基类
+ *支持：对话框全屏显示控制、title显示控制，一个button或两个
  */
 public abstract class DialogBase extends Dialog {
 	protected OnClickListener onSuccessListener;
 	protected Context mainContext;
-	protected OnClickListener onCancelListener;//�ṩ��ȡ��ť
+	protected OnClickListener onCancelListener;//提供给取消按钮
 	protected OnDismissListener onDismissListener;
 	
 	protected View view;
+	protected LinearLayout linearLayout;
 	protected Button positiveButton, negativeButton;
 	private boolean isFullScreen = false;
 	
-	private boolean hasTitle = true;//�Ƿ���title
+	private boolean hasTitle = true;//是否有title
 	
 	private int width = 0, height = 0, x = 0, y = 0;
 	private int iconTitle = 0;
@@ -39,7 +41,7 @@ public abstract class DialogBase extends Dialog {
 	private String namePositiveButton, nameNegativeButton;
 	private final int MATCH_PARENT = android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 
-	private boolean isCancel = true;//Ĭ���Ƿ�ɵ��back����/����ⲿ����ȡ��Ի���
+	private boolean isCancel = true;//默认是否可点击back按键/点击外部区域取消对话框
 	
 	
 	public boolean isCancel() {
@@ -51,8 +53,8 @@ public abstract class DialogBase extends Dialog {
 	}
 
 	/**
-	 * ���캯��
-	 * @param context ����Ӧ����Activity
+	 * 构造函数
+	 * @param context 对象应该是Activity
 	 */
 	public DialogBase(Context context) {
 		super(context, R.style.alert);
@@ -60,18 +62,18 @@ public abstract class DialogBase extends Dialog {
 	}
 	
 	/** 
-	 * �����¼�
+	 * 创建事件
 	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
     	setContentView(R.layout.v2_dialog_base);
 		this.onBuilding();
-		// ���ñ������Ϣ
+		// 设置标题和消息
 		LinearLayout dialog_top = (LinearLayout)findViewById(R.id.dialog_top);
 		View title_red_line = (View)findViewById(R.id.title_red_line);
 		
-		//�Ƿ���title
+		//是否有title
 		if(hasTitle){
 			dialog_top.setVisibility(View.VISIBLE);
 			title_red_line.setVisibility(View.VISIBLE);
@@ -92,13 +94,16 @@ public abstract class DialogBase extends Dialog {
 			findViewById(R.id.dialog_customPanel).setVisibility(View.GONE);
 		}
 
-		// ���ð�ť�¼�����
+		// 设置按钮事件监听
+		linearLayout=(LinearLayout)findViewById(R.id.dialog_bottom);
 		positiveButton = (Button)findViewById(R.id.dialog_positivebutton);
 		negativeButton = (Button)findViewById(R.id.dialog_negativebutton);
 		if(namePositiveButton != null && namePositiveButton.length()>0){
+			
 			positiveButton.setText(namePositiveButton);
 			positiveButton.setOnClickListener(GetPositiveButtonOnClickListener());
 		} else {
+			linearLayout.setVisibility(View.GONE);
 			positiveButton.setVisibility(View.GONE);
 			findViewById(R.id.dialog_leftspacer).setVisibility(View.VISIBLE);
 			findViewById(R.id.dialog_rightspacer).setVisibility(View.VISIBLE);
@@ -110,7 +115,7 @@ public abstract class DialogBase extends Dialog {
 			negativeButton.setVisibility(View.GONE);
 		}
 		
-		// ���öԻ����λ�úʹ�С
+		// 设置对话框的位置和大小
 		LayoutParams params = this.getWindow().getAttributes();  
 		if(this.getWidth()>0)
 			params.width = this.getWidth();  
@@ -121,13 +126,13 @@ public abstract class DialogBase extends Dialog {
 		if(this.getY()>0)
 			params.height = this.getY();  
 		
-		// �������Ϊȫ��
+		// 如果设置为全屏
 		if(isFullScreen) {
 			params.width = WindowManager.LayoutParams.MATCH_PARENT;
 			params.height = WindowManager.LayoutParams.MATCH_PARENT;
 		}
 		
-		//���õ��dialog�ⲿ�����ȡ��
+		//设置点击dialog外部区域可取消
 		if(isCancel){
 			setCanceledOnTouchOutside(true);
 			setCancelable(true);
@@ -141,8 +146,8 @@ public abstract class DialogBase extends Dialog {
 	}
 
 	/**
-	 * ��ȡOnDismiss�¼������ͷ���Դ
-	 * @return OnDismiss�¼�����
+	 * 获取OnDismiss事件监听，释放资源
+	 * @return OnDismiss事件监听
 	 */
 	protected OnDismissListener GetOnDismissListener() {
 		return new OnDismissListener(){
@@ -161,8 +166,8 @@ public abstract class DialogBase extends Dialog {
 	}
 
 	/**
-	 * ��ȡȷ�ϰ�ť�����¼�����
-	 * @return ȷ�ϰ�ť�����¼�����
+	 * 获取确认按钮单击事件监听
+	 * @return 确认按钮单击事件监听
 	 */
 	protected View.OnClickListener GetPositiveButtonOnClickListener() {
 		return new View.OnClickListener() {
@@ -174,8 +179,8 @@ public abstract class DialogBase extends Dialog {
 	}
 	
 	/**
-	 * ��ȡȡ��ť�����¼�����
-	 * @return ȡ��ť�����¼�����
+	 * 获取取消按钮单击事件监听
+	 * @return 取消按钮单击事件监听
 	 */
 	protected View.OnClickListener GetNegativeButtonOnClickListener() {
 		return new View.OnClickListener() {
@@ -187,8 +192,8 @@ public abstract class DialogBase extends Dialog {
 	}
 	
 	/**
-	 * ��ȡ����ı��¼���������EditText�ı�Ĭ��ȫѡ
-	 * @return ����ı��¼�����
+	 * 获取焦点改变事件监听，设置EditText文本默认全选
+	 * @return 焦点改变事件监听
 	 */
 	protected OnFocusChangeListener GetOnFocusChangeListener() {
 		return new OnFocusChangeListener() {
@@ -201,22 +206,22 @@ public abstract class DialogBase extends Dialog {
 	}
 	
 	/**
-	 * ���óɹ��¼����������ṩ������ߵĻص�����
-	 * @param listener �ɹ��¼�����
+	 * 设置成功事件监听，用于提供给调用者的回调函数
+	 * @param listener 成功事件监听
 	 */
 	public void SetOnSuccessListener(OnClickListener listener){
 		onSuccessListener = listener;
 	}
 	
 	/**
-	 * ���ùر��¼����������ṩ������ߵĻص�����
-	 * @param listener �ر��¼�����
+	 * 设置关闭事件监听，用于提供给调用者的回调函数
+	 * @param listener 关闭事件监听
 	 */
 	public void SetOnDismissListener(OnDismissListener listener){
 		onDismissListener = listener;
 	}
 
-	/**�ṩ��ȡ��ť������ʵ���ඨ��
+	/**提供给取消按钮，用于实现类定制
 	 * @param listener
 	 */
 	public void SetOnCancelListener(OnClickListener listener){
@@ -224,90 +229,90 @@ public abstract class DialogBase extends Dialog {
 	}
 	
 	/**
-	 * �����������������ඨ�ƴ������
+	 * 创建方法，用于子类定制创建过程
 	 */
 	protected abstract void onBuilding();
 
 	/**
-	 * ȷ�ϰ�ť�����������������ඨ��
+	 * 确认按钮单击方法，用于子类定制
 	 */
 	protected abstract boolean OnClickPositiveButton();
 
 	/**
-	 * ȡ��ť�����������������ඨ��
+	 * 取消按钮单击方法，用于子类定制
 	 */
 	protected abstract void OnClickNegativeButton();
 
 	/**
-	 * �رշ������������ඨ��
+	 * 关闭方法，用于子类定制
 	 */
 	protected abstract void onDismiss();
 
 	/**
-	 * @return �Ի������
+	 * @return 对话框标题
 	 */
 	public String getTitle() {
 		return title;
 	}
 
 	/**
-	 * @param title �Ի������
+	 * @param title 对话框标题
 	 */
 	public void setTitle(String title) {
 		this.title = title;
 	}
 	
 	/**
-	 * @param iconTitle ����ͼ�����ԴId
+	 * @param iconTitle 标题图标的资源Id
 	 */
 	public void setIconTitle(int iconTitle) {
 		this.iconTitle = iconTitle;
 	}
 
 	/**
-	 * @return ����ͼ�����ԴId
+	 * @return 标题图标的资源Id
 	 */
 	public int getIconTitle() {
 		return iconTitle;
 	}
 
 	/**
-	 * @return �Ի�����ʾ��Ϣ
+	 * @return 对话框提示信息
 	 */
 	protected String getMessage() {
 		return message;
 	}
 
 	/**
-	 * @param message �Ի�����ʾ��Ϣ
+	 * @param message 对话框提示信息
 	 */
 	protected void setMessage(String message) {
 		this.message = message;
 	}
 
 	/**
-	 * @return �Ի���View
+	 * @return 对话框View
 	 */
 	protected View getView() {
 		return view;
 	}
 
 	/**
-	 * @param view �Ի���View
+	 * @param view 对话框View
 	 */
 	protected void setView(View view) {
 		this.view = view;
 	}
 
 	/**
-	 * @return �Ƿ�ȫ��
+	 * @return 是否全屏
 	 */
 	public boolean getIsFullScreen() {
 		return isFullScreen;
 	}
 
 	/**
-	 * @param isFullScreen �Ƿ�ȫ��
+	 * @param isFullScreen 是否全屏
 	 */
 	public void setIsFullScreen(boolean isFullScreen) {
 		this.isFullScreen = isFullScreen;
@@ -324,84 +329,84 @@ public abstract class DialogBase extends Dialog {
 
 	
 	/**
-	 * @return �Ի�����
+	 * @return 对话框宽度
 	 */
 	protected int getWidth() {
 		return width;
 	}
 
 	/**
-	 * @param width �Ի�����
+	 * @param width 对话框宽度
 	 */
 	protected void setWidth(int width) {
 		this.width = width;
 	}
 
 	/**
-	 * @return �Ի���߶�
+	 * @return 对话框高度
 	 */
 	protected int getHeight() {
 		return height;
 	}
 
 	/**
-	 * @param height �Ի���߶�
+	 * @param height 对话框高度
 	 */
 	protected void setHeight(int height) {
 		this.height = height;
 	}
 
 	/**
-	 * @return �Ի���X���
+	 * @return 对话框X坐标
 	 */
 	public int getX() {
 		return x;
 	}
 
 	/**
-	 * @param x �Ի���X���
+	 * @param x 对话框X坐标
 	 */
 	public void setX(int x) {
 		this.x = x;
 	}
 
 	/**
-	 * @return �Ի���Y���
+	 * @return 对话框Y坐标
 	 */
 	public int getY() {
 		return y;
 	}
 
 	/**
-	 * @param y �Ի���Y���
+	 * @param y 对话框Y坐标
 	 */
 	public void setY(int y) {
 		this.y = y;
 	}
 
 	/**
-	 * @return ȷ�ϰ�ť���
+	 * @return 确认按钮名称
 	 */
 	protected String getNamePositiveButton() {
 		return namePositiveButton;
 	}
 
 	/**
-	 * @param namePositiveButton ȷ�ϰ�ť���
+	 * @param namePositiveButton 确认按钮名称
 	 */
 	protected void setNamePositiveButton(String namePositiveButton) {
 		this.namePositiveButton = namePositiveButton;
 	}
 
 	/**
-	 * @return ȡ��ť���
+	 * @return 取消按钮名称
 	 */
 	protected String getNameNegativeButton() {
 		return nameNegativeButton;
 	}
 
 	/**
-	 * @param nameNegativeButton ȡ��ť���
+	 * @param nameNegativeButton 取消按钮名称
 	 */
 	protected void setNameNegativeButton(String nameNegativeButton) {
 		this.nameNegativeButton = nameNegativeButton;

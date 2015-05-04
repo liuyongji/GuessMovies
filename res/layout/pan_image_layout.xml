@@ -28,15 +28,15 @@
     </FrameLayout> -->
 
     <FrameLayout
-        android:layout_width="300dp"
-        android:layout_height="300dp" >
+        android:layout_width="280dp"
+        android:layout_height="280dp" >
 
         <ImageView
             android:id="@+id/imageView1"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_gravity="center"
-            android:scaleType="center"
+            android:scaleType="centerInside"
             android:src="@drawable/game_disc" />
         
     </FrameLayout>

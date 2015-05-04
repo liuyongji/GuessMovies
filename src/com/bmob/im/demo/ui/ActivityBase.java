@@ -20,14 +20,14 @@ public class ActivityBase extends BaseActivity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		//自动登陆状态下检测是否在其他设备登陆
-//		checkLogin();
+		checkLogin();
 	}
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
 		//锁屏状态下的检测
-//		checkLogin();
+		checkLogin();
 	}
 	
 	public void checkLogin() {

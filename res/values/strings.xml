@@ -9,10 +9,14 @@
     <string name="author">作者：@liu_yj</string>
     <string name="first_share">首次分享微信好友或者朋友圈成功赠送100金币</string>
      <string name="buy_coin_500">从此再也不担心智商不够用了</string>
+      <string name="feeback_weixin">请把反馈信息发送到如下微信公众号，扫描二维码或搜索liuyongji0312，该公众号仅用于收集反馈信息，
+          未来可能发展为最新韩影资讯推送\n同时欢迎对题目或影片正确性进行纠正，或推荐新的电影。新版本将采纳意见</string>
 
     <!-- bmob -->
     <string name="buy_ads">一次购买，永久去除，还你一个干净的体验</string>
     <string name="buy_goods_wall">去做任务获取金币</string>
+    <string name="buy_share">首次分享微信朋友圈成功即得50金币</string>
+    <string name="buy_sign">每日签到可得20金币</string>
     
     
     
@@ -41,6 +45,7 @@
     
     <string name="add_avator">头像</string>
     <string name="add_nick">昵称</string>
+    <string name="higscore">最高通关</string>
     <string name="add_name">账号</string>
     <string name="add_name_hint">请输入昵称&#8230;</string>
     <string name="add_gender">性别</string>

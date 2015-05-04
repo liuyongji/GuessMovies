@@ -18,9 +18,14 @@ import cn.bmob.v3.listener.SaveListener;
 
 import com.bmob.im.demo.bean.User;
 import com.bmob.im.demo.config.BmobConstants;
+import com.bmob.im.demo.ui.BaseActivity.OnLeftButtonClickListener;
 import com.bmob.im.demo.util.CommonUtils;
+import com.bmob.im.demo.view.HeaderLayout;
+import com.bmob.im.demo.view.HeaderLayout.HeaderStyle;
 import com.bmob.im.demo.view.dialog.DialogTips;
 import com.lyj.guessmovies.R;
+import com.lyj.guessmovies.ui.MenuActivity;
+import com.lyj.guessmovies.ui.RankListActivity;
 
 /**
  * @ClassName: LoginActivity
@@ -33,6 +38,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 	EditText et_username, et_password;
 	Button btn_login;
 	TextView btn_register;
+	private TextView texttitle;
 
 	private MyBroadcastReceiver receiver = new MyBroadcastReceiver();
 
@@ -40,33 +46,24 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_login_bmob);
+		setContentView(R.layout.activity_login);
 		init();
-		//ע���˳��㲥
+		
+		initTopBarForLeft("登陆");
+		//注册退出广播
 		IntentFilter filter = new IntentFilter();
 		filter.addAction(BmobConstants.ACTION_REGISTER_SUCCESS_FINISH);
 		registerReceiver(receiver, filter);
-//		showNotice();
 	}
 
-	public void showNotice() {
-		DialogTips dialog = new DialogTips(this,"��ʾ",getResources().getString(R.string.show_notice), "ȷ��",true,true);
-		// ���óɹ��¼�
-		dialog.SetOnSuccessListener(new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialogInterface, int userId) {
-				
-			}
-		});
-		// ��ʾȷ�϶Ի���
-		dialog.show();
-		dialog = null;
-	}
 	
 	private void init() {
-		et_username = (EditText) findViewById(R.id.et_username);
-		et_password = (EditText) findViewById(R.id.et_password);
-		btn_login = (Button) findViewById(R.id.btn_login);
-		btn_register = (TextView) findViewById(R.id.btn_register);
+		texttitle=(TextView)findViewById(R.id.titlelayout_title);
+		texttitle.setText("登陆");
+		et_username = (EditText) findViewById(R.id.login_username_edit);
+		et_password = (EditText) findViewById(R.id.login_password_edit);
+		btn_login = (Button) findViewById(R.id.login_btnlogin);
+		btn_register = (TextView) findViewById(R.id.login_btnregister);
 		btn_login.setOnClickListener(this);
 		btn_register.setOnClickListener(this);
 	}
@@ -88,7 +85,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 			Intent intent = new Intent(LoginActivity.this,
 					RegisterActivity.class);
 			startActivity(intent);
-		} else {
+		} else if(v==btn_login) {
 			boolean isNetConnected = CommonUtils.isNetworkAvailable(this);
 			if(!isNetConnected){
 				ShowToast(R.string.network_tips);
@@ -114,7 +111,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 
 		final ProgressDialog progress = new ProgressDialog(
 				LoginActivity.this);
-		progress.setMessage("���ڵ�½...");
+		progress.setMessage("正在登陆...");
 		progress.setCanceledOnTouchOutside(false);
 		progress.show();
 		User user = new User();
@@ -130,13 +127,13 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 					@Override
 					public void run() {
 						// TODO Auto-generated method stub
-						progress.setMessage("���ڻ�ȡ�����б�...");
+						progress.setMessage("正在获取好友列表...");
 					}
 				});
-				//�����û��ĵ���λ���Լ����ѵ�����
+				//更新用户的地理位置以及好友的资料
 				updateUserInfos();
 				progress.dismiss();
-				Intent intent = new Intent(LoginActivity.this,BmobMainActivity.class);
+				Intent intent = new Intent(LoginActivity.this,MenuActivity.class);
 				startActivity(intent);
 				finish();
 			}
