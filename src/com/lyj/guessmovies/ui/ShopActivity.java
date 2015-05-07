@@ -11,11 +11,11 @@ import com.bmob.im.demo.bean.User;
 import com.bmob.im.demo.ui.LoginActivity;
 import com.bmob.im.demo.util.TimeUtil;
 import com.bmob.im.demo.view.dialog.DialogTips;
-import com.bmob.pay.tool.BmobPay;
+//import com.bmob.pay.tool.BmobPay;
 import com.lyj.guessmovies.R;
 import com.lyj.guessmovies.app.MyApplication;
 import com.lyj.guessmovies.data.Const;
-import com.lyj.guessmovies.listener.LyjPayListener;
+//import com.lyj.guessmovies.listener.LyjPayListener;
 import com.lyj.guessmovies.util.SPUtils;
 import com.lyj.guessmovies.util.ToastUtil;
 
@@ -132,12 +132,12 @@ public class ShopActivity extends Activity implements OnClickListener,PointsChan
 			break;
 		case R.id.pay_webchat:
 //			ToastUtil.showLong(ShopActivity.this, which+"");
-			new BmobPay(ShopActivity.this).payByWX(price,brief,new LyjPayListener(ShopActivity.this,which));
+//			new BmobPay(ShopActivity.this).payByWX(price,brief,new LyjPayListener(ShopActivity.this,which));
 			dialogTips.dismiss();
 			
 			break;
 		case R.id.pay_zhifubao:
-			new BmobPay(ShopActivity.this).pay(price,brief,new LyjPayListener(ShopActivity.this,which));
+//			new BmobPay(ShopActivity.this).pay(price,brief,new LyjPayListener(ShopActivity.this,which));
 			dialogTips.dismiss();
 			break;
 			

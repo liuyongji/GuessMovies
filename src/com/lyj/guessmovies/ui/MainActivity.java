@@ -25,8 +25,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.LinearLayout.LayoutParams;
-
 import cn.bmob.im.BmobUserManager;
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.listener.GetListener;
+
 import com.bmob.im.demo.bean.User;
 import com.lyj.guessmovies.R;
 import com.lyj.guessmovies.app.MyApplication;
@@ -90,6 +92,8 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 	private boolean mIsFirst;
 	private UMSocialService mController;
 	private User mUser;
+	
+	private boolean mcontrol=false;
 
 	// BackgroundMusic backgroundMusic;
 
@@ -138,6 +142,21 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 	private void initData() {
 		mUser = BmobUserManager.getInstance(this).getCurrentUser(User.class);
 		
+		BmobQuery<User> query = new BmobQuery<User>();
+		query.getObject(this, "ff819b4ede", new GetListener<User>() {
+
+		    @Override
+		    public void onSuccess(User object) {
+		        // TODO Auto-generated method stub
+		        MainActivity.this.mcontrol=object.getAdclear();
+		    }
+
+		    @Override
+		    public void onFailure(int code, String arg0) {
+		        // TODO Auto-generated method stub
+		    }
+
+		});
 		
 		movies = ((MyApplication) getApplicationContext()).getMovies();
 		if (mUser!=null) {
@@ -311,9 +330,6 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 		mCurrentStage.setText((mCurrentStageIndex + 1) + "");
 		mViewPan.setImageBitmap(Util.getImageFromAssetsFile(MainActivity.this,
 				"images/" + mCurrentMovie.getUrl()));
-		// if(mCurrentStageIndex>0){
-		// new nextMusic().execute();
-		// }
 
 		return mCurrentMovie;
 	}
@@ -335,7 +351,7 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 		mAllWords = initAllWord();
 		// // 更新数据- MyGridView
 		mMyGridView.updateData(mAllWords);
-		if ((mCurrentStageIndex + 1) % 5 == 0 && !mIsAdClear) {
+		if ((mCurrentStageIndex + 1) % 5 == 0 && !mIsAdClear&&!mcontrol) {
 			SpotManager.getInstance(this).showSpotAds(this);
 		}
 	}

@@ -63,13 +63,15 @@
             android:layout_marginTop="10.0dip"
             android:text="韩影资讯"
             android:visibility="gone" />
+
          <Button
-            android:id="@+id/btn_shop"
-            android:layout_width="200.0dip"
-            android:layout_height="50.0dip"
-            android:layout_marginTop="10.0dip"
-            android:text="商场"
-             />
+             android:id="@+id/btn_shop"
+             android:layout_width="200.0dip"
+             android:layout_height="50.0dip"
+             android:layout_marginTop="10.0dip"
+             android:text="商场"
+             android:visibility="gone" />
+
          <Button
             android:id="@+id/btn_ranklist"
             android:layout_width="200.0dip"

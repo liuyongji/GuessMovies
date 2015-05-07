@@ -4,16 +4,15 @@ import java.util.List;
 
 import net.youmi.android.AdManager;
 import net.youmi.android.offers.OffersManager;
-import cn.bmob.im.BmobChat;
 import cn.bmob.im.BmobUserManager;
+import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.listener.GetListener;
 
 import com.bmob.im.demo.bean.User;
-import com.bmob.im.demo.ui.BmobMainActivity;
-import com.bmob.pay.tool.BmobPay;
-import com.bmob.pay.tool.PayListener;
+//import com.bmob.pay.tool.BmobPay;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.lyj.guessmovies.R.id;
 import com.lyj.guessmovies.app.MyApplication;
 import com.lyj.guessmovies.data.Const;
 import com.lyj.guessmovies.model.Movie;
@@ -48,6 +47,8 @@ public class MenuActivity extends Activity implements OnClickListener, Const {
 	private List<Movie> movies;
 	private FeedbackAgent agent;
 	private User muser;
+	
+	private boolean feebackswitch=true;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +56,8 @@ public class MenuActivity extends Activity implements OnClickListener, Const {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 		initView();
-		BmobPay.init(this, "6ac560f8ca942178c35e093c220e40b9");
+		Bmob.initialize(this, "6ac560f8ca942178c35e093c220e40b9");
+//		BmobPay.init(this, "6ac560f8ca942178c35e093c220e40b9");
 		// BmobChat.DEBUG_MODE = true;
 		muser = BmobUserManager.getInstance(this).getCurrentUser(User.class);
 		AdManager.getInstance(this)
@@ -101,6 +103,26 @@ public class MenuActivity extends Activity implements OnClickListener, Const {
 		movies = gson.fromJson(result, new TypeToken<List<Movie>>() {
 		}.getType());
 		myApplication.setMovies(movies);
+		BmobQuery<User> query = new BmobQuery<User>();
+		query.getObject(this, "ff819b4ede", new GetListener<User>() {
+
+		    @Override
+		    public void onSuccess(User object) {
+		        // TODO Auto-generated method stub
+		    	if (object.getFirstlogin()!=null) {
+		    		 MenuActivity.this.feebackswitch=object.getFirstlogin();
+				}else {
+					 MenuActivity.this.feebackswitch=false;
+				}
+		       
+		    }
+
+		    @Override
+		    public void onFailure(int code, String arg0) {
+		        // TODO Auto-generated method stub
+		    }
+
+		});
 	}
 
 	@Override
@@ -145,8 +167,13 @@ public class MenuActivity extends Activity implements OnClickListener, Const {
 		case R.id.btn_feeback:
 			// ToastUtil.showShort(MenuActivity.this, "敬请期待……");
 //			agent.startFeedbackActivity();
-			Intent intent5=new Intent(MenuActivity.this, FeebackActivity.class);
-			startActivity(intent5);
+			if (!feebackswitch) {
+				Intent intent5=new Intent(MenuActivity.this, FeebackActivity.class);
+				startActivity(intent5);
+			}else {
+				agent.startFeedbackActivity();
+			}
+			
 			break;
 		case R.id.btn_news:
 			ToastUtil.showShort(MenuActivity.this, "敬请期待……");
