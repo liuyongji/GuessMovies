@@ -109,7 +109,6 @@ public class MainActivity extends Activity implements IWordButtonClickListener,
 		// 初始化游戏数据
 		initCurrentStageData();
 		PointsManager.getInstance(this).registerNotify(this);
-//		mIsFirst = (Boolean) SPUtils.get(this, ISFIRST, true);
 		
 		SpotManager.getInstance(this).loadSpotAds();
 	}
